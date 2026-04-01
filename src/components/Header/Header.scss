@@ -1,0 +1,25 @@
+@use "../../../src/styles/mixins" as *;
+@use "../../../src/styles/variables" as *;
+
+header {
+  @include flexAlignCenter();
+  justify-content: space-between;
+  padding: 2.4rem 17.7rem;
+  border-bottom: 1px solid $greyscale-200;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.04);
+
+  & > div {
+    @include flexAlignCenter(5rem);
+  }
+
+  .browse-courses-box {
+    @include flexAlignCenter(0.8rem);
+    font-weight: 500;
+    font-size: 20px;
+    color: $purple-500;
+  }
+
+  .buttons-box {
+    @include flexAlignCenter(1.5rem);
+  }
+}

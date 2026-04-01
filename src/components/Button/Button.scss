@@ -6,15 +6,17 @@ button {
   line-height: 140%;
   letter-spacing: -0.02em;
   border-radius: 8px;
-  padding: 1.2rem 1.6rem;
-  border: 2px solid $purple-300;
+  text-align: center;
+  padding: 1.6rem 2.8rem;
 }
 
 .btn-white {
+  border: 2px solid $purple-300;
   color: $purple-500;
 }
 
 .btn-purple {
   background-color: $purple-500;
   color: $greyscale-50;
+  border: 2px solid $purple-500;
 }
