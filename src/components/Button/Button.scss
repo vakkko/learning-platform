@@ -1,0 +1,20 @@
+@use "../../styles/variables" as *;
+
+button {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  border-radius: 8px;
+  padding: 1.2rem 1.6rem;
+  border: 2px solid $purple-300;
+}
+
+.btn-white {
+  color: $purple-500;
+}
+
+.btn-purple {
+  background-color: $purple-500;
+  color: $greyscale-50;
+}
