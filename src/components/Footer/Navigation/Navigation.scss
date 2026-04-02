@@ -1,0 +1,16 @@
+@use "../../../styles/mixins" as *;
+@use "../../../styles/variables" as *;
+
+.footer-navigation-container {
+  @include flexColumn(7.4rem);
+  div {
+    display: flex;
+    gap: 12rem;
+  }
+  small {
+    font-weight: 400;
+    font-size: 18px;
+    text-align: right;
+    color: $purple-500;
+  }
+}

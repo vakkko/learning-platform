@@ -1,0 +1,23 @@
+@use "../../../../styles/variables" as *;
+@use "../../../../styles/mixins" as *;
+
+.footer-navigation-column {
+  h4 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    color: $purple-800;
+    margin-bottom: 1.6rem;
+  }
+
+  ul {
+    @include flexColumn(8px);
+    li {
+      @include flexAlignCenter(8px);
+      font-weight: 400;
+      font-size: 18px;
+      text-align: center;
+      color: $greyscale-500;
+    }
+  }
+}

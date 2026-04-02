@@ -12,7 +12,10 @@ const LogoAndDescription: React.FC = () => {
           <img src="images/logo.png" alt="logo" />
           <h3>Bootcamp</h3>
         </div>
-        <p>Your learning journey starts here! Browse courses to get started.</p>
+        <p>
+          Your learning journey starts here!
+          <br /> Browse courses to get started.
+        </p>
         <SocialNetworks />
       </div>
       <small>Copyright © 2026 Redberry International</small>

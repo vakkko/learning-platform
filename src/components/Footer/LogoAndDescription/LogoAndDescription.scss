@@ -4,7 +4,6 @@
 .logo-and-description-container {
   @include flexColumn(7.4rem);
   & > div {
-    width: 16%;
     @include flexColumn(1.6rem);
     p {
       font-weight: 500;
