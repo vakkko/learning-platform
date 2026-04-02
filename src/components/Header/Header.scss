@@ -16,7 +16,18 @@ header {
     @include flexAlignCenter(0.8rem);
     font-weight: 500;
     font-size: 20px;
-    color: $purple-500;
+    color: $greyscale-600;
+
+    svg {
+      stroke: $greyscale-600;
+    }
+
+    &:hover {
+      color: $purple-500;
+      svg {
+        stroke: $purple-500;
+      }
+    }
   }
 
   .buttons-box {
