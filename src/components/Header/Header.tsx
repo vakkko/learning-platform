@@ -7,7 +7,7 @@ import "./Header.scss";
 const Header: React.FC = () => {
   return (
     <header>
-      <img src="/images/logo.png" alt="logo" />
+      <img src="images/logo.png" alt="logo" />
       <div>
         <div className="browse-courses-box">
           <svg

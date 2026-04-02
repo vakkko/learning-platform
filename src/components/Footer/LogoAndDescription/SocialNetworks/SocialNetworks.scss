@@ -1,0 +1,10 @@
+@use "../../../../styles/mixins" as *;
+.social-networks {
+  ul,
+  ul > li {
+    @include flexAlignCenter();
+  }
+  ul {
+    gap: 2.2rem;
+  }
+}
