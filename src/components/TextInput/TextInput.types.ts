@@ -1,10 +1,11 @@
-import type { FieldValues, UseFormRegister } from "react-hook-form";
+import type { UseFormRegister } from "react-hook-form";
+import type { loginData } from "../../schemas/LoginSchemas";
 
 export interface TextInputProps {
   label: string;
   type: string;
   autoComplete: string;
   placeholder: string;
-  registerWith: string;
-  register: UseFormRegister<FieldValues>;
+  registerWith: "email";
+  register: UseFormRegister<loginData>;
 }

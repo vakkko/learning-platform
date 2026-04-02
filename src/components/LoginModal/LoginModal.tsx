@@ -7,10 +7,16 @@ import TextInput from "../TextInput/TextInput";
 
 import type { LoginModalProps } from "./LoginModal.types";
 
+import { loginSchema, type loginData } from "../../schemas/LoginSchemas";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 import "./LoginModal.scss";
 
 const LoginModal: React.FC<LoginModalProps> = ({ handleLoginClose }) => {
-  const { register } = useForm();
+  const { register } = useForm<loginData>({
+    resolver: yupResolver(loginSchema),
+    mode: "onBlur",
+  });
 
   return (
     <div className="modal">
