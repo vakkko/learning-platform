@@ -3,3 +3,9 @@
   align-items: center;
   gap: $gap;
 }
+
+@mixin flexColumn($gap: null) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}

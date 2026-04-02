@@ -1,0 +1,28 @@
+@use "../../../styles/mixins" as *;
+@use "../../../styles/variables" as *;
+
+.logo-and-description-container {
+  @include flexColumn(7.4rem);
+  & > div {
+    width: 16%;
+    @include flexColumn(1.6rem);
+    p {
+      font-weight: 500;
+      font-size: 14px;
+      color: $purple-800;
+    }
+  }
+
+  small {
+    font-size: 18px;
+    color: $greyscale-500;
+  }
+}
+
+.logo-and-company {
+  @include flexAlignCenter(1.2rem);
+  img {
+    width: 45px;
+    height: 45px;
+  }
+}
