@@ -4,9 +4,16 @@ import type { ButtonProps } from "./Button.types";
 
 import "./Button.scss";
 
-const Button: React.FC<ButtonProps> = ({ purpleBackground, text }) => {
+const Button: React.FC<ButtonProps> = ({
+  purpleBackground,
+  text,
+  handleClick,
+}) => {
   return (
-    <button className={purpleBackground ? "btn-purple" : "btn-white"}>
+    <button
+      onClick={handleClick}
+      className={`btn ${purpleBackground ? "btn-purple" : "btn-white"}`}
+    >
       {text}
     </button>
   );

@@ -7,13 +7,13 @@
     @include flexColumn(1.6rem);
     p {
       font-weight: 500;
-      font-size: 14px;
+      font-size: 1.4rem;
       color: $purple-800;
     }
   }
 
   small {
-    font-size: 18px;
+    font-size: 1.8rem;
     color: $greyscale-500;
   }
 }
