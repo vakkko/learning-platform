@@ -20,3 +20,9 @@
   background-color: $greyscale-50;
   border-radius: 12px;
 }
+
+@mixin fontWeight500Size14($color: null) {
+  font-weight: 500;
+  font-size: 14px;
+  color: $color;
+}
