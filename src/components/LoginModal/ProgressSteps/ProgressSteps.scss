@@ -1,0 +1,13 @@
+@use "../../../styles/mixins" as *;
+@use "../../../styles/variables" as *;
+
+.progress-steps-container {
+  @include flexAlignCenter(8px);
+  margin-top: 2.4rem;
+  & > div {
+    background-color: $purple-50;
+    border-radius: 3rem;
+    width: 114px;
+    height: 8px;
+  }
+}

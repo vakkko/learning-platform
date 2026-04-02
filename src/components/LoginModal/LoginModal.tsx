@@ -2,6 +2,8 @@ import React from "react";
 
 import "./LoginModal.scss";
 
+import ProgressSteps from "./ProgressSteps/ProgressSteps";
+
 import type { LoginModalProps } from "./LoginModal.types";
 
 const LoginModal: React.FC<LoginModalProps> = ({ handleLoginClose }) => {
@@ -13,6 +15,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ handleLoginClose }) => {
       <div className="modal-content">
         <h3>Create Account</h3>
         <p>Join and start learning today</p>
+        <ProgressSteps />
       </div>
     </div>
   );
