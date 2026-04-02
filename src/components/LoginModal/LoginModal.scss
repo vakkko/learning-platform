@@ -28,5 +28,44 @@
     form {
       margin-top: 2.4rem;
     }
+
+    .btn-next {
+      font-weight: 500;
+      font-size: 1.6rem;
+      line-height: 150%;
+      text-align: center;
+      color: $greyscale-50;
+      background-color: $purple-500;
+      border-radius: 8px;
+      padding: 1.15rem;
+      margin-top: 1.6rem;
+    }
+
+    .text-in-lines {
+      @include flexAlignCenter(0.7rem);
+      margin-top: 1.6rem;
+      margin-bottom: 1rem;
+      padding: 0 2rem;
+      hr {
+        flex-grow: 1;
+        border: none;
+        border-top: 1px solid $greyscale-400;
+      }
+
+      span {
+        @include fontWeight500Size14($greyscale-400);
+        line-height: 1;
+      }
+    }
+
+    .auth-footer {
+      @include flexAlignCenter(0.8rem);
+      justify-content: center;
+
+      .btn-login {
+        @include fontWeight500Size14;
+        border-bottom: 1px solid $greyscale-900;
+      }
+    }
   }
 }

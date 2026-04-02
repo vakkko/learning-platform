@@ -33,6 +33,16 @@ const LoginModal: React.FC<LoginModalProps> = ({ handleLoginClose }) => {
             }}
           />
         </form>
+        <button className="btn-next">Next</button>
+        <div className="text-in-lines">
+          <hr />
+          <span>or</span>
+          <hr />
+        </div>
+        <div className="auth-footer">
+          <p>Already have an account? </p>{" "}
+          <button className="btn-login">Log In</button>
+        </div>
       </div>
     </div>
   );
