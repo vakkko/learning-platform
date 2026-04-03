@@ -11,7 +11,12 @@ import type { LoginFormProps } from "./LoginForm.types";
 
 import "./LoginForm.scss";
 
-const LoginForm: React.FC<LoginFormProps> = ({ setEmailStep }) => {
+import { updateStepStatus } from "../../../utils/utils";
+
+const LoginForm: React.FC<LoginFormProps> = ({
+  currentStep,
+  setCurrentStep,
+}) => {
   const {
     register,
     trigger,
@@ -22,29 +27,65 @@ const LoginForm: React.FC<LoginFormProps> = ({ setEmailStep }) => {
   });
 
   const handleNextClick = async () => {
-    const isValid = await trigger("email");
-    if (isValid) {
-      setEmailStep(true);
-    } else {
-      setEmailStep(false);
+    const actualInput =
+      currentStep === 1
+        ? "email"
+        : currentStep === 2
+          ? (["password", "confirm_password"] as const)
+          : null;
+    if (actualInput) {
+      const isValid = await trigger(actualInput);
+      const nextStep = currentStep + 1;
+      updateStepStatus(isValid, setCurrentStep, nextStep, currentStep);
     }
   };
+
   return (
     <>
       <form className="login-form">
-        <TextInput
-          inputObj={{
-            label: "Email",
-            autoComplete: "email",
-            placeholder: "you@example.com",
-            type: "email",
-            registerWith: "email",
-            register: register,
-            error: errors.email?.message,
-          }}
-        />
+        {currentStep === 1 && (
+          <TextInput
+            inputObj={{
+              label: "Email*",
+              autoComplete: "email",
+              placeholder: "you@example.com",
+              type: "email",
+              registerWith: "email",
+              register: register,
+              error: errors.email?.message,
+            }}
+          />
+        )}
+        {currentStep === 2 && (
+          <>
+            <TextInput
+              inputObj={{
+                label: "Password*",
+                autoComplete: "new password",
+                placeholder: "Password",
+                type: "password",
+                register: register,
+                registerWith: "password",
+                error: errors.password?.message,
+                eyeIcon: "images/password/open-eye.png",
+              }}
+            />
+            <TextInput
+              inputObj={{
+                label: "Confirm Password*",
+                autoComplete: "new password",
+                placeholder: "Confirm Password",
+                type: "password",
+                register: register,
+                registerWith: "confirm_password",
+                error: errors.confirm_password?.message,
+                eyeIcon: "images/password/close-eye.png",
+              }}
+            />
+          </>
+        )}
       </form>
-      <button onClick={handleNextClick} className="btn-next">
+      <button type="button" onClick={handleNextClick} className="btn-next">
         Next
       </button>
     </>

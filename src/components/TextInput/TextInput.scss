@@ -1,15 +1,27 @@
 @use "../../styles/mixins" as *;
 @use "../../styles/variables" as *;
 
-label {
-  @include fontWeight500Size14($greyscale-700);
-}
+.input-box {
+  & > div {
+    position: relative;
+    label {
+      @include fontWeight500Size14($greyscale-700);
+    }
 
-input {
-  width: 100%;
-  margin-top: 8px;
-  @include fontWeight500Size14($greyscale-400);
-  padding: 1.2rem 1.5rem 1.2rem 1.3rem;
-  border: 1.5px solid $greyscale-200;
-  border-radius: 8px;
+    input {
+      width: 100%;
+      margin-top: 8px;
+      @include fontWeight500Size14($greyscale-400);
+      padding: 1.2rem 1.5rem 1.2rem 1.3rem;
+      border: 1.5px solid $greyscale-200;
+      border-radius: 8px;
+    }
+
+    .btn-eye {
+      @include flexAlignCenter();
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+    }
+  }
 }

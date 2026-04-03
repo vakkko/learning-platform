@@ -10,8 +10,12 @@
     width: 114px;
     height: 8px;
 
-    &.completed {
+    &.pending {
       background-color: $purple-200;
+    }
+
+    &.completed {
+      background-color: $purple-500;
     }
   }
 }

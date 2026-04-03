@@ -8,7 +8,7 @@ import "./LoginModal.scss";
 import LoginForm from "./LoginForm/LoginForm";
 
 const LoginModal: React.FC<LoginModalProps> = ({ handleLoginClose }) => {
-  const [emailStep, setEmailStep] = useState<boolean>(false);
+  const [currentStep, setCurrentStep] = useState<number>(1);
 
   return (
     <div className="modal">
@@ -18,8 +18,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ handleLoginClose }) => {
       <div className="modal-content">
         <h3>Create Account</h3>
         <p>Join and start learning today</p>
-        <ProgressSteps step1={emailStep} />
-        <LoginForm setEmailStep={setEmailStep} />
+        <ProgressSteps currentStep={currentStep} />
+        <LoginForm currentStep={currentStep} setCurrentStep={setCurrentStep} />
         <div className="text-in-lines">
           <hr />
           <span>or</span>

@@ -4,11 +4,13 @@ import type { ProgressStepsProps } from "./ProgressSteps.types";
 
 import "./ProgressSteps.scss";
 
-const ProgressSteps: React.FC<ProgressStepsProps> = ({ step1 }) => {
+const ProgressSteps: React.FC<ProgressStepsProps> = ({ currentStep }) => {
   return (
     <div className="progress-steps-container">
-      <div className={step1 ? "completed" : ""}></div>
-      <div></div>
+      <div
+        className={`${currentStep === 1 ? "pending" : currentStep === 2 ? "completed" : ""}`}
+      ></div>
+      <div className={currentStep === 2 ? "pending" : ""}></div>
       <div></div>
     </div>
   );

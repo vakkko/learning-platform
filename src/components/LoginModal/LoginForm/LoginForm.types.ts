@@ -1,5 +1,6 @@
 import type { Dispatch, SetStateAction } from "react";
 
 export interface LoginFormProps {
-  setEmailStep: Dispatch<SetStateAction<boolean>>;
+  currentStep: number;
+  setCurrentStep: Dispatch<SetStateAction<number>>;
 }
