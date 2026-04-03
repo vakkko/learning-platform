@@ -84,6 +84,19 @@ const LoginForm: React.FC<LoginFormProps> = ({
             />
           </>
         )}
+        <>
+          <TextInput
+            inputObj={{
+              label: "Username*",
+              autoComplete: "name",
+              placeholder: "Username",
+              register: register,
+              registerWith: "username",
+              type: "text",
+              error: errors.username?.message,
+            }}
+          />
+        </>
       </form>
       <button type="button" onClick={handleNextClick} className="btn-next">
         Next

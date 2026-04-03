@@ -6,7 +6,7 @@ export interface TextInputProps {
   type: string;
   autoComplete: string;
   placeholder: string;
-  registerWith: "email" | "password" | "confirm_password";
+  registerWith: "email" | "password" | "confirm_password" | "username";
   register: UseFormRegister<loginData>;
   error?: string;
   eyeIcon?: string;

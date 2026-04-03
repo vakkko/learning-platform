@@ -12,12 +12,16 @@ export const loginSchema = yup.object({
   password: yup
     .string()
     .required(requiredText("Password"))
-    .min(3, "Passowrd must be at least 3 character"),
+    .min(4, "Passowrd must be at least 3 character"),
   confirm_password: yup
     .string()
     .required(requiredText("Confirm Password"))
-    .min(3, "Minimal length should be 3")
+    .min(4, "Minimal length should be 3")
     .oneOf([yup.ref("password")], "Passowrds must match"),
+  username: yup
+    .string()
+    .required(requiredText("Username"))
+    .min(4, "Username must be at least 3 character"),
 });
 
 export type loginData = yup.InferType<typeof loginSchema>;
