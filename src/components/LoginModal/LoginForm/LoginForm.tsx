@@ -20,6 +20,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
   const {
     register,
     trigger,
+    watch,
     formState: { errors },
   } = useForm<loginData>({
     resolver: yupResolver(loginSchema),
@@ -65,8 +66,8 @@ const LoginForm: React.FC<LoginFormProps> = ({
                 placeholder: "Password",
                 type: "password",
                 register: register,
-                registerWith: "password",
                 error: errors.password?.message,
+                registerWith: "password",
                 eyeIcon: "images/password/open-eye.png",
               }}
             />
@@ -77,8 +78,8 @@ const LoginForm: React.FC<LoginFormProps> = ({
                 placeholder: "Confirm Password",
                 type: "password",
                 register: register,
-                registerWith: "confirm_password",
                 error: errors.confirm_password?.message,
+                registerWith: "confirm_password",
                 eyeIcon: "images/password/close-eye.png",
               }}
             />
@@ -94,6 +95,18 @@ const LoginForm: React.FC<LoginFormProps> = ({
               registerWith: "username",
               type: "text",
               error: errors.username?.message,
+            }}
+          />
+          <TextInput
+            inputObj={{
+              label: "Upload Avatar",
+              autoComplete: "off",
+              placeholder: "",
+              register: register,
+              registerWith: "avatar",
+              watch: watch,
+              type: "file",
+              error: errors.avatar?.message,
             }}
           />
         </>

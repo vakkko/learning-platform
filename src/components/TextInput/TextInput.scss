@@ -23,5 +23,49 @@
       bottom: 1rem;
       right: 1rem;
     }
+
+    [class="Upload Avatar-container"] {
+      position: relative;
+      margin-top: 8px;
+      border-radius: 0.8rem;
+
+      &:hover {
+        background-color: $purple-100;
+      }
+
+      [id="Upload Avatar"] {
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        cursor: pointer;
+      }
+
+      .avatar-upload-container {
+        border: 1.5px solid $greyscale-200;
+        border-radius: 0.8rem;
+        padding: 3rem 5rem;
+        @include flexColumn(0.8rem);
+        align-items: center;
+
+        .upload-files {
+          @include fontWeight500Size14();
+          color: $greyscale-500;
+
+          & > span {
+            border-bottom: 1px solid $purple-600;
+            color: $purple-600;
+          }
+        }
+
+        .file-types {
+          font-size: 1.2rem;
+          color: $greyscale-300;
+        }
+      }
+    }
   }
 }

@@ -1,5 +1,7 @@
 import * as yup from "yup";
 
+import { SUPPORTED_FORMATS } from "../consts/consts";
+
 const requiredText = (field: string) => {
   return `${field} is required`;
 };
@@ -22,6 +24,15 @@ export const loginSchema = yup.object({
     .string()
     .required(requiredText("Username"))
     .min(4, "Username must be at least 3 character"),
+  avatar: yup
+    .mixed<File>()
+    .test("fileFormat", "Unsopported Format", (value) => {
+      if (!value) return true;
+      return SUPPORTED_FORMATS.includes(value.type);
+    })
+    .nullable()
+    .notRequired()
+    .default(null),
 });
 
 export type loginData = yup.InferType<typeof loginSchema>;
