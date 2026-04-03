@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useForm } from "react-hook-form";
 
@@ -22,6 +22,18 @@ const LoginModal: React.FC<LoginModalProps> = ({ handleLoginClose }) => {
     mode: "onBlur",
   });
 
+  const [emailStep, setEmailStep] = useState<boolean>(false);
+
+  const handleNextClick = async () => {
+    const isValid = await trigger("email");
+    console.log("isValid", isValid);
+    if (isValid) {
+      setEmailStep(true);
+    } else {
+      setEmailStep(false);
+    }
+  };
+
   return (
     <div className="modal">
       <button onClick={handleLoginClose} className="btn-close">
@@ -30,7 +42,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ handleLoginClose }) => {
       <div className="modal-content">
         <h3>Create Account</h3>
         <p>Join and start learning today</p>
-        <ProgressSteps />
+        <ProgressSteps step1={emailStep} />
         <form>
           <TextInput
             inputObj={{
@@ -44,7 +56,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ handleLoginClose }) => {
             }}
           />
         </form>
-        <button onClick={() => trigger("email")} className="btn-next">
+        <button onClick={handleNextClick} className="btn-next">
           Next
         </button>
         <div className="text-in-lines">
