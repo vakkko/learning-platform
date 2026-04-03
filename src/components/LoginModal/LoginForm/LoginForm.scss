@@ -1,0 +1,17 @@
+@use "../../../styles/variables" as *;
+
+.login-form {
+  margin-top: 2.4rem;
+}
+
+.btn-next {
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 150%;
+  text-align: center;
+  color: $greyscale-50;
+  background-color: $purple-500;
+  border-radius: 8px;
+  padding: 1.15rem;
+  margin-top: 1.6rem;
+}
