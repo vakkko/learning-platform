@@ -20,7 +20,7 @@
       color: $greyscale-900;
     }
 
-    p {
+    & > p {
       @include fontWeight500Size14($greyscale-500);
       text-align: center;
     }

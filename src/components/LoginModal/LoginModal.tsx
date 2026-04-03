@@ -13,7 +13,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import "./LoginModal.scss";
 
 const LoginModal: React.FC<LoginModalProps> = ({ handleLoginClose }) => {
-  const { register } = useForm<loginData>({
+  const {
+    register,
+    trigger,
+    formState: { errors },
+  } = useForm<loginData>({
     resolver: yupResolver(loginSchema),
     mode: "onBlur",
   });
@@ -36,10 +40,13 @@ const LoginModal: React.FC<LoginModalProps> = ({ handleLoginClose }) => {
               type: "email",
               registerWith: "email",
               register: register,
+              error: errors.email?.message,
             }}
           />
         </form>
-        <button className="btn-next">Next</button>
+        <button onClick={() => trigger("email")} className="btn-next">
+          Next
+        </button>
         <div className="text-in-lines">
           <hr />
           <span>or</span>

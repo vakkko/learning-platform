@@ -8,4 +8,5 @@ export interface TextInputProps {
   placeholder: string;
   registerWith: "email";
   register: UseFormRegister<loginData>;
+  error?: string;
 }

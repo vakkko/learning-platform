@@ -1,0 +1,7 @@
+@use "../../styles/variables" as *;
+
+.error-message {
+  color: $helper-error;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
