@@ -32,7 +32,9 @@ const LoginForm: React.FC<LoginFormProps> = ({
         ? "email"
         : currentStep === 2
           ? (["password", "confirm_password"] as const)
-          : null;
+          : currentStep === 3
+            ? "username"
+            : null;
     if (actualInput) {
       const isValid = await trigger(actualInput);
       const nextStep = currentStep + 1;
@@ -115,7 +117,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
         </>
       </form>
       <button type="button" onClick={handleNextClick} className="btn-next">
-        Next
+        {currentStep === 3 ? "Sign Up" : " Next"}
       </button>
     </>
   );
