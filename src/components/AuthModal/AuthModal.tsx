@@ -1,29 +1,41 @@
 import React, { useState } from "react";
 
-import ProgressSteps from "./ProgressSteps/ProgressSteps";
+import ProgressSteps from "./ProgressSteps/ProgressSteps.tsx";
 
 import SignUpForm from "./SignUpForm/SignUpForm.tsx";
 
-import type { SignUpModalProps } from "./SignUpModal.types";
+import type { AuthModalProps } from "./AuthModal.types.ts";
 
-import "./SignUpModal.scss";
+import "./AuthModal.scss";
 
-const SignUpModal: React.FC<SignUpModalProps> = ({ handleSignUpClose }) => {
+const AuthModal: React.FC<AuthModalProps> = ({
+  handleModalClose,
+  loginStep,
+}) => {
   const [currentStep, setCurrentStep] = useState<number>(1);
 
   return (
     <div className="modal">
-      <button onClick={handleSignUpClose} className="btn-close">
+      <button onClick={handleModalClose} className="btn-close">
         <img src="images/x.png" alt="cancel" />
       </button>
       <div className="modal-content">
-        <h3>Create Account</h3>
-        <p>Join and start learning today</p>
-        <ProgressSteps currentStep={currentStep} />
+        {loginStep ? (
+          <>
+            <h3>Welcome Back</h3>
+            <p>Log in to continue your learning</p>
+          </>
+        ) : (
+          <>
+            <h3>Create Account</h3>
+            <p>Join and start learning today</p>
+          </>
+        )}
+        {!loginStep && <ProgressSteps currentStep={currentStep} />}
         <SignUpForm
           currentStep={currentStep}
           setCurrentStep={setCurrentStep}
-          handleSignUpClose={handleSignUpClose}
+          handleModalClose={handleModalClose}
         />
         <div className="text-in-lines">
           <hr />
@@ -39,4 +51,4 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ handleSignUpClose }) => {
   );
 };
 
-export default SignUpModal;
+export default AuthModal;

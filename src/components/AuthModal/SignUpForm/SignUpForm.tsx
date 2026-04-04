@@ -22,7 +22,7 @@ import ErrorMessage from "../../ErrorMessage/ErrorMessage";
 const SignUpForm: React.FC<SignUpProps> = ({
   currentStep,
   setCurrentStep,
-  handleSignUpClose,
+  handleModalClose,
 }) => {
   const {
     register,
@@ -69,7 +69,7 @@ const SignUpForm: React.FC<SignUpProps> = ({
       const response = await axios.post(`${BASE_URL}/register`, formData);
       if (response.status === 201)
         sessionStorage.setItem("token", response.data.token);
-      handleSignUpClose();
+      handleModalClose();
       reset();
     } catch (error) {
       if (axios.isAxiosError(error)) {

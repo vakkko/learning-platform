@@ -3,10 +3,11 @@ import React, { useState } from "react";
 import Button from "../Button/Button";
 
 import "./Header.scss";
-import SignUpModal from "../SignUpModal/SignUpModal";
+import AuthModal from "../AuthModal/AuthModal";
 
 const Header: React.FC = () => {
   const [showSignUp, setShowSignUp] = useState<boolean>(false);
+  const [showLogin, setShowLogin] = useState<boolean>(false);
 
   const handleSignUpOpen = () => {
     setShowSignUp(true);
@@ -15,6 +16,15 @@ const Header: React.FC = () => {
   const handleSignUpClose = () => {
     setShowSignUp(false);
   };
+
+  const handleLoginOpen = () => {
+    setShowLogin(true);
+  };
+
+  const handleLoginClose = () => {
+    setShowLogin(false);
+  };
+
   return (
     <>
       <header>
@@ -36,17 +46,28 @@ const Header: React.FC = () => {
             <span>Browse Courses</span>
           </div>
           <div className="buttons-box">
-            <Button handleClick={handleSignUpOpen} text="Log In" />
-            <Button text="Sign Up" purpleBackground />
+            <Button handleClick={handleLoginOpen} text="Log In" />
+            <Button
+              handleClick={handleSignUpOpen}
+              text="Sign Up"
+              purpleBackground
+            />
           </div>
         </div>
       </header>
       <div
-        onClick={handleSignUpClose}
+        onClick={
+          showSignUp
+            ? handleSignUpClose
+            : showLogin
+              ? handleLoginClose
+              : undefined
+        }
         id="overlay"
-        className={showSignUp ? "" : "hidden"}
+        className={showSignUp || showLogin ? "" : "hidden"}
       ></div>
-      {showSignUp && <SignUpModal handleSignUpClose={handleSignUpClose} />}
+      {showSignUp && <AuthModal handleModalClose={handleSignUpClose} />}
+      {showLogin && <AuthModal loginStep handleModalClose={handleLoginClose} />}
     </>
   );
 };
