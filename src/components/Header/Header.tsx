@@ -3,17 +3,17 @@ import React, { useState } from "react";
 import Button from "../Button/Button";
 
 import "./Header.scss";
-import LoginModal from "../LoginModal/LoginModal";
+import SignUpModal from "../SignUpModal/SignUpModal";
 
 const Header: React.FC = () => {
-  const [showLogin, setShowLogin] = useState<boolean>(false);
+  const [showSignUp, setShowSignUp] = useState<boolean>(false);
 
-  const handleLoginOpen = () => {
-    setShowLogin(true);
+  const handleSignUpOpen = () => {
+    setShowSignUp(true);
   };
 
-  const handleLoginClose = () => {
-    setShowLogin(false);
+  const handleSignUpClose = () => {
+    setShowSignUp(false);
   };
   return (
     <>
@@ -36,17 +36,17 @@ const Header: React.FC = () => {
             <span>Browse Courses</span>
           </div>
           <div className="buttons-box">
-            <Button handleClick={handleLoginOpen} text="Log In" />
+            <Button handleClick={handleSignUpOpen} text="Log In" />
             <Button text="Sign Up" purpleBackground />
           </div>
         </div>
       </header>
       <div
-        onClick={handleLoginClose}
+        onClick={handleSignUpClose}
         id="overlay"
-        className={showLogin ? "" : "hidden"}
+        className={showSignUp ? "" : "hidden"}
       ></div>
-      {showLogin && <LoginModal handleLoginClose={handleLoginClose} />}
+      {showSignUp && <SignUpModal handleSignUpClose={handleSignUpClose} />}
     </>
   );
 };

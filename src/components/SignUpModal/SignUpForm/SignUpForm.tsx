@@ -9,18 +9,20 @@ import TextInput from "../../TextInput/TextInput";
 import { loginSchema, type loginData } from "../../../schemas/LoginSchemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import type { LoginFormProps } from "./LoginForm.types";
+import type { SignUpProps } from "./SignUpForm";
 
 import { updateStepStatus } from "../../../utils/utils";
 
 import { BASE_URL } from "../../../consts/consts";
 
-import "./LoginForm.scss";
+import "./SignUpForm.scss";
+
 import ErrorMessage from "../../ErrorMessage/ErrorMessage";
 
-const LoginForm: React.FC<LoginFormProps> = ({
+const SignUpForm: React.FC<SignUpProps> = ({
   currentStep,
   setCurrentStep,
+  handleSignUpClose,
 }) => {
   const {
     register,
@@ -67,6 +69,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
       const response = await axios.post(`${BASE_URL}/register`, formData);
       if (response.status === 201)
         sessionStorage.setItem("token", response.data.token);
+      handleSignUpClose();
       reset();
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -165,4 +168,4 @@ const LoginForm: React.FC<LoginFormProps> = ({
   );
 };
 
-export default LoginForm;
+export default SignUpForm;

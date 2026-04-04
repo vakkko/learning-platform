@@ -2,24 +2,29 @@ import React, { useState } from "react";
 
 import ProgressSteps from "./ProgressSteps/ProgressSteps";
 
-import type { LoginModalProps } from "./LoginModal.types";
+import SignUpForm from "./SignUpForm/SignUpForm.tsx";
 
-import "./LoginModal.scss";
-import LoginForm from "./LoginForm/LoginForm";
+import type { SignUpModalProps } from "./SignUpModal.types";
 
-const LoginModal: React.FC<LoginModalProps> = ({ handleLoginClose }) => {
+import "./SignUpModal.scss";
+
+const SignUpModal: React.FC<SignUpModalProps> = ({ handleSignUpClose }) => {
   const [currentStep, setCurrentStep] = useState<number>(1);
 
   return (
     <div className="modal">
-      <button onClick={handleLoginClose} className="btn-close">
+      <button onClick={handleSignUpClose} className="btn-close">
         <img src="images/x.png" alt="cancel" />
       </button>
       <div className="modal-content">
         <h3>Create Account</h3>
         <p>Join and start learning today</p>
         <ProgressSteps currentStep={currentStep} />
-        <LoginForm currentStep={currentStep} setCurrentStep={setCurrentStep} />
+        <SignUpForm
+          currentStep={currentStep}
+          setCurrentStep={setCurrentStep}
+          handleSignUpClose={handleSignUpClose}
+        />
         <div className="text-in-lines">
           <hr />
           <span>or</span>
@@ -34,4 +39,4 @@ const LoginModal: React.FC<LoginModalProps> = ({ handleLoginClose }) => {
   );
 };
 
-export default LoginModal;
+export default SignUpModal;
