@@ -79,7 +79,7 @@ const TextInput: React.FC<{ inputObj: TextInputProps }> = ({
           </button>
         )}
       </div>
-      {error && <ErrorMessage error={error} />}
+      {error && <ErrorMessage error={[error]} />}
     </div>
   );
 };

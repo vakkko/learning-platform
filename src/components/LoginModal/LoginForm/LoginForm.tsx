@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useForm, type SubmitHandler } from "react-hook-form";
 
@@ -16,6 +16,7 @@ import { updateStepStatus } from "../../../utils/utils";
 import { BASE_URL } from "../../../consts/consts";
 
 import "./LoginForm.scss";
+import ErrorMessage from "../../ErrorMessage/ErrorMessage";
 
 const LoginForm: React.FC<LoginFormProps> = ({
   currentStep,
@@ -33,6 +34,8 @@ const LoginForm: React.FC<LoginFormProps> = ({
     reValidateMode: "onBlur",
     shouldUnregister: false,
   });
+
+  const [serverError, setServerError] = useState<string[]>();
 
   const handleNextClick = async () => {
     const actualInput =
@@ -62,9 +65,17 @@ const LoginForm: React.FC<LoginFormProps> = ({
 
     try {
       const response = await axios.post(`${BASE_URL}/register`, formData);
+      if (response.status === 201)
+        sessionStorage.setItem("token", response.data.token);
       reset();
     } catch (error) {
-      console.error("Upload error:", error);
+      if (axios.isAxiosError(error)) {
+        const errors = Object.values(error.response?.data.errors);
+        if (errors.length > 1) {
+          setServerError(errors.flat() as string[]);
+        }
+        setServerError(errors as string[]);
+      }
     }
   };
 
@@ -141,6 +152,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
             </>
           )}
         </>
+        {serverError && <ErrorMessage error={serverError} />}
         <button
           type={currentStep === 3 ? "submit" : "button"}
           onClick={currentStep === 3 ? undefined : handleNextClick}
