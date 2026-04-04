@@ -20,7 +20,6 @@ const LoginForm: React.FC<LoginFormProps> = ({
   const {
     register,
     trigger,
-    watch,
     formState: { errors },
   } = useForm<loginData>({
     resolver: yupResolver(loginSchema),
@@ -104,9 +103,9 @@ const LoginForm: React.FC<LoginFormProps> = ({
               placeholder: "",
               register: register,
               registerWith: "avatar",
-              watch: watch,
               type: "file",
               error: errors.avatar?.message,
+              accept: ".jpg, .png, .WebP",
             }}
           />
         </>

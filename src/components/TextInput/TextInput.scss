@@ -30,7 +30,7 @@
       border-radius: 0.8rem;
 
       &:hover {
-        background-color: $purple-100;
+        background-color: $purple-50;
       }
 
       [id="Upload Avatar"] {
@@ -48,8 +48,6 @@
         border: 1.5px solid $greyscale-200;
         border-radius: 0.8rem;
         padding: 3rem 5rem;
-        @include flexColumn(0.8rem);
-        align-items: center;
 
         .upload-files {
           @include fontWeight500Size14();

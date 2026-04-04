@@ -1,10 +1,11 @@
-import React, { useState, memo, useEffect } from "react";
+import React, { useState, memo } from "react";
 
 import type { TextInputProps } from "./TextInput.types";
 
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 import "./TextInput.scss";
+import UploadBox from "./UploadBox/UploadBox";
 
 const TextInput: React.FC<{ inputObj: TextInputProps }> = ({
   inputObj: {
@@ -14,45 +15,30 @@ const TextInput: React.FC<{ inputObj: TextInputProps }> = ({
     placeholder,
     register,
     error,
-    watch,
     registerWith,
     eyeIcon,
+    accept,
   },
 }) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const actualType = type === "password" && isPasswordVisible ? "text" : type;
 
-  const avatar = watch && (watch("avatar") as unknown as FileList);
-
   const [preview, setPreview] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (!watch) return;
+  const { onChange, ...registerFields } = register(registerWith);
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
 
-    const subscription = watch((value) => {
-      const fileList = value[registerWith] as unknown as FileList;
+    if (preview) URL.revokeObjectURL(preview);
+    if (file) {
+      setPreview(URL.createObjectURL(file));
+    } else {
+      setPreview(null);
+    }
 
-      if (fileList && fileList.length > 0 && fileList[0] instanceof File) {
-        const url = URL.createObjectURL(fileList[0]);
-
-        setPreview((prev) => {
-          if (prev) URL.revokeObjectURL(prev);
-          return url;
-        });
-      } else {
-        setPreview(null);
-      }
-    });
-
-    return () => {
-      subscription.unsubscribe();
-      setPreview((prev) => {
-        if (prev) URL.revokeObjectURL(prev);
-        return null;
-      });
-    };
-  }, [watch, registerWith]);
+    onChange(e);
+  };
 
   return (
     <div className="input-box">
@@ -62,22 +48,18 @@ const TextInput: React.FC<{ inputObj: TextInputProps }> = ({
         <div className={`${label}-container`}>
           <input
             id={label}
-            {...register(registerWith)}
+            {...registerFields}
             type={actualType}
             autoComplete={autoComplete}
             placeholder={placeholder}
+            onChange={type === "file" ? handleFileChange : onChange}
+            accept={accept ? accept : ""}
           />
           {type === "file" && (
             <div className="avatar-upload-container">
-              <div>
-                <img src="images/upload.png" alt="upload icon" />
-                <p className="upload-files">
-                  Drag and drop or <span>Upload file</span>
-                </p>
-                <p className="file-types">JPG, PNG or WebP</p>
-              </div>
-              {avatar && avatar.length > 0 && preview && (
-                <div style={{ marginTop: "10px" }}>
+              <UploadBox />
+              {preview && (
+                <div>
                   <img
                     src={preview}
                     alt="avatar"

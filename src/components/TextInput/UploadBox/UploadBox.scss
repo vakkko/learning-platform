@@ -1,0 +1,6 @@
+@use "../../../styles/mixins";
+
+.upload-box {
+  @include flexColumn(0.8rem);
+  align-items: center;
+}
