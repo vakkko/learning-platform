@@ -9,7 +9,7 @@ export interface TextInputProps {
   registerWith:
     | "email"
     | "password"
-    | "confirm_password"
+    | "password_confirmation"
     | "username"
     | "avatar";
   register: UseFormRegister<loginData>;

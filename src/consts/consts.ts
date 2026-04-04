@@ -12,3 +12,5 @@ export const CONTACT: NavItem[] = [
   { LinkTo: "(+995) 555 111 222", src: "images/contacts/phone.png" },
   { LinkTo: "Aghmashenebeli St.115", src: "images/contacts/location.png" },
 ];
+
+export const BASE_URL = "https://api.redclass.redberryinternship.ge/api";

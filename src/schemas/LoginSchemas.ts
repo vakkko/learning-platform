@@ -13,7 +13,7 @@ export const loginSchema = yup.object({
     .string()
     .required(requiredText("Password"))
     .min(4, "Passowrd must be at least 3 character"),
-  confirm_password: yup
+  password_confirmation: yup
     .string()
     .required(requiredText("Confirm Password"))
     .min(4, "Minimal length should be 3")
@@ -22,7 +22,7 @@ export const loginSchema = yup.object({
     .string()
     .required(requiredText("Username"))
     .min(4, "Username must be at least 3 character"),
-  avatar: yup.mixed<File>().nullable().notRequired().default(null),
+  avatar: yup.mixed<FileList>().nullable().notRequired().default(null),
 });
 
 export type loginData = yup.InferType<typeof loginSchema>;
