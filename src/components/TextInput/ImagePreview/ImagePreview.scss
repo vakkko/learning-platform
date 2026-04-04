@@ -1,0 +1,32 @@
+@use "../../../styles/mixins" as *;
+@use "../../../styles/variables" as *;
+
+.image-preview-box {
+  @include flexAlignCenter(1rem);
+  & > img {
+    width: 5.4rem;
+    height: 5.4rem;
+    border-radius: 46px;
+  }
+
+  .image-details {
+    @include flexColumn();
+    align-items: flex-start;
+    .image-name {
+      font-size: 1.2rem;
+      color: $greyscale-600;
+    }
+
+    .image-size {
+      font-size: 1rem;
+      color: $greyscale-300;
+    }
+
+    button {
+      font-weight: 500;
+      font-size: 10px;
+      text-decoration: underline;
+      color: $purple-500;
+    }
+  }
+}

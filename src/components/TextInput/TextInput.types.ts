@@ -17,3 +17,8 @@ export interface TextInputProps {
   eyeIcon?: string;
   accept?: string;
 }
+
+export interface ImageDetails {
+  size: string;
+  name: string;
+}

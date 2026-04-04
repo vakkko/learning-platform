@@ -1,11 +1,12 @@
 import React, { useState, memo } from "react";
 
-import type { TextInputProps } from "./TextInput.types";
+import type { ImageDetails, TextInputProps } from "./TextInput.types";
 
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 import "./TextInput.scss";
 import UploadBox from "./UploadBox/UploadBox";
+import ImagePreview from "./ImagePreview/ImagePreview";
 
 const TextInput: React.FC<{ inputObj: TextInputProps }> = ({
   inputObj: {
@@ -21,10 +22,10 @@ const TextInput: React.FC<{ inputObj: TextInputProps }> = ({
   },
 }) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [preview, setPreview] = useState<string | null>(null);
+  const [imageDetails, setImageDetails] = useState<ImageDetails>();
 
   const actualType = type === "password" && isPasswordVisible ? "text" : type;
-
-  const [preview, setPreview] = useState<string | null>(null);
 
   const { onChange, ...registerFields } = register(registerWith);
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,6 +33,9 @@ const TextInput: React.FC<{ inputObj: TextInputProps }> = ({
 
     if (preview) URL.revokeObjectURL(preview);
     if (file) {
+      const size = (file.size / (1024 * 1024)).toFixed(2);
+      const name = file.name;
+      setImageDetails({ size, name });
       setPreview(URL.createObjectURL(file));
     } else {
       setPreview(null);
@@ -57,19 +61,10 @@ const TextInput: React.FC<{ inputObj: TextInputProps }> = ({
           />
           {type === "file" && (
             <div className="avatar-upload-container">
-              <UploadBox />
-              {preview && (
-                <div>
-                  <img
-                    src={preview}
-                    alt="avatar"
-                    style={{
-                      width: "150px",
-                      height: "150px",
-                      objectFit: "cover",
-                    }}
-                  />
-                </div>
+              {!preview ? (
+                <UploadBox />
+              ) : (
+                <ImagePreview preview={preview} imageDetails={imageDetails} />
               )}
             </div>
           )}
