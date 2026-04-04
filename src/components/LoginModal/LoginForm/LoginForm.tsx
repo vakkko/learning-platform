@@ -85,29 +85,33 @@ const LoginForm: React.FC<LoginFormProps> = ({
           </>
         )}
         <>
-          <TextInput
-            inputObj={{
-              label: "Username*",
-              autoComplete: "name",
-              placeholder: "Username",
-              register: register,
-              registerWith: "username",
-              type: "text",
-              error: errors.username?.message,
-            }}
-          />
-          <TextInput
-            inputObj={{
-              label: "Upload Avatar",
-              autoComplete: "off",
-              placeholder: "",
-              register: register,
-              registerWith: "avatar",
-              type: "file",
-              error: errors.avatar?.message,
-              accept: ".jpg, .png, .WebP",
-            }}
-          />
+          {currentStep === 3 && (
+            <>
+              <TextInput
+                inputObj={{
+                  label: "Username*",
+                  autoComplete: "name",
+                  placeholder: "Username",
+                  register: register,
+                  registerWith: "username",
+                  type: "text",
+                  error: errors.username?.message,
+                }}
+              />
+              <TextInput
+                inputObj={{
+                  label: "Upload Avatar",
+                  autoComplete: "off",
+                  placeholder: "",
+                  register: register,
+                  registerWith: "avatar",
+                  type: "file",
+                  error: errors.avatar?.message,
+                  accept: ".jpg, .png, .WebP",
+                }}
+              />
+            </>
+          )}
         </>
       </form>
       <button type="button" onClick={handleNextClick} className="btn-next">
