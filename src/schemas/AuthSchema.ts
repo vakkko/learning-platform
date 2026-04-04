@@ -4,7 +4,7 @@ const requiredText = (field: string) => {
   return `${field} is required`;
 };
 
-export const loginSchema = yup.object({
+const loginFields = {
   email: yup
     .string()
     .email("Invalid Email format")
@@ -13,6 +13,10 @@ export const loginSchema = yup.object({
     .string()
     .required(requiredText("Password"))
     .min(4, "Passowrd must be at least 3 character"),
+};
+
+export const signUpSchema = yup.object({
+  ...loginFields,
   password_confirmation: yup
     .string()
     .required(requiredText("Confirm Password"))
@@ -25,4 +29,7 @@ export const loginSchema = yup.object({
   avatar: yup.mixed<FileList>().nullable().notRequired().default(null),
 });
 
+export type signUpData = yup.InferType<typeof signUpSchema>;
 export type loginData = yup.InferType<typeof loginSchema>;
+
+export const loginSchema = yup.object(loginFields);

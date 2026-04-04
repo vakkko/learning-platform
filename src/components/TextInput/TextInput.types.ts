@@ -1,5 +1,5 @@
 import type { UseFormRegister } from "react-hook-form";
-import type { loginData } from "../../schemas/LoginSchemas";
+import type { loginData } from "../../schemas/AuthSchema";
 
 export interface TextInputProps {
   label: string;

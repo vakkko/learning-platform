@@ -6,7 +6,7 @@ import axios from "axios";
 
 import TextInput from "../../TextInput/TextInput";
 
-import { loginSchema, type loginData } from "../../../schemas/LoginSchemas";
+import { signUpSchema, type signUpData } from "../../../schemas/AuthSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import type { SignUpProps } from "./SignUpForm";
@@ -30,8 +30,8 @@ const SignUpForm: React.FC<SignUpProps> = ({
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<loginData>({
-    resolver: yupResolver(loginSchema),
+  } = useForm<signUpData>({
+    resolver: yupResolver(signUpSchema),
     mode: "onBlur",
     reValidateMode: "onBlur",
     shouldUnregister: false,
@@ -53,7 +53,7 @@ const SignUpForm: React.FC<SignUpProps> = ({
     }
   };
 
-  const onSubmit: SubmitHandler<loginData> = async (data) => {
+  const onSubmit: SubmitHandler<signUpData> = async (data) => {
     const formData = new FormData();
 
     formData.append("email", data.email);
@@ -67,10 +67,11 @@ const SignUpForm: React.FC<SignUpProps> = ({
 
     try {
       const response = await axios.post(`${BASE_URL}/register`, formData);
-      if (response.status === 201)
+      if (response.status === 201) {
         sessionStorage.setItem("token", response.data.token);
-      handleModalClose();
-      reset();
+        handleModalClose();
+        reset();
+      }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const errors = Object.values(error.response?.data.errors);

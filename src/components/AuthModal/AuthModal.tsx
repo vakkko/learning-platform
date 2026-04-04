@@ -7,6 +7,7 @@ import SignUpForm from "./SignUpForm/SignUpForm.tsx";
 import type { AuthModalProps } from "./AuthModal.types.ts";
 
 import "./AuthModal.scss";
+import LoginForm from "./LoginForm/LoginForm.tsx";
 
 const AuthModal: React.FC<AuthModalProps> = ({
   handleModalClose,
@@ -32,11 +33,15 @@ const AuthModal: React.FC<AuthModalProps> = ({
           </>
         )}
         {!loginStep && <ProgressSteps currentStep={currentStep} />}
-        <SignUpForm
-          currentStep={currentStep}
-          setCurrentStep={setCurrentStep}
-          handleModalClose={handleModalClose}
-        />
+        {loginStep ? (
+          <LoginForm />
+        ) : (
+          <SignUpForm
+            currentStep={currentStep}
+            setCurrentStep={setCurrentStep}
+            handleModalClose={handleModalClose}
+          />
+        )}
         <div className="text-in-lines">
           <hr />
           <span>or</span>
