@@ -29,7 +29,8 @@ const LoginForm: React.FC = () => {
     try {
       const response = await axios.post(`${BASE_URL}/login`, data);
       if (response.status === 200) {
-        sessionStorage.setItem("token", response.data.token);
+        sessionStorage.setItem("token", response.data.data.token);
+        sessionStorage.setItem("avatar", response.data.data.user.avatar);
         reset();
       }
     } catch (error) {
@@ -39,8 +40,6 @@ const LoginForm: React.FC = () => {
       }
     }
   };
-
-  console.log(serverError);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="login-form">

@@ -68,7 +68,9 @@ const SignUpForm: React.FC<SignUpProps> = ({
     try {
       const response = await axios.post(`${BASE_URL}/register`, formData);
       if (response.status === 201) {
-        sessionStorage.setItem("token", response.data.token);
+        sessionStorage.setItem("token", response.data.data.token);
+        sessionStorage.setItem("avatar", response.data.data.user.avatar);
+
         handleModalClose();
         reset();
       }
