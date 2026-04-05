@@ -68,8 +68,12 @@ const Header: React.FC = () => {
         id="overlay"
         className={showSignUp || showLogin ? "" : "hidden"}
       ></div>
-      {showSignUp && <AuthModal handleModalClose={handleSignUpClose} />}
-      {showLogin && <AuthModal loginStep handleModalClose={handleLoginClose} />}
+      {showSignUp && (
+        <AuthModal AuthFor="sign up" handleModalClose={handleSignUpClose} />
+      )}
+      {showLogin && (
+        <AuthModal AuthFor="login" handleModalClose={handleLoginClose} />
+      )}
     </>
   );
 };

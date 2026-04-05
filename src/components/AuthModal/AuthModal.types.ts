@@ -1,4 +1,4 @@
 export interface AuthModalProps {
   handleModalClose: () => void;
-  loginStep?: boolean;
+  AuthFor?: "login" | "sign up" | "user profile";
 }

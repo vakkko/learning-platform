@@ -9,11 +9,12 @@ import type { AuthModalProps } from "./AuthModal.types.ts";
 import "./AuthModal.scss";
 import LoginForm from "./LoginForm/LoginForm.tsx";
 
-const AuthModal: React.FC<AuthModalProps> = ({
-  handleModalClose,
-  loginStep,
-}) => {
+const AuthModal: React.FC<AuthModalProps> = ({ handleModalClose, AuthFor }) => {
   const [currentStep, setCurrentStep] = useState<number>(1);
+
+  const loginStep = AuthFor === "login";
+  const signUpStep = AuthFor === "sign up";
+  const userProfile = AuthFor === "user profile";
 
   return (
     <div className="modal">
@@ -21,36 +22,41 @@ const AuthModal: React.FC<AuthModalProps> = ({
         <img src="images/x.png" alt="cancel" />
       </button>
       <div className="modal-content">
-        {loginStep ? (
+        {loginStep && (
           <>
             <h3>Welcome Back</h3>
             <p>Log in to continue your learning</p>
           </>
-        ) : (
+        )}
+        {signUpStep && (
           <>
             <h3>Create Account</h3>
             <p>Join and start learning today</p>
           </>
         )}
-        {!loginStep && <ProgressSteps currentStep={currentStep} />}
-        {loginStep ? (
-          <LoginForm handleModalClose={handleModalClose} />
-        ) : (
+        {signUpStep && <ProgressSteps currentStep={currentStep} />}
+        {loginStep && <LoginForm handleModalClose={handleModalClose} />}
+        {signUpStep && (
           <SignUpForm
             currentStep={currentStep}
             setCurrentStep={setCurrentStep}
             handleModalClose={handleModalClose}
           />
         )}
-        <div className="text-in-lines">
-          <hr />
-          <span>or</span>
-          <hr />
-        </div>
-        <div className="auth-footer">
-          <p>Already have an account? </p>{" "}
-          <button className="btn-login">Log In</button>
-        </div>
+        {!userProfile && (
+          <>
+            <div className="text-in-lines">
+              <hr />
+              <span>or</span>
+              <hr />
+            </div>
+
+            <div className="auth-footer">
+              <p>Already have an account? </p>
+              <button className="btn-login">Log In</button>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
