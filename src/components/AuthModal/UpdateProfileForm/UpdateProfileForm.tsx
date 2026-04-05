@@ -6,6 +6,7 @@ import { BASE_URL } from "../../../consts/consts";
 
 import type { UserDataTypes } from "./UpdateProfileForm.types";
 import ImagePreview from "../../TextInput/ImagePreview/ImagePreview";
+import InputField from "./InputField/InputField";
 
 const UpdateProfileForm: React.FC = () => {
   const token = sessionStorage.getItem("token");
@@ -30,14 +31,21 @@ const UpdateProfileForm: React.FC = () => {
 
   return (
     userData && (
-      <form className="auth-form">
+      <div>
         <ImagePreview
           preview={userData.avatar}
           userName={userData.username}
           updateUserStep
         />
-        <button className="btn-next">Update Profile</button>
-      </form>
+        <form className="auth-form">
+          <InputField
+            label="Full Name"
+            placeholder="Username"
+            iconSrc="images/input/pen.png"
+          />
+          <button className="btn-next">Update Profile</button>
+        </form>
+      </div>
     )
   );
 };

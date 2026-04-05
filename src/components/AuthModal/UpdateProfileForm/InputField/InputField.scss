@@ -1,0 +1,30 @@
+@use "../../../../styles/mixins" as *;
+@use "../../../../styles/variables" as *;
+
+.input-box {
+  @include flexColumn(0.8rem);
+
+  & > label,
+  & > input {
+    @include fontWeight500Size14();
+  }
+
+  & > label {
+    color: $greyscale-700;
+  }
+
+  & > input {
+    background: $greyscale-100;
+    padding: 1.4rem 1.3rem;
+    border: 1.5px solid $greyscale-300;
+    border-radius: 8px;
+  }
+
+  position: relative;
+
+  .input-icon {
+    position: absolute;
+    bottom: 1.4rem;
+    right: 1.5rem;
+  }
+}
