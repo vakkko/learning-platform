@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-import Button from "../Button/Button";
-
 import "./Header.scss";
 import AuthModal from "../AuthModal/AuthModal";
+import AuthButtons from "./AuthButtons/AuthButtons";
+import ButtonAndAvatar from "./ButtonAndAvatar/ButtonAndAvatar";
 
 const Header: React.FC = () => {
   const [showSignUp, setShowSignUp] = useState<boolean>(false);
@@ -25,12 +25,14 @@ const Header: React.FC = () => {
     setShowLogin(false);
   };
 
+  const isAuthorized = sessionStorage.getItem("token");
+
   return (
     <>
       <header>
         <img src="images/logo.png" alt="logo" />
         <div>
-          <div className="browse-courses-box">
+          <button className="btn-courses-box">
             <svg
               width="21"
               height="25"
@@ -44,15 +46,15 @@ const Header: React.FC = () => {
               />
             </svg>
             <span>Browse Courses</span>
-          </div>
-          <div className="buttons-box">
-            <Button handleClick={handleLoginOpen} text="Log In" />
-            <Button
-              handleClick={handleSignUpOpen}
-              text="Sign Up"
-              purpleBackground
+          </button>
+          {isAuthorized ? (
+            <ButtonAndAvatar />
+          ) : (
+            <AuthButtons
+              handleLoginOpen={handleLoginOpen}
+              handleSignUpOpen={handleSignUpOpen}
             />
-          </div>
+          )}
         </div>
       </header>
       <div
