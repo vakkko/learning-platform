@@ -1,7 +1,7 @@
 @use "../../../styles/variables" as *;
 @use "../../../styles/mixins" as *;
 
-.login-form {
+.auth-form {
   margin-top: 2.4rem;
   @include flexColumn(2.4rem);
 }

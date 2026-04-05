@@ -87,7 +87,7 @@ const SignUpForm: React.FC<SignUpProps> = ({
 
   return (
     <>
-      <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
+      <form className="auth-form" onSubmit={handleSubmit(onSubmit)}>
         {currentStep === 1 && (
           <TextInput
             inputObj={{

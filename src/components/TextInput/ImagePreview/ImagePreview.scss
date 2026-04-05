@@ -9,6 +9,13 @@
     border-radius: 46px;
   }
 
+  h4 {
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 120%;
+    color: $greyscale-950;
+  }
+
   .image-details {
     @include flexColumn();
     align-items: flex-start;

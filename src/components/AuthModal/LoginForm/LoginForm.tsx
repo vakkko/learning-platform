@@ -44,7 +44,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ handleModalClose }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="login-form">
+    <form onSubmit={handleSubmit(onSubmit)} className="auth-form">
       <TextInput
         inputObj={{
           label: "Email*",

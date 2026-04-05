@@ -3,18 +3,19 @@ import React, { useState } from "react";
 import ProgressSteps from "./ProgressSteps/ProgressSteps.tsx";
 
 import SignUpForm from "./SignUpForm/SignUpForm.tsx";
+import LoginForm from "./LoginForm/LoginForm.tsx";
+import UpdateProfileForm from "./UpdateProfileForm/UpdateProfileForm.tsx";
 
 import type { AuthModalProps } from "./AuthModal.types.ts";
 
 import "./AuthModal.scss";
-import LoginForm from "./LoginForm/LoginForm.tsx";
 
 const AuthModal: React.FC<AuthModalProps> = ({ handleModalClose, AuthFor }) => {
   const [currentStep, setCurrentStep] = useState<number>(1);
 
   const loginStep = AuthFor === "login";
   const signUpStep = AuthFor === "sign up";
-  const userProfile = AuthFor === "user profile";
+  const updateProfileStep = AuthFor === "user profile";
 
   return (
     <div className="modal">
@@ -34,6 +35,11 @@ const AuthModal: React.FC<AuthModalProps> = ({ handleModalClose, AuthFor }) => {
             <p>Join and start learning today</p>
           </>
         )}
+        {updateProfileStep && (
+          <>
+            <h3>Profile</h3>
+          </>
+        )}
         {signUpStep && <ProgressSteps currentStep={currentStep} />}
         {loginStep && <LoginForm handleModalClose={handleModalClose} />}
         {signUpStep && (
@@ -43,7 +49,8 @@ const AuthModal: React.FC<AuthModalProps> = ({ handleModalClose, AuthFor }) => {
             handleModalClose={handleModalClose}
           />
         )}
-        {!userProfile && (
+        {updateProfileStep && <UpdateProfileForm />}
+        {!updateProfileStep && (
           <>
             <div className="text-in-lines">
               <hr />

@@ -1,6 +1,8 @@
 import type { ImageDetails } from "../TextInput.types";
 
 export interface ImagePreviewProps {
-  preview: string;
+  preview: string | null;
   imageDetails?: ImageDetails;
+  updateUserStep?: boolean;
+  userName?: string;
 }
