@@ -10,8 +10,9 @@ import TextInput from "../../TextInput/TextInput";
 import ErrorMessage from "../../ErrorMessage/ErrorMessage";
 
 import { BASE_URL } from "../../../consts/consts";
+import type { LoginFormProps } from "./LoginForm.types";
 
-const LoginForm: React.FC = () => {
+const LoginForm: React.FC<LoginFormProps> = ({ handleModalClose }) => {
   const {
     register,
     handleSubmit,
@@ -31,6 +32,7 @@ const LoginForm: React.FC = () => {
       if (response.status === 200) {
         sessionStorage.setItem("token", response.data.data.token);
         sessionStorage.setItem("avatar", response.data.data.user.avatar);
+        handleModalClose();
         reset();
       }
     } catch (error) {

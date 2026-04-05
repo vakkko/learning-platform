@@ -34,7 +34,7 @@ const AuthModal: React.FC<AuthModalProps> = ({
         )}
         {!loginStep && <ProgressSteps currentStep={currentStep} />}
         {loginStep ? (
-          <LoginForm />
+          <LoginForm handleModalClose={handleModalClose} />
         ) : (
           <SignUpForm
             currentStep={currentStep}
