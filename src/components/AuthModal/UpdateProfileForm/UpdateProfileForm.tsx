@@ -46,7 +46,6 @@ const UpdateProfileForm: React.FC = () => {
     getUSerInfo();
   }, [token]);
 
-
   return (
     userData && (
       <div>
@@ -73,6 +72,18 @@ const UpdateProfileForm: React.FC = () => {
             value={userData.email}
             disabled
           />
+          <div>
+            <InputField
+              label="Mobile Number"
+              autoComplete="tel"
+              register={register}
+              registerWith="mobile_number"
+              errors={errors.mobile_number?.message}
+              iconSrc="images/input/pen.png"
+              getFieldState={getFieldState}
+              placeholder="5XX XXX XXX"
+            />
+          </div>
           <button className="btn-next">Update Profile</button>
         </form>
       </div>

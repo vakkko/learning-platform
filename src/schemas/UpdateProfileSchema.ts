@@ -10,6 +10,37 @@ export const updateProfileSchema = yup.object({
     .matches(usernameRegex, "User Name should contain only letters and spaces")
     .min(3, "Name must be at least 3 characters")
     .max(50, "Name must not exceed 50 characters"),
+  mobile_number: yup
+    .string()
+    .required(requiredText("Mobile number"))
+    .test(
+      "valid format",
+      "Please enter a valid Georgian mobile number (9 digits starting with 5)",
+      (value) => {
+        const splited = value.split(" ");
+        const joined = splited.join("");
+        if (isNaN(Number(joined))) return false;
+        return true;
+      },
+    )
+    .test(
+      "start of mobile number",
+      "Georgian mobile numbers must start with 5",
+      (value) => {
+        if (!value.startsWith("5")) return false;
+        return true;
+      },
+    )
+    .test(
+      "length of mobile number",
+      "Mobile number must be exactly 9 digits",
+      (value) => {
+        const splited = value.split(" ");
+        const joined = splited.join("");
+        if (joined.length === 9) return true;
+        return false;
+      },
+    ),
 });
 
 export type updateProfileSchemaData = yup.InferType<typeof updateProfileSchema>;
