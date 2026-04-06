@@ -13,14 +13,13 @@
     color: $greyscale-700;
   }
 
-  & > input {
+  & > div > input {
+    position: relative;
     background: $greyscale-100;
     padding: 1.4rem 1.3rem;
     border: 1.5px solid $greyscale-300;
     border-radius: 8px;
   }
-
-  position: relative;
 
   .input-icon {
     position: absolute;

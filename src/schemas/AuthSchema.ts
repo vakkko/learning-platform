@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-const requiredText = (field: string) => {
+export const requiredText = (field: string) => {
   return `${field} is required`;
 };
 
