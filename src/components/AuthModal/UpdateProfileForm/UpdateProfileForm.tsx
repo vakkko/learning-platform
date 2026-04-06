@@ -63,6 +63,14 @@ const UpdateProfileForm: React.FC = () => {
             register={register}
             errors={errors.full_name?.message}
           />
+          <InputField
+            label="Email"
+            placeholder="Username"
+            iconSrc="images/input/checkmark.png"
+            autoComplete=""
+            value={userData.email}
+            disabled
+          />
           <button className="btn-next">Update Profile</button>
         </form>
       </div>

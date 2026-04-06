@@ -4,8 +4,12 @@
 .input-box {
   @include flexColumn(0.8rem);
 
+  &.invalid-input > div > input {
+    border: 1.5px solid $helper-error;
+  }
+
   & > label,
-  & > input {
+  & > div > input {
     @include fontWeight500Size14();
   }
 

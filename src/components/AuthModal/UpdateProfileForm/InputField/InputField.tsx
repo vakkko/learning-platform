@@ -14,9 +14,12 @@ const InputField: React.FC<InputFieldProps> = ({
   register,
   autoComplete,
   errors,
+  disabled,
 }) => {
+  const registerProps = register && registerWith ? register(registerWith) : {};
+
   return (
-    <div className="input-box">
+    <div className={`input-box ${errors ? "invalid-input" : ""}`}>
       <label htmlFor={label}>{label}</label>
       <div>
         <input
@@ -25,7 +28,8 @@ const InputField: React.FC<InputFieldProps> = ({
           value={value}
           placeholder={placeholder}
           autoComplete={autoComplete}
-          {...register(registerWith)}
+          {...registerProps}
+          disabled={disabled}
         />
         <img className="input-icon" src={iconSrc} alt="icon" />
       </div>
