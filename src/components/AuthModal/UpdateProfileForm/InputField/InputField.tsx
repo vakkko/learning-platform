@@ -15,9 +15,15 @@ const InputField: React.FC<InputFieldProps> = ({
   autoComplete,
   errors,
   disabled,
-  inputValue,
+  getFieldState,
 }) => {
   const registerProps = register && registerWith ? register(registerWith) : {};
+
+  const fieldState =
+    registerWith && getFieldState && getFieldState(registerWith);
+  const isDirty = fieldState?.isDirty;
+  const inValid = fieldState?.invalid;
+  const inputValue = isDirty && !inValid;
   const validInput = !errors && (value || inputValue);
 
   return (

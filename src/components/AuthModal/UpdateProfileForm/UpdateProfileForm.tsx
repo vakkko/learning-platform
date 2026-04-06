@@ -24,7 +24,7 @@ const UpdateProfileForm: React.FC = () => {
   const {
     register,
     formState: { errors },
-    watch,
+    getFieldState,
   } = useForm<updateProfileSchemaData>({
     mode: "onBlur",
     resolver: yupResolver(updateProfileSchema),
@@ -46,6 +46,7 @@ const UpdateProfileForm: React.FC = () => {
     getUSerInfo();
   }, [token]);
 
+
   return (
     userData && (
       <div>
@@ -63,7 +64,7 @@ const UpdateProfileForm: React.FC = () => {
             registerWith="full_name"
             register={register}
             errors={errors.full_name?.message}
-            inputValue={watch("full_name")}
+            getFieldState={getFieldState}
           />
           <InputField
             label="Email"

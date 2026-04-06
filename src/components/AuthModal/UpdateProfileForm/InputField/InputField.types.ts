@@ -1,4 +1,4 @@
-import type { UseFormRegister } from "react-hook-form";
+import type { UseFormGetFieldState, UseFormRegister } from "react-hook-form";
 
 export interface InputFieldProps {
   label: string;
@@ -10,7 +10,9 @@ export interface InputFieldProps {
   register?: UseFormRegister<{
     full_name: string;
   }>;
+  getFieldState?: UseFormGetFieldState<{
+    full_name: string;
+  }>;
   errors?: string;
   disabled?: boolean;
-  inputValue?: string;
 }
