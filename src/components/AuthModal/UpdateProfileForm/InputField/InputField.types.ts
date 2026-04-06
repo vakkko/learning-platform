@@ -4,7 +4,7 @@ export interface InputFieldProps {
   label: string;
   value?: string;
   placeholder?: string;
-  iconSrc: string;
+  iconSrc?: string;
   registerWith?: "full_name";
   autoComplete?: string;
   register?: UseFormRegister<{
@@ -12,4 +12,5 @@ export interface InputFieldProps {
   }>;
   errors?: string;
   disabled?: boolean;
+  inputValue?: string;
 }

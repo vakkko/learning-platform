@@ -15,11 +15,15 @@ const InputField: React.FC<InputFieldProps> = ({
   autoComplete,
   errors,
   disabled,
+  inputValue,
 }) => {
   const registerProps = register && registerWith ? register(registerWith) : {};
+  const validInput = !errors && (value || inputValue);
 
   return (
-    <div className={`input-box ${errors ? "invalid-input" : ""}`}>
+    <div
+      className={`input-box ${errors ? "invalid" : validInput ? "valid" : ""}`}
+    >
       <label htmlFor={label}>{label}</label>
       <div>
         <input
@@ -31,7 +35,12 @@ const InputField: React.FC<InputFieldProps> = ({
           {...registerProps}
           disabled={disabled}
         />
-        <img className="input-icon" src={iconSrc} alt="icon" />
+
+        <img
+          className="input-icon"
+          src={validInput ? " images/input/checkmark.png" : iconSrc}
+          alt="icon"
+        />
       </div>
       {errors && <ErrorMessage error={[errors]} />}
     </div>

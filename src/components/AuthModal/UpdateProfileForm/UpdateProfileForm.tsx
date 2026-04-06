@@ -24,6 +24,7 @@ const UpdateProfileForm: React.FC = () => {
   const {
     register,
     formState: { errors },
+    watch,
   } = useForm<updateProfileSchemaData>({
     mode: "onBlur",
     resolver: yupResolver(updateProfileSchema),
@@ -62,11 +63,11 @@ const UpdateProfileForm: React.FC = () => {
             registerWith="full_name"
             register={register}
             errors={errors.full_name?.message}
+            inputValue={watch("full_name")}
           />
           <InputField
             label="Email"
             placeholder="Username"
-            iconSrc="images/input/checkmark.png"
             autoComplete=""
             value={userData.email}
             disabled
