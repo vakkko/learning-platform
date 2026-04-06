@@ -70,7 +70,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ handleModalClose }) => {
       />
       {serverError && <ErrorMessage error={[serverError]} />}
 
-      <button type="submit" className="btn-next">
+      <button type="submit" className="form-btn">
         Next
       </button>
     </form>

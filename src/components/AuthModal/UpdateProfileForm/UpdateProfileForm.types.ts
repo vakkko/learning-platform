@@ -1,10 +1,14 @@
 export interface UserDataTypes {
-  age: number | null;
-  avatar: string | null;
+  age?: number;
+  avatar?: string;
   email: string;
-  fullName: string | null;
+  fullName?: string;
   id: number;
-  mobileNumber: number | null;
+  mobileNumber?: string;
   profileComplete: boolean;
   username: string;
+}
+
+export interface UpdateProfileFormProps {
+  handleModalClose: () => void;
 }

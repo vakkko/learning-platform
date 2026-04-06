@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import axios from "axios";
 
-import { useForm } from "react-hook-form";
+import { useForm, type SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
   type updateProfileSchemaData,
@@ -14,23 +14,40 @@ import InputField from "./InputField/InputField";
 import AgeField from "./AgeField/AgeField";
 import TextInput from "../../TextInput/TextInput";
 
+import { submitHandle } from "../../../utils/utils";
+
 import { BASE_URL } from "../../../consts/consts";
 
-import type { UserDataTypes } from "./UpdateProfileForm.types";
+import type {
+  UpdateProfileFormProps,
+  UserDataTypes,
+} from "./UpdateProfileForm.types";
 
 import "./UpdateProfileForm.scss";
+import ErrorMessage from "../../ErrorMessage/ErrorMessage";
 
-const UpdateProfileForm: React.FC = () => {
+const UpdateProfileForm: React.FC<UpdateProfileFormProps> = ({
+  handleModalClose,
+}) => {
   const token = sessionStorage.getItem("token");
 
   const [userData, setUserData] = useState<UserDataTypes>();
+  const [serverError, setServerError] = useState<string[]>();
 
   const {
     register,
     formState: { errors },
+    handleSubmit,
     getFieldState,
+    reset,
+    trigger,
   } = useForm<updateProfileSchemaData>({
     mode: "onBlur",
+    defaultValues: {
+      age: userData?.age,
+      full_name: userData?.fullName,
+      mobile_number: userData?.mobileNumber,
+    },
     resolver: yupResolver(updateProfileSchema),
   });
 
@@ -50,6 +67,37 @@ const UpdateProfileForm: React.FC = () => {
     getUSerInfo();
   }, [token]);
 
+  useEffect(() => {
+    if (userData) {
+      reset({
+        age: userData.age,
+        full_name: userData.fullName,
+        mobile_number: userData.mobileNumber,
+      });
+      trigger();
+    }
+  }, [userData, reset, trigger]);
+
+  const onSubmit: SubmitHandler<updateProfileSchemaData> = (data) => {
+    const formData = new FormData();
+
+    formData.append("full_name", data.full_name);
+    formData.append("mobile_number", data.mobile_number);
+    formData.append("age", String(data.age));
+
+    if (token)
+      submitHandle(
+        data,
+        "put",
+        "profile",
+        formData,
+        handleModalClose,
+        reset,
+        setServerError,
+        token,
+      );
+  };
+
   return (
     userData && (
       <div className="update-profile-container">
@@ -58,7 +106,7 @@ const UpdateProfileForm: React.FC = () => {
           userName={userData.username}
           updateUserStep
         />
-        <form className="auth-form">
+        <form onSubmit={handleSubmit(onSubmit)} className="auth-form">
           <InputField
             label="Full Name"
             placeholder="Username"
@@ -105,7 +153,10 @@ const UpdateProfileForm: React.FC = () => {
               accept: ".jpg, .png, .WebP",
             }}
           />
-          <button className="btn-next">Update Profile</button>
+          {serverError && <ErrorMessage error={serverError} />}
+          <button type="submit" className="form-btn">
+            Update Profile
+          </button>
         </form>
       </div>
     )

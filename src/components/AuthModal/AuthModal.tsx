@@ -49,7 +49,9 @@ const AuthModal: React.FC<AuthModalProps> = ({ handleModalClose, AuthFor }) => {
             handleModalClose={handleModalClose}
           />
         )}
-        {updateProfileStep && <UpdateProfileForm />}
+        {updateProfileStep && (
+          <UpdateProfileForm handleModalClose={handleModalClose} />
+        )}
         {!updateProfileStep && (
           <>
             <div className="text-in-lines">

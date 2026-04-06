@@ -39,7 +39,9 @@ const ButtonAndAvatar: React.FC = () => {
         {userAvatar && (
           <button onClick={handleUserModalOpen} className="user-avatar">
             <img
-              src={userAvatar ? userAvatar : "images/user-avatar.png"}
+              src={
+                userAvatar !== "null" ? userAvatar : "images/user-avatar.png"
+              }
               alt="user avatar"
             />
           </button>

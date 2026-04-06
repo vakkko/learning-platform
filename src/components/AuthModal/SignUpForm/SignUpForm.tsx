@@ -2,8 +2,6 @@ import React, { useState } from "react";
 
 import { useForm, type SubmitHandler } from "react-hook-form";
 
-import axios from "axios";
-
 import TextInput from "../../TextInput/TextInput";
 
 import { signUpSchema, type signUpData } from "../../../schemas/AuthSchema";
@@ -13,7 +11,7 @@ import type { SignUpProps } from "./SignUpForm";
 
 import { updateStepStatus } from "../../../utils/utils";
 
-import { BASE_URL } from "../../../consts/consts";
+import { submitHandle } from "../../../utils/utils";
 
 import "./SignUpForm.scss";
 
@@ -61,28 +59,15 @@ const SignUpForm: React.FC<SignUpProps> = ({
     formData.append("password_confirmation", data.password_confirmation);
     formData.append("username", data.username);
 
-    if (data.avatar && data.avatar[0]) {
-      formData.append("avatar", data.avatar[0]);
-    }
-
-    try {
-      const response = await axios.post(`${BASE_URL}/register`, formData);
-      if (response.status === 201) {
-        sessionStorage.setItem("token", response.data.data.token);
-        sessionStorage.setItem("avatar", response.data.data.user.avatar);
-
-        handleModalClose();
-        reset();
-      }
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        const errors = Object.values(error.response?.data.errors);
-        if (errors.length > 1) {
-          setServerError(errors.flat() as string[]);
-        }
-        setServerError(errors as string[]);
-      }
-    }
+    submitHandle(
+      data,
+      "post",
+      "register",
+      formData,
+      handleModalClose,
+      reset,
+      setServerError,
+    );
   };
 
   return (
@@ -162,7 +147,7 @@ const SignUpForm: React.FC<SignUpProps> = ({
         <button
           type={currentStep === 3 ? "submit" : "button"}
           onClick={currentStep === 3 ? undefined : handleNextClick}
-          className="btn-next"
+          className="form-btn"
         >
           {currentStep === 3 ? "Sign Up" : "Next"}
         </button>
