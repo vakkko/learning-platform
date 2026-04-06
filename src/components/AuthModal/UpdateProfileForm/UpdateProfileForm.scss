@@ -1,0 +1,26 @@
+@use "../../../styles/mixins" as *;
+@use "../../../styles/variables" as *;
+
+.update-profile-container {
+  .invalid {
+    border: 1.5px solid $helper-error !important;
+  }
+
+  .valid {
+    border: 1.5px solid $helper-success;
+  }
+
+  .number-and-age-fields {
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    .input-box {
+      width: 100%;
+    }
+    .input-box > div > input {
+      background-color: transparent;
+    }
+  }
+}

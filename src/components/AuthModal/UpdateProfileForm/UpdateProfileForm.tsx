@@ -4,17 +4,20 @@ import axios from "axios";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-
-import ImagePreview from "../../TextInput/ImagePreview/ImagePreview";
-import InputField from "./InputField/InputField";
-
-import { BASE_URL } from "../../../consts/consts";
-
-import type { UserDataTypes } from "./UpdateProfileForm.types";
 import {
   type updateProfileSchemaData,
   updateProfileSchema,
 } from "../../../schemas/UpdateProfileSchema";
+
+import ImagePreview from "../../TextInput/ImagePreview/ImagePreview";
+import InputField from "./InputField/InputField";
+import AgeField from "./AgeField/AgeField";
+
+import { BASE_URL } from "../../../consts/consts";
+
+import type { UserDataTypes } from "./UpdateProfileForm.types";
+
+import "./UpdateProfileForm.scss";
 
 const UpdateProfileForm: React.FC = () => {
   const token = sessionStorage.getItem("token");
@@ -48,7 +51,7 @@ const UpdateProfileForm: React.FC = () => {
 
   return (
     userData && (
-      <div>
+      <div className="update-profile-container">
         <ImagePreview
           preview={userData.avatar}
           userName={userData.username}
@@ -68,11 +71,11 @@ const UpdateProfileForm: React.FC = () => {
           <InputField
             label="Email"
             placeholder="Username"
-            autoComplete=""
+            autoComplete="off"
             value={userData.email}
             disabled
           />
-          <div>
+          <div className="number-and-age-fields">
             <InputField
               label="Mobile Number"
               autoComplete="tel"
@@ -83,6 +86,7 @@ const UpdateProfileForm: React.FC = () => {
               getFieldState={getFieldState}
               placeholder="5XX XXX XXX"
             />
+            <AgeField register={register} errors={errors.age?.message} />
           </div>
           <button className="btn-next">Update Profile</button>
         </form>

@@ -27,9 +27,7 @@ const InputField: React.FC<InputFieldProps> = ({
   const validInput = !errors && (value || inputValue);
 
   return (
-    <div
-      className={`input-box ${errors ? "invalid" : validInput ? "valid" : ""}`}
-    >
+    <div className={`input-box `}>
       <label htmlFor={label}>{label}</label>
       <div>
         <input
@@ -40,6 +38,7 @@ const InputField: React.FC<InputFieldProps> = ({
           autoComplete={autoComplete}
           {...registerProps}
           disabled={disabled}
+          className={`${errors ? "invalid" : validInput ? "valid" : ""}`}
         />
 
         <img

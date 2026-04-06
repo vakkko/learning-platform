@@ -1,0 +1,27 @@
+@use "../../../../styles/variables" as *;
+@use "../../../../styles/mixins" as *;
+
+.age-field {
+  justify-self: flex-end;
+  width: 8.5rem;
+  position: relative;
+  @include flexColumn(0.8rem);
+  @include fontWeight500Size14($greyscale-700);
+  justify-content: space-between;
+  & > select {
+    line-height: 1.5;
+    vertical-align: middle;
+    appearance: none;
+    border: 1.5px solid $greyscale-300;
+    border-radius: 8px;
+    padding: 1.4rem 1.8rem;
+    color: $greyscale-300;
+  }
+
+  .down-arrow {
+    position: absolute;
+    top: 3.9rem;
+    right: 1.3rem;
+    pointer-events: none;
+  }
+}
