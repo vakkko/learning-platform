@@ -3,10 +3,20 @@
 
 .image-preview-box {
   @include flexAlignCenter(1rem);
-  & > img {
+  .avatar-img-box > .avatar-img {
     width: 5.4rem;
     height: 5.4rem;
     border-radius: 46px;
+  }
+
+  .avatar-img-box {
+    position: relative;
+
+    .status-indicator {
+      position: absolute;
+      bottom: 0;
+      left: 4.1rem;
+    }
   }
 
   h4 {
@@ -14,6 +24,18 @@
     font-size: 2rem;
     line-height: 120%;
     color: $greyscale-950;
+  }
+
+  .profile-indicator {
+    font-size: 1rem;
+
+    &.complete {
+      color: $helper-success;
+    }
+
+    &.incomplete {
+      color: $helper-error;
+    }
   }
 
   .image-details {

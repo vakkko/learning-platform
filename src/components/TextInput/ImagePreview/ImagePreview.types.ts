@@ -5,4 +5,5 @@ export interface ImagePreviewProps {
   imageDetails?: ImageDetails;
   updateUserStep?: boolean;
   userName?: string;
+  completeProfile?: boolean;
 }

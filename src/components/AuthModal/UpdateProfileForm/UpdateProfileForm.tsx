@@ -98,6 +98,8 @@ const UpdateProfileForm: React.FC<UpdateProfileFormProps> = ({
       );
   };
 
+  const completedProfile = userData?.profileComplete;
+
   return (
     userData && (
       <div className="update-profile-container">
@@ -105,6 +107,7 @@ const UpdateProfileForm: React.FC<UpdateProfileFormProps> = ({
           preview={userData.avatar}
           userName={userData.username}
           updateUserStep
+          completeProfile={completedProfile}
         />
         <form onSubmit={handleSubmit(onSubmit)} className="auth-form">
           <InputField

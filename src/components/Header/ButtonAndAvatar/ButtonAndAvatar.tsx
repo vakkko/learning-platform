@@ -14,6 +14,7 @@ const ButtonAndAvatar: React.FC = () => {
 
   const handleUserModalClose = () => {
     setShowUserModal(false);
+    console.log("inside");
   };
 
   return (

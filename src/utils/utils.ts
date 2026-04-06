@@ -51,6 +51,8 @@ export const submitHandle = async <T extends formDataUnion>(
 
       closeModalFunc();
       reset();
+    } else if (response.status === 200) {
+      closeModalFunc();
     }
   } catch (error) {
     if (axios.isAxiosError(error)) {
