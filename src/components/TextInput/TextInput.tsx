@@ -1,15 +1,21 @@
-import React, { useState, memo } from "react";
+import { useState, memo } from "react";
 
-import type { ImageDetails, TextInputProps } from "./TextInput.types";
+import type { FieldValues } from "react-hook-form";
 
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-
-import "./TextInput.scss";
 import UploadBox from "./UploadBox/UploadBox";
 import ImagePreview from "./ImagePreview/ImagePreview";
 
-const TextInput: React.FC<{ inputObj: TextInputProps }> = ({
-  inputObj: {
+import type { ImageDetails, TextInputProps } from "./TextInput.types";
+
+import "./TextInput.scss";
+
+function TextInput<T extends FieldValues>({
+  inputObj,
+}: {
+  inputObj: TextInputProps<T>;
+}) {
+  const {
     label,
     type,
     autoComplete,
@@ -19,8 +25,8 @@ const TextInput: React.FC<{ inputObj: TextInputProps }> = ({
     registerWith,
     eyeIcon,
     accept,
-  },
-}) => {
+  } = inputObj;
+
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [preview, setPreview] = useState<string | null>(null);
   const [imageDetails, setImageDetails] = useState<ImageDetails>();
@@ -28,9 +34,9 @@ const TextInput: React.FC<{ inputObj: TextInputProps }> = ({
   const actualType = type === "password" && isPasswordVisible ? "text" : type;
 
   const { onChange, ...registerFields } = register(registerWith);
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-
     if (preview) URL.revokeObjectURL(preview);
     if (file) {
       const size = (file.size / (1024 * 1024)).toFixed(2);
@@ -40,7 +46,6 @@ const TextInput: React.FC<{ inputObj: TextInputProps }> = ({
     } else {
       setPreview(null);
     }
-
     onChange(e);
   };
 
@@ -48,7 +53,6 @@ const TextInput: React.FC<{ inputObj: TextInputProps }> = ({
     <div className="input-box">
       <div>
         <label htmlFor={label}>{label}</label>
-        <br />
         <div className={`${label}-container`}>
           <input
             id={label}
@@ -57,7 +61,7 @@ const TextInput: React.FC<{ inputObj: TextInputProps }> = ({
             autoComplete={autoComplete}
             placeholder={placeholder}
             onChange={type === "file" ? handleFileChange : onChange}
-            accept={accept ? accept : ""}
+            accept={accept || ""}
           />
           {type === "file" && (
             <div className="avatar-upload-container">
@@ -82,6 +86,6 @@ const TextInput: React.FC<{ inputObj: TextInputProps }> = ({
       {error && <ErrorMessage error={[error]} />}
     </div>
   );
-};
+}
 
-export default memo(TextInput);
+export default memo(TextInput) as typeof TextInput;

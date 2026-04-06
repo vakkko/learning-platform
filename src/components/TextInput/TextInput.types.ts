@@ -1,15 +1,12 @@
-import type { UseFormRegister } from "react-hook-form";
-import type { loginData, signUpData } from "../../schemas/AuthSchema";
+import type { FieldValues, Path, UseFormRegister } from "react-hook-form";
 
-type AllFields = keyof loginData | keyof signUpData;
-
-export interface TextInputProps {
+export interface TextInputProps<T extends FieldValues> {
   label: string;
   type: string;
   autoComplete: string;
   placeholder: string;
-  registerWith: AllFields;
-  register: UseFormRegister<loginData | signUpData>;
+  registerWith: Path<T>;
+  register: UseFormRegister<T>;
   error?: string;
   eyeIcon?: string;
   accept?: string;

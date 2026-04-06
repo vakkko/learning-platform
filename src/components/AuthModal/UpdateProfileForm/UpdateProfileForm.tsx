@@ -12,6 +12,7 @@ import {
 import ImagePreview from "../../TextInput/ImagePreview/ImagePreview";
 import InputField from "./InputField/InputField";
 import AgeField from "./AgeField/AgeField";
+import TextInput from "../../TextInput/TextInput";
 
 import { BASE_URL } from "../../../consts/consts";
 
@@ -86,8 +87,24 @@ const UpdateProfileForm: React.FC = () => {
               getFieldState={getFieldState}
               placeholder="5XX XXX XXX"
             />
-            <AgeField register={register} errors={errors.age?.message} />
+            <AgeField
+              register={register}
+              errors={errors.age?.message}
+              getFieldState={getFieldState}
+            />
           </div>
+          <TextInput
+            inputObj={{
+              label: "Upload Avatar",
+              autoComplete: "off",
+              placeholder: "",
+              register: register,
+              registerWith: "avatar",
+              type: "file",
+              error: errors.avatar?.message,
+              accept: ".jpg, .png, .WebP",
+            }}
+          />
           <button className="btn-next">Update Profile</button>
         </form>
       </div>

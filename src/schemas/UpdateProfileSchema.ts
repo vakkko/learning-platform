@@ -46,6 +46,7 @@ export const updateProfileSchema = yup.object({
     .required()
     .min(16, "You must be at least 16 years old to enroll")
     .max(120, "Please enter a valid age"),
+  avatar: yup.mixed<FileList>().nullable().notRequired().default(null),
 });
 
 export type updateProfileSchemaData = yup.InferType<typeof updateProfileSchema>;
