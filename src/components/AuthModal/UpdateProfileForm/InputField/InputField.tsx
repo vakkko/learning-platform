@@ -26,6 +26,8 @@ const InputField: React.FC<InputFieldProps> = ({
   const inputValue = isDirty && !inValid;
   const validInput = !errors && (value || inputValue);
 
+  console.log(validInput);
+
   return (
     <div className={`input-box `}>
       <label htmlFor={label}>{label}</label>

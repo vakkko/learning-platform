@@ -33,7 +33,10 @@ export const submitHandle = async <T extends formDataUnion>(
   reset: UseFormReset<T>,
   setServerError: React.Dispatch<React.SetStateAction<string[] | undefined>>,
   token?: string,
+  setLoading?: React.Dispatch<React.SetStateAction<boolean>>,
 ) => {
+  if (setLoading) setLoading(true);
+
   if (data.avatar && data.avatar[0] && formData) {
     formData.append("avatar", data.avatar[0]);
   }
@@ -45,13 +48,15 @@ export const submitHandle = async <T extends formDataUnion>(
       data: formData,
       headers: token ? { Authorization: `Bearer ${token}` } : {},
     });
+
     if (response.status === 201) {
       sessionStorage.setItem("token", response.data.data.token);
       sessionStorage.setItem("avatar", response.data.data.user.avatar);
 
       closeModalFunc();
       reset();
-    } else if (response.status === 200) {
+    } else if (response.status === 200 && setLoading) {
+      setLoading(false);
       closeModalFunc();
     }
   } catch (error) {

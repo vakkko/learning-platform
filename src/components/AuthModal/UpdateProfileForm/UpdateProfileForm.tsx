@@ -25,6 +25,7 @@ import type {
 
 import "./UpdateProfileForm.scss";
 import ErrorMessage from "../../ErrorMessage/ErrorMessage";
+import LoadingMessage from "../../LoadingMessage/LoadingMessage";
 
 const UpdateProfileForm: React.FC<UpdateProfileFormProps> = ({
   handleModalClose,
@@ -33,10 +34,11 @@ const UpdateProfileForm: React.FC<UpdateProfileFormProps> = ({
 
   const [userData, setUserData] = useState<UserDataTypes>();
   const [serverError, setServerError] = useState<string[]>();
+  const [loading, setLoading] = useState<boolean>(false);
 
   const {
     register,
-    formState: { errors },
+    formState: { errors, isValid },
     handleSubmit,
     getFieldState,
     reset,
@@ -95,6 +97,7 @@ const UpdateProfileForm: React.FC<UpdateProfileFormProps> = ({
         reset,
         setServerError,
         token,
+        setLoading,
       );
   };
 
@@ -109,58 +112,62 @@ const UpdateProfileForm: React.FC<UpdateProfileFormProps> = ({
           updateUserStep
           completeProfile={completedProfile}
         />
-        <form onSubmit={handleSubmit(onSubmit)} className="auth-form">
-          <InputField
-            label="Full Name"
-            placeholder="Username"
-            iconSrc="images/input/pen.png"
-            autoComplete="name"
-            registerWith="full_name"
-            register={register}
-            errors={errors.full_name?.message}
-            getFieldState={getFieldState}
-          />
-          <InputField
-            label="Email"
-            placeholder="Username"
-            autoComplete="off"
-            value={userData.email}
-            disabled
-          />
-          <div className="number-and-age-fields">
+        {loading ? (
+          <LoadingMessage />
+        ) : (
+          <form onSubmit={handleSubmit(onSubmit)} className="auth-form">
             <InputField
-              label="Mobile Number"
-              autoComplete="tel"
-              register={register}
-              registerWith="mobile_number"
-              errors={errors.mobile_number?.message}
+              label="Full Name"
+              placeholder="Username"
               iconSrc="images/input/pen.png"
-              getFieldState={getFieldState}
-              placeholder="5XX XXX XXX"
-            />
-            <AgeField
+              autoComplete="name"
+              registerWith="full_name"
               register={register}
-              errors={errors.age?.message}
+              errors={errors.full_name?.message}
               getFieldState={getFieldState}
             />
-          </div>
-          <TextInput
-            inputObj={{
-              label: "Upload Avatar",
-              autoComplete: "off",
-              placeholder: "",
-              register: register,
-              registerWith: "avatar",
-              type: "file",
-              error: errors.avatar?.message,
-              accept: ".jpg, .png, .WebP",
-            }}
-          />
-          {serverError && <ErrorMessage error={serverError} />}
-          <button type="submit" className="form-btn">
-            Update Profile
-          </button>
-        </form>
+            <InputField
+              label="Email"
+              placeholder="Username"
+              autoComplete="off"
+              value={userData.email}
+              disabled
+            />
+            <div className="number-and-age-fields">
+              <InputField
+                label="Mobile Number"
+                autoComplete="tel"
+                register={register}
+                registerWith="mobile_number"
+                errors={errors.mobile_number?.message}
+                iconSrc="images/input/pen.png"
+                getFieldState={getFieldState}
+                placeholder="5XX XXX XXX"
+              />
+              <AgeField
+                register={register}
+                errors={errors.age?.message}
+                getFieldState={getFieldState}
+              />
+            </div>
+            <TextInput
+              inputObj={{
+                label: "Upload Avatar",
+                autoComplete: "off",
+                placeholder: "",
+                register: register,
+                registerWith: "avatar",
+                type: "file",
+                error: errors.avatar?.message,
+                accept: ".jpg, .png, .WebP",
+              }}
+            />
+            {serverError && <ErrorMessage error={serverError} />}
+            <button disabled={!isValid} type="submit" className="form-btn">
+              Update Profile
+            </button>
+          </form>
+        )}
       </div>
     )
   );

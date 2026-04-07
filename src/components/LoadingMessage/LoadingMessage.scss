@@ -1,0 +1,10 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.msg-loading {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: $greyscale-500;
+  text-align: center;
+  margin-top: 4rem;
+}

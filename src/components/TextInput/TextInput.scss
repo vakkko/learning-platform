@@ -8,6 +8,10 @@
       @include fontWeight500Size14($greyscale-700);
     }
 
+    & > div {
+      margin-top: 0.8rem;
+    }
+
     input {
       width: 100%;
       @include fontWeight500Size14($greyscale-400);
