@@ -1,6 +1,6 @@
-export interface CarouselItemProps {
-  imgSrc: string;
-  heading: string;
-  text: string;
-  buttonText: string;
+import type { carouselItemsTypes } from "../../../../consts/consts.types";
+
+export interface CarouselItemProps extends carouselItemsTypes {
+  nextSlide: () => void;
+  prevSlide: () => void;
 }
