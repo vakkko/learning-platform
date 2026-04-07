@@ -12,6 +12,7 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
   buttonText,
   nextSlide,
   prevSlide,
+  currentIndex,
 }) => {
   return (
     <div className="carousel-item-container">
@@ -23,9 +24,9 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
       </div>
       <div className="image-indicator-and-buttons">
         <div className="indicator-box">
-          <div></div>
-          <div></div>
-          <div></div>
+          <div className={`${currentIndex === 0 ? "active" : ""}`}></div>
+          <div className={`${currentIndex === 1 ? "active" : ""}`}></div>
+          <div className={`${currentIndex === 2 ? "active" : ""}`}></div>
         </div>
         <div className="buttons-box">
           <button onClick={prevSlide}>

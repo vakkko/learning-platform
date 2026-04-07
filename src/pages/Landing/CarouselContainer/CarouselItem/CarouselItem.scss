@@ -39,6 +39,10 @@
         width: 57px;
         height: 8px;
         background: $greyscale-300;
+
+        &.active {
+          background: $greyscale-100;
+        }
       }
     }
 
