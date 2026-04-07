@@ -10,10 +10,9 @@ const AgeField: React.FC<AgeFieldProps> = ({
   getFieldState,
 }) => {
   const numbers = Array.from({ length: 130 }, (_, i) => i + 1);
-  const { invalid, isDirty } = getFieldState("age");
+  const { invalid } = getFieldState("age");
 
-  const inputValue = isDirty && !invalid;
-  const validInput = !errors && inputValue;
+  const validInput = !errors && !invalid;
 
   return (
     <>

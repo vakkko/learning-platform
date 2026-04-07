@@ -21,12 +21,8 @@ const InputField: React.FC<InputFieldProps> = ({
 
   const fieldState =
     registerWith && getFieldState && getFieldState(registerWith);
-  const isDirty = fieldState?.isDirty;
   const inValid = fieldState?.invalid;
-  const inputValue = isDirty && !inValid;
-  const validInput = !errors && (value || inputValue);
-
-  console.log(validInput);
+  const validInput = !errors && (value || !inValid);
 
   return (
     <div className={`input-box `}>
