@@ -33,7 +33,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
             r="6.5"
             fill={completeProfile ? "#1dc31d" : "#f4a316"}
             stroke="white"
-            stroke-width="2"
+            strokeWidth="2"
           />
         </svg>
       </div>
