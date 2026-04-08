@@ -35,3 +35,5 @@ export const carouselItems: carouselItemsTypes[] = [
     buttonText: "Learn More",
   },
 ];
+
+export const DAYS_SLOTS = ["Mon - Wed", "Tue - Thu", "Wed - Fri", "Weekend"];

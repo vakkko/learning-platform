@@ -4,9 +4,10 @@
 .shcedule-dropdown-container {
   width: 100%;
   .btn-schedule {
-    width: 100%;
     @include flexAlignCenter();
+    width: 100%;
     justify-content: space-between;
+    margin-bottom: 1.8rem;
 
     .number-and-session-type {
       display: flex;
@@ -14,7 +15,16 @@
 
       span {
         @include fontWeightSizeColor(600, 2.4rem, $greyscale-400);
+
+        &.active {
+          color: $purple-800;
+        }
       }
     }
+  }
+
+  .slots-container {
+    display: flex;
+    justify-content: space-between;
   }
 }

@@ -13,29 +13,6 @@ const ScheduleDropdown: React.FC<ScheduleDropdownProps> = ({ children }) => {
     setShodDropdown((prev) => !prev);
   };
 
-  <svg
-    width="28"
-    height="28"
-    viewBox="0 0 28 28"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M14.4541 2.70312C17.5704 2.70313 20.5591 3.94098 22.7627 6.14453C24.9662 8.34808 26.2041 11.3368 26.2041 14.4531C26.2041 15.996 25.9 17.5237 25.3096 18.9492C24.7191 20.3748 23.8538 21.6706 22.7627 22.7617C21.6716 23.8528 20.3758 24.7181 18.9502 25.3086C17.5247 25.899 15.997 26.2031 14.4541 26.2031C12.9112 26.2031 11.3835 25.899 9.95801 25.3086C8.53243 24.7181 7.2366 23.8528 6.14551 22.7617C5.05442 21.6706 4.18913 20.3748 3.59863 18.9492C3.00823 17.5237 2.7041 15.996 2.7041 14.4531C2.7041 11.3368 3.94196 8.34808 6.14551 6.14453C8.34906 3.94098 11.3378 2.70312 14.4541 2.70312Z"
-      stroke="#130E67"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    />
-    <path
-      d="M14.8786 18.6866V9.3125L11.6562 11.656"
-      stroke="#0A0836"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    />
-  </svg>;
-
   return (
     <div className="shcedule-dropdown-container">
       <button onClick={handleButtonClick} className="btn-schedule">
@@ -62,7 +39,7 @@ const ScheduleDropdown: React.FC<ScheduleDropdownProps> = ({ children }) => {
               stroke-linejoin="round"
             />
           </svg>
-          <span>Weekly Schedule</span>
+          <span className={showDropdown ? "active" : ""}>Weekly Schedule</span>
         </div>
         <motion.svg
           width="16"
@@ -88,6 +65,7 @@ const ScheduleDropdown: React.FC<ScheduleDropdownProps> = ({ children }) => {
             exit={{ height: 0, opacity: 0 }}
             style={{ overflow: "hidden" }}
             transition={{ duration: 0.5 }}
+            className="slots-container"
           >
             {children}
           </motion.div>

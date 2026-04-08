@@ -3,6 +3,7 @@ import React from "react";
 import { useLocation } from "react-router";
 
 import FeaturedCourse from "../Landing/FeaturedCourses/FeaturedCourse/FeaturedCourse";
+import WeeklySchedule from "./WeeklySchedule/WeeklySchedule";
 
 import "./Course.scss";
 
@@ -13,7 +14,9 @@ const Course: React.FC = () => {
   return (
     <main className="course-main">
       <FeaturedCourse courseData={courseData} coursePage />
-      <div className="schedule-container"></div>
+      <div className="schedule-container">
+        <WeeklySchedule />
+      </div>
     </main>
   );
 };

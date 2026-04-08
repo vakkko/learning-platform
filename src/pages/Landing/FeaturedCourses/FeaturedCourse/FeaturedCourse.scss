@@ -5,10 +5,9 @@
   padding: 2rem;
   background-color: white;
   border-radius: 12px;
-  width: 32.3%;
+  min-width: 90.3rem;
 
   &.personal-page {
-    width: 100%;
     background-color: transparent;
     padding: 0;
     h1 {

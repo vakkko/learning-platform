@@ -1,0 +1,15 @@
+@use "../../../../styles/mixins" as *;
+@use "../../../../styles/variables" as *;
+
+.day-slot {
+  @include fontWeightSizeColor(600, 1.6rem, $greyscale-800);
+  padding: 3.6rem 2rem;
+  border-radius: 12px;
+  border: 1px solid $greyscale-200;
+  background-color: white;
+  text-align: center;
+  &.active {
+    background-color: transparent;
+    color: $greyscale-200;
+  }
+}
