@@ -6,6 +6,7 @@ import FeaturedCourse from "../Landing/FeaturedCourses/FeaturedCourse/FeaturedCo
 import WeeklySchedule from "./WeeklySchedule/WeeklySchedule";
 
 import "./Course.scss";
+import TimesSlot from "./TimesSlot/TimeSlot";
 
 const Course: React.FC = () => {
   const location = useLocation();
@@ -14,8 +15,9 @@ const Course: React.FC = () => {
   return (
     <main className="course-main">
       <FeaturedCourse courseData={courseData} coursePage />
-      <div className="schedule-container">
+      <div className="schedules-container">
         <WeeklySchedule />
+        <TimesSlot />
       </div>
     </main>
   );

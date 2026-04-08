@@ -1,9 +1,12 @@
+@use "../../styles/mixins" as *;
+
 .course-main {
   margin-bottom: 21.3rem;
   display: flex;
   gap: 13.3rem;
 
-  .schedule-container {
+  .schedules-container {
     width: 100%;
+    @include flexColumn(3.2rem);
   }
 }

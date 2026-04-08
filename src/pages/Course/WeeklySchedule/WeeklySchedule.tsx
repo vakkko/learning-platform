@@ -9,7 +9,7 @@ import { DAYS_SLOTS } from "../../../consts/consts";
 const WeeklySchedule: React.FC = () => {
   return (
     <div className="weekdays-container">
-      <ScheduleDropdown>
+      <ScheduleDropdown heading="Weekly Schedule" num={1}>
         {DAYS_SLOTS.map((days, i) => (
           <React.Fragment key={i}>
             <DaySlot days={days} />

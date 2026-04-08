@@ -13,6 +13,15 @@
       display: flex;
       gap: 1.05rem;
 
+      .number-indicator {
+        @include flexAlignCenter();
+        color: $greyscale-400;
+        border: 1px solid $greyscale-400;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 12.5px;
+      }
+
       span {
         @include fontWeightSizeColor(600, 2.4rem, $greyscale-400);
 
