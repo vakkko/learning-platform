@@ -4,9 +4,9 @@ import { useLocation } from "react-router";
 
 import FeaturedCourse from "../Landing/FeaturedCourses/FeaturedCourse/FeaturedCourse";
 import WeeklySchedule from "./WeeklySchedule/WeeklySchedule";
+import TimesSlot from "./TimesSlot/TimezSlot";
 
 import "./Course.scss";
-import TimesSlot from "./TimesSlot/TimeSlot";
 
 const Course: React.FC = () => {
   const location = useLocation();

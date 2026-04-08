@@ -1,14 +1,21 @@
 import React from "react";
 
+import type { TimeSlotProps } from "./TimeSlot.types";
+
 import "./TimeSlot.scss";
 
-const TimeSlot: React.FC = () => {
+const TimeSlot: React.FC<TimeSlotProps> = ({ dayPeriod, timePeriod }) => {
+  const dayPeriodLowered = dayPeriod.toLowerCase();
+
   return (
     <div className="time-slot-container">
-      <img src="images/course/morning.png" alt="morning" />
+      <img
+        src={`images/course/${dayPeriodLowered}.png`}
+        alt={dayPeriodLowered}
+      />
       <div className="time-and-text">
-        <span className="day-period">Morning</span>
-        <p className="time-period">9:00 AM - 12:00PM</p>
+        <span className="day-period">{dayPeriod}</span>
+        <p className="time-period">{timePeriod}</p>
       </div>
     </div>
   );
