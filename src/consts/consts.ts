@@ -43,3 +43,9 @@ export const TIME_SLOTS = [
   { period: "Afternoon", time: "12:00 AM – 6:00 PM" },
   { period: "Evening", time: "6:00 AM – 9:00 PM" },
 ];
+
+export const SESSION_TYPES = [
+  { sessionType: "Online", place: "Google Meet", price: "Included" },
+  { sessionType: "In-Person", place: "Chavchavadze St.34", price: "+ $30" },
+  { sessionType: "Hybrid", place: "Chavchavadze St.34", price: "+ $50" },
+];
