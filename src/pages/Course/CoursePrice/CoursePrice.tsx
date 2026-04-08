@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./CoursePrice.scss";
+import AuthRequiredPlaceholder from "./AuthRequiredPlaceholder/AuthRequiredPlaceholder";
 
 const CoursePrice: React.FC = () => {
   const isAuthorized = sessionStorage.getItem("token");
@@ -26,6 +27,7 @@ const CoursePrice: React.FC = () => {
           Enroll Now
         </button>
       </div>
+      {!isAuthorized && <AuthRequiredPlaceholder />}
     </div>
   );
 };

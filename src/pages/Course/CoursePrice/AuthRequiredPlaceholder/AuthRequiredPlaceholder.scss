@@ -1,0 +1,39 @@
+@use "../../../../styles/mixins" as *;
+@use "../../../../styles/variables" as *;
+
+.auth-required-container {
+  @include flexAlignCenter();
+  justify-content: space-between;
+  border: 1px solid #e5e7eb;
+  border-radius: 1.2rem;
+  padding: 2rem;
+  background-color: white;
+  margin-top: 1.2rem;
+
+  .text-content {
+    @include flexColumn(0.8rem);
+
+    & > div {
+      @include flexAlignCenter(0.4rem);
+      span {
+        @include fontWeightSizeColor(500, 1.6rem, $greyscale-800);
+      }
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: $greyscale-400;
+    }
+  }
+
+  & > button {
+    @include flexAlignCenter(0.6rem);
+    color: $purple-600;
+    font-size: 1.4rem;
+    line-height: 186%;
+    background-color: $purple-50;
+    border: 1px solid $purple-200;
+    border-radius: 0.8rem;
+    padding: 1rem 1.2rem;
+  }
+}
