@@ -1,13 +1,8 @@
 @use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
 
 .btn {
-  font-weight: 600;
-  font-size: 2rem;
-  line-height: 140%;
-  letter-spacing: -0.02em;
-  border-radius: 8px;
-  text-align: center;
-  padding: 1.6rem 2.8rem;
+  @include buttonStyles();
 }
 
 .btn-white {

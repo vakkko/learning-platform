@@ -1,0 +1,15 @@
+@use "../../../../../styles/mixins" as *;
+@use "../../../../../styles/variables" as *;
+
+.rating-box {
+  @include flexAlignCenter(0.3rem);
+
+  .star-img {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  & > span {
+    @include fontWeightSizeColor(500, 1.4rem, $greyscale-400);
+  }
+}

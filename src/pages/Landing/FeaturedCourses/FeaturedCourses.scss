@@ -18,5 +18,6 @@
   .courses-row {
     @include flexAlignCenter();
     justify-content: space-between;
+    gap: 2.4rem;
   }
 }

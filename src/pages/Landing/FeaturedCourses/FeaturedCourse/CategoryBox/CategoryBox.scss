@@ -1,0 +1,17 @@
+@use "../../../../../styles/mixins" as *;
+@use "../../../../../styles/variables" as *;
+
+.category-box {
+  @include flexAlignCenter(1rem);
+  background-color: white;
+  padding: 0.75rem 1.2rem;
+  border-radius: 1.2rem;
+
+  img {
+    object-fit: cover;
+  }
+
+  span {
+    @include fontWeightSizeColor(500, 1.6rem, $greyscale-500);
+  }
+}

@@ -31,16 +31,8 @@ const FeaturedCourses: React.FC = () => {
         <p>Choose from our most popular courses and begin your journey</p>
       </div>
       <div className="courses-row">
-        {courses?.map((course) => (
-          <FeaturedCourse
-            avgRating={course.avgRating}
-            basePrice={course.basePrice}
-            description={course.description}
-            image={course.image}
-            instructorName={course.instructor.name}
-            title={course.title}
-          />
-        ))}
+        {courses &&
+          courses?.map((course) => <FeaturedCourse courseData={course} />)}
       </div>
     </div>
   );
