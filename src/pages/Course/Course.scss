@@ -1,3 +1,9 @@
 .course-main {
   margin-bottom: 21.3rem;
+  display: flex;
+  gap: 13.3rem;
+
+  .schedule-container {
+    width: 100%;
+  }
 }

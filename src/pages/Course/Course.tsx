@@ -13,6 +13,7 @@ const Course: React.FC = () => {
   return (
     <main className="course-main">
       <FeaturedCourse courseData={courseData} coursePage />
+      <div className="schedule-container"></div>
     </main>
   );
 };
