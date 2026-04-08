@@ -6,6 +6,8 @@ import FeaturedCourse from "../Landing/FeaturedCourses/FeaturedCourse/FeaturedCo
 import WeeklySchedule from "./WeeklySchedule/WeeklySchedule";
 import TimesSlot from "./TimesSlot/TimezSlot";
 
+import SessionsType from "./SessionsType/SessionsType";
+
 import "./Course.scss";
 
 const Course: React.FC = () => {
@@ -18,6 +20,7 @@ const Course: React.FC = () => {
       <div className="schedules-container">
         <WeeklySchedule />
         <TimesSlot />
+        <SessionsType />
       </div>
     </main>
   );

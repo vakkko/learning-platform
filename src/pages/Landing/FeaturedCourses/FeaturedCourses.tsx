@@ -32,7 +32,11 @@ const FeaturedCourses: React.FC = () => {
       </div>
       <div className="courses-row">
         {courses &&
-          courses?.map((course) => <FeaturedCourse courseData={course} />)}
+          courses?.map((course, i) => (
+            <React.Fragment key={i}>
+              <FeaturedCourse courseData={course} />
+            </React.Fragment>
+          ))}
       </div>
     </div>
   );

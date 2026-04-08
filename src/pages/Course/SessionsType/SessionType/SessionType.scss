@@ -1,0 +1,27 @@
+@use "../../../../styles/mixins" as *;
+@use "../../../../styles/variables" as *;
+
+.session-type-container {
+  @include flexColumn();
+  align-items: center;
+  gap: 0.8rem;
+  border: 1px solid $greyscale-200;
+  border-radius: 1.2rem;
+  padding: 1.5rem 2rem;
+  width: fit-content;
+
+  .session-type {
+    @include fontWeightSizeColor(600, 1.6rem, $greyscale-600);
+  }
+
+  .session-place {
+    @include flexAlignCenter(0.2rem);
+    font-size: 1.2rem;
+    color: $greyscale-600;
+  }
+
+  .session-price {
+    @include fontWeightSizeColor(500, 1.4rem, $purple-400);
+    margin-top: 0.4rem;
+  }
+}
