@@ -1,0 +1,54 @@
+@use "../../../styles/mixins" as *;
+@use "../../../styles/variables" as *;
+
+.price-and-signIn {
+  .course-price-container {
+    @include flexColumn(3.2rem);
+    border: 1px solid white;
+    border-radius: 1.2rem;
+    padding: 4rem;
+    background-color: white;
+  }
+
+  .total-price,
+  .additional-price {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .total-price {
+    span {
+      @include fontWeightSizeColor(600, 2rem);
+      &:first-child {
+        line-height: 120%;
+        color: $greyscale-400;
+      }
+
+      &:last-child {
+        color: $greyscale-800;
+      }
+    }
+  }
+
+  .additional-prices {
+    @include flexColumn(1.2rem);
+    .additional-price {
+      @include fontWeightSizeColor(500, 1.6rem);
+      & > span {
+        &:first-child {
+          color: $greyscale-400;
+        }
+      }
+    }
+  }
+
+  .btn-enroll {
+    @include buttonStyles();
+
+    &:disabled {
+      color: $purple-200;
+      background-color: $purple-50;
+      border: 2px solid $purple-50;
+    }
+  }
+}

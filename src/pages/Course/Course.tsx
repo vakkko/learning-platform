@@ -9,6 +9,7 @@ import TimesSlot from "./TimesSlot/TimezSlot";
 import SessionsType from "./SessionsType/SessionsType";
 
 import "./Course.scss";
+import CoursePrice from "./CoursePrice/CoursePrice";
 
 const Course: React.FC = () => {
   const location = useLocation();
@@ -21,6 +22,7 @@ const Course: React.FC = () => {
         <WeeklySchedule />
         <TimesSlot />
         <SessionsType />
+        <CoursePrice />
       </div>
     </main>
   );
