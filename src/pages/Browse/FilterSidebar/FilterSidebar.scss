@@ -1,0 +1,12 @@
+@use "../../../styles/mixins" as *;
+@use "../../../styles/variables" as *;
+
+.filter-sidebar {
+  width: 19.7%;
+  margin-top: 3.2rem;
+
+  h4 {
+    @include fontWeightSizeColor(500, 1.8rem, $greyscale-500);
+    margin-bottom: 2.4rem;
+  }
+}
