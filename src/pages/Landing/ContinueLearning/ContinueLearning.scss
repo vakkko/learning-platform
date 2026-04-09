@@ -1,0 +1,30 @@
+@use "../../../styles/mixins" as *;
+@use "../../../styles/variables" as *;
+
+.continue-learning-container {
+  .heading-and-button {
+    margin-bottom: 3.2rem;
+    h2 {
+      @include fontWeightSizeColor(600, 4rem, $greyscale-950);
+    }
+
+    & > div {
+      @include flexAlignCenter();
+      justify-content: space-between;
+
+      & > P {
+        @include fontWeightSizeColor(500, 1.8rem, $greyscale-700);
+      }
+      & > button {
+        @include fontWeightSizeColor(500, 2rem, $purple-500);
+        border-bottom: 1px solid $purple-500;
+      }
+    }
+  }
+
+  .enrolled-courses {
+    display: flex;
+    justify-content: space-between;
+    gap: 2.4rem;
+  }
+}

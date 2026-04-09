@@ -1,0 +1,59 @@
+@use "../../../../styles/mixins" as *;
+@use "../../../../styles/variables" as *;
+
+.enrolled-course {
+  @include flexColumn(0.8rem);
+  border: 0.5 solid $greyscale-100;
+  border-radius: 1.2rem;
+  padding: 2rem;
+  background-color: white;
+
+  .img-and-text {
+    display: flex;
+    gap: 1.6rem;
+
+    & > img {
+      width: 14rem;
+    }
+  }
+
+  .progress-box-and-btn {
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+
+    .progress-box {
+      @include flexColumn(0.4rem);
+      width: 100%;
+      align-self: flex-end;
+      padding-bottom: 0.4rem;
+
+      span {
+        @include fontWeightSizeColor(500, 1.2rem, $greyscale-900);
+      }
+
+      .progress-bar {
+        appearance: none;
+        width: 100%;
+        &::-webkit-progress-bar {
+          background-color: $purple-100;
+          border-radius: 5rem;
+        }
+        &::-webkit-progress-value {
+          background-color: $purple-500;
+          border-radius: 5rem;
+        }
+      }
+    }
+  }
+
+  .btn-view {
+    @include fontWeightSizeColor(500, 1.6rem, $purple-500);
+    line-height: 150%;
+    text-align: center;
+    background-color: white;
+    border: 2px solid $purple-300;
+    border-radius: 0.8rem;
+    padding: 1.2rem 2.6rem;
+  }
+}

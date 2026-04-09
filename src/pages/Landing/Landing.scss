@@ -1,3 +1,6 @@
-main {
-  margin: 6.4rem 17.7rem 0;
+@use "../../styles/mixins" as *;
+
+.landing-main {
+  @include flexColumn(6.4rem);
+  margin: 0 17.7rem 24.8rem;
 }
