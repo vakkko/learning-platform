@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import { AppContext, type ContextType } from "../../../../context/AppContext";
 
 import "./AuthRequiredPlaceholder.scss";
 
 const AuthRequiredPlaceholder: React.FC = () => {
+  const { setShowLogin } = useContext(AppContext) as ContextType;
+
+  const handleSignInClick = () => {
+    setShowLogin(true);
+  };
+
   return (
     <div className="auth-required-container">
       <div className="text-content">
@@ -12,7 +20,7 @@ const AuthRequiredPlaceholder: React.FC = () => {
         </div>
         <p>You need sign in to your profile before enrolling in this course.</p>
       </div>
-      <button>
+      <button onClick={handleSignInClick}>
         Sign in
         <img src="images/course/right-arrow.png" alt="right arrow" />{" "}
       </button>

@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
-import "./Header.scss";
 import AuthModal from "../AuthModal/AuthModal";
 import AuthButtons from "./AuthButtons/AuthButtons";
 import ButtonAndAvatar from "./ButtonAndAvatar/ButtonAndAvatar";
 
+import { AppContext, type ContextType } from "../../context/AppContext.ts";
+
+import "./Header.scss";
+
 const Header: React.FC = () => {
   const [showSignUp, setShowSignUp] = useState<boolean>(false);
-  const [showLogin, setShowLogin] = useState<boolean>(false);
+
+  const { showLogin, setShowLogin } = useContext(AppContext) as ContextType;
 
   const handleSignUpOpen = () => {
     setShowSignUp(true);
