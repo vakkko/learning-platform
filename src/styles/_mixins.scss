@@ -33,14 +33,19 @@
   color: $color;
 }
 
-@mixin buttonStyles($color: null, $backgroundColor: null, $borderColor: null) {
+@mixin buttonStyles(
+  $color: null,
+  $backgroundColor: null,
+  $borderColor: null,
+  $padding: 1.6rem 2.8rem
+) {
   font-weight: 600;
   font-size: 2rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   border-radius: 8px;
   text-align: center;
-  padding: 1.6rem 2.8rem;
+  padding: $padding;
   color: $color;
   background-color: $backgroundColor;
   border: 2px solid $borderColor;

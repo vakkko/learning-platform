@@ -3,6 +3,7 @@ import React from "react";
 import EnrolledCourse from "./EnrolledCourse/EnrolledCourse";
 
 import "./ContinueLearning.scss";
+import LoginRedirection from "./LoginRedirection/LoginRedirection";
 
 const ContinueLearning: React.FC = () => {
   const isAuthorized = sessionStorage.getItem("token");
@@ -16,30 +17,37 @@ const ContinueLearning: React.FC = () => {
           <button>See All</button>
         </div>
       </div>
-      <div className={`enrolled-courses ${isAuthorized ? "raw-data" : ""}`}>
+      <div
+        className={`enrolled-courses-container ${!isAuthorized ? "raw-data" : ""}`}
+      >
         {!isAuthorized && (
           <>
-            <EnrolledCourse
-              avgRating={4.9}
-              progressValue={65}
-              image="images/computer.png"
-              lecturer="Lecturer Marilyn Mango"
-              heading="Advanced React & TypeScript Development "
-            />
-            <EnrolledCourse
-              avgRating={4.9}
-              progressValue={65}
-              image="images/computer.png"
-              lecturer="Lecturer Marilyn Mango"
-              heading="Advanced React & TypeScript Development "
-            />
-            <EnrolledCourse
-              avgRating={4.9}
-              progressValue={65}
-              image="images/computer.png"
-              lecturer="Lecturer Marilyn Mango"
-              heading="Advanced React & TypeScript Development "
-            />
+            <div
+              className={`enrolled-courses ${!isAuthorized ? "blured" : ""}`}
+            >
+              <EnrolledCourse
+                avgRating={4.9}
+                progressValue={65}
+                image="images/computer.png"
+                lecturer="Lecturer Marilyn Mango"
+                heading="Advanced React & TypeScript Development "
+              />
+              <EnrolledCourse
+                avgRating={4.9}
+                progressValue={65}
+                image="images/computer.png"
+                lecturer="Lecturer Marilyn Mango"
+                heading="Advanced React & TypeScript Development "
+              />
+              <EnrolledCourse
+                avgRating={4.9}
+                progressValue={65}
+                image="images/computer.png"
+                lecturer="Lecturer Marilyn Mango"
+                heading="Advanced React & TypeScript Development "
+              />
+            </div>
+            <LoginRedirection />
           </>
         )}
       </div>

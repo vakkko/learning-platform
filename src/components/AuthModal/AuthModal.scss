@@ -4,6 +4,7 @@
 .modal {
   @include modalStyles();
   @include flexColumn(5.5px);
+  z-index: 1000;
   padding: 2.5rem 5rem 5rem;
   width: 23.9%;
   .btn-close {

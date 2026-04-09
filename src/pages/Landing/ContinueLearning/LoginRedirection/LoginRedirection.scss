@@ -1,0 +1,26 @@
+@use "../../../../styles/mixins" as *;
+@use "../../../../styles/variables" as *;
+
+.login-redirection {
+  position: absolute;
+  background-color: white;
+  border: 1px solid $greyscale-300;
+  border-radius: 1.2rem;
+  padding: 2.7rem 5.6rem;
+  @include flexColumn(1.2rem);
+  align-items: center;
+
+  & > p {
+    @include fontWeightSizeColor(500, 1.6rem, $purple-900);
+  }
+
+  .btn-logIn {
+    @include buttonStyles(
+      $greyscale-100,
+      $purple-500,
+      $purple-500,
+      0.9rem 1.8rem
+    );
+    margin-top: 1.2rem;
+  }
+}
