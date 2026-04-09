@@ -7,6 +7,7 @@ header {
   padding: 2.4rem 17.7rem;
   border-bottom: 1px solid $greyscale-200;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.04);
+  margin-bottom: 6.4rem;
 
   & > div {
     @include flexAlignCenter(5rem);

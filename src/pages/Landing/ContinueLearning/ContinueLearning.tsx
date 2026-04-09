@@ -2,21 +2,24 @@ import React from "react";
 
 import EnrolledCourse from "./EnrolledCourse/EnrolledCourse";
 
-import "./ContinueLearning.scss";
 import LoginRedirection from "./LoginRedirection/LoginRedirection";
 import useGetData from "../../../hooks/useGetData/useGetData";
+
+import type { EnrolledCourseTypes } from "./ContinueLearning.types";
+
+import "./ContinueLearning.scss";
 
 const ContinueLearning: React.FC = () => {
   const isAuthorized = sessionStorage.getItem("token");
 
-  const enrolledData = useGetData({
+  const { data: enrolledData } = useGetData<EnrolledCourseTypes[]>({
     endpoint: "enrollments",
     token: isAuthorized,
   });
 
   return (
     <>
-      {isAuthorized && enrolledData.data && (
+      {isAuthorized && enrolledData && enrolledData.length > 0 && (
         <div className="continue-learning-container">
           <div className="heading-and-button">
             <h2>Continue Learning</h2>

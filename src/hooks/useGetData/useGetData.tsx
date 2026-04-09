@@ -10,7 +10,6 @@ const useGetData = <T,>({ endpoint, token }: useGetDataTypes) => {
   const [data, setData] = useState<T | null>();
 
   useEffect(() => {
-    console.log(token);
     if (token) {
       async function fetchData() {
         try {
