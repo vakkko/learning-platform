@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { AppContext } from "./AppContext.ts";
+import { AppContext } from "./appContext.ts";
 
 interface AppType {
   children: React.ReactNode;

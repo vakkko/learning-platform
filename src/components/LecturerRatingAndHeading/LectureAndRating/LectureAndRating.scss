@@ -1,0 +1,10 @@
+@use "../../../styles/mixins" as *;
+@use "../../../styles/variables" as *;
+
+.lecture-and-rating {
+  display: flex;
+  justify-content: space-between;
+  & > p {
+    @include fontWeight500Size14($greyscale-400);
+  }
+}

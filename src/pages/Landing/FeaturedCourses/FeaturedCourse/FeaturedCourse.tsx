@@ -2,12 +2,14 @@ import React from "react";
 
 import { Link } from "react-router";
 
-import CourseRating from "./CourseRating/CourseRating";
+import CourseRating from "../../../../components/CourseRating/CourseRating";
 
 import type { FeaturedCourseProps } from "./FeaturedCourse.types";
 
-import "./FeaturedCourse.scss";
 import CategoryBox from "./CategoryBox/CategoryBox";
+import LecturerRatingAndHeading from "../../../../components/LecturerRatingAndHeading/LecturerRatingAndHeading";
+
+import "./FeaturedCourse.scss";
 
 const FeaturedCourse: React.FC<FeaturedCourseProps> = ({
   courseData,
@@ -41,13 +43,13 @@ const FeaturedCourse: React.FC<FeaturedCourseProps> = ({
             </div>
           </div>
         ) : (
-          <div className="lecturer-and-rating">
-            <p>{courseData.instructor.name}</p>
-            <CourseRating avgRating={courseData.avgRating} />
-          </div>
+          <LecturerRatingAndHeading
+            avgRating={courseData.avgRating}
+            lecturer={courseData.instructor.name}
+            heading={courseData.title}
+          />
         )}
         <div className="heading-and-description">
-          {!coursePage && <h3>{courseData.title}</h3>}
           {coursePage && (
             <div className="instrucotr-and-heading">
               <CategoryBox

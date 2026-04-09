@@ -1,0 +1,9 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.lecturer-and-heading {
+  & > h3 {
+    @include fontWeightSizeColor(600, 2.4rem, $greyscale-900);
+    margin-top: 1.2rem;
+  }
+}

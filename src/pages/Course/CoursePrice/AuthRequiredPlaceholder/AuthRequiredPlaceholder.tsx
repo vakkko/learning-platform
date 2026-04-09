@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { AppContext, type ContextType } from "../../../../context/AppContext";
+import { AppContext, type ContextType } from "../../../../context/appContext";
 
 import "./AuthRequiredPlaceholder.scss";
 

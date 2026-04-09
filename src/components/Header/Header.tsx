@@ -4,9 +4,10 @@ import AuthModal from "../AuthModal/AuthModal";
 import AuthButtons from "./AuthButtons/AuthButtons";
 import ButtonAndAvatar from "./ButtonAndAvatar/ButtonAndAvatar";
 
-import { AppContext, type ContextType } from "../../context/AppContext.ts";
+import { AppContext, type ContextType } from "../../context/appContext.ts";
 
 import "./Header.scss";
+import { Link } from "react-router";
 
 const Header: React.FC = () => {
   const [showSignUp, setShowSignUp] = useState<boolean>(false);
@@ -34,7 +35,9 @@ const Header: React.FC = () => {
   return (
     <>
       <header>
-        <img src="images/logo.png" alt="logo" />
+        <Link to={"/"}>
+          <img src="images/logo.png" alt="logo" />
+        </Link>
         <div>
           <button className="btn-courses-box">
             <svg

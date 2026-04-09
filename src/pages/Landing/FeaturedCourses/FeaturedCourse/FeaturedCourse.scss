@@ -53,17 +53,9 @@
       border-radius: 10px;
       object-fit: cover;
     }
-
-    .lecturer-and-rating {
-      @include flexAlignCenter();
-      justify-content: space-between;
+    .lecture-and-rating {
       margin-top: 1.65rem;
-
-      & > P {
-        @include fontWeightSizeColor(500, 1.4rem, $greyscale-400);
-      }
     }
-
     .heading-and-description {
       margin-top: 1.2rem;
       margin-bottom: 2.4rem;
