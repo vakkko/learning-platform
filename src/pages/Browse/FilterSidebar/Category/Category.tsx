@@ -80,7 +80,7 @@ const Category: React.FC<CategoryInterface> = ({ category, icon }) => {
 
   return (
     <button className="btn-category">
-      {categories[icon as keyof typeof categories]}
+      {icon && categories[icon as keyof typeof categories]}
       {category}
     </button>
   );

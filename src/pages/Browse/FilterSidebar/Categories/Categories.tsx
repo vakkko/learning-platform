@@ -1,6 +1,6 @@
 import React from "react";
 
-import Category from "./Category/Category";
+import Category from "../Category/Category.tsx";
 
 import useGetData from "../../../../hooks/useGetData/useGetData.tsx";
 
