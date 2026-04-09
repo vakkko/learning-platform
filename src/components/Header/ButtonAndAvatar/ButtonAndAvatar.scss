@@ -3,18 +3,4 @@
 
 .button-and-avatar-box {
   @include flexAlignCenter(5.1rem);
-  .user-avatar {
-    @include flexAlignCenter();
-    justify-content: center;
-    width: 5.6rem;
-    height: 5.6rem;
-    border-radius: 16777200px;
-    background: $purple-50;
-
-    img {
-      width: 3.8rem;
-      height: 3.8rem;
-      border-radius: 16777200px;
-    }
-  }
 }

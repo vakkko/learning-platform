@@ -32,6 +32,10 @@ const LoginForm: React.FC<LoginFormProps> = ({ handleModalClose }) => {
       if (response.status === 200) {
         sessionStorage.setItem("token", response.data.data.token);
         sessionStorage.setItem("avatar", response.data.data.user.avatar);
+        sessionStorage.setItem(
+          "completedProfile",
+          response.data.data.user.profileComplete,
+        );
         handleModalClose();
         reset();
       }

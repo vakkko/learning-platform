@@ -6,4 +6,5 @@ export interface ImagePreviewProps {
   updateUserStep?: boolean;
   userName?: string;
   completeProfile?: boolean;
+  handleUserModalOpen?: () => void;
 }

@@ -2,9 +2,11 @@ import React, { useState } from "react";
 
 import "./ButtonAndAvatar.scss";
 import AuthModal from "../../AuthModal/AuthModal";
+import ImagePreview from "../../TextInput/ImagePreview/ImagePreview";
 
 const ButtonAndAvatar: React.FC = () => {
   const userAvatar = sessionStorage.getItem("avatar");
+  const completedProfile = Boolean(sessionStorage.getItem("completedProfile"));
 
   const [showUserModal, setShowUserModal] = useState<boolean>(false);
 
@@ -37,14 +39,13 @@ const ButtonAndAvatar: React.FC = () => {
           <span>Enrolled Courses</span>
         </button>
         {userAvatar && (
-          <button onClick={handleUserModalOpen} className="user-avatar">
-            <img
-              src={
-                userAvatar !== "null" ? userAvatar : "images/user-avatar.png"
-              }
-              alt="user avatar"
-            />
-          </button>
+          <ImagePreview
+            preview={userAvatar}
+            completeProfile={completedProfile}
+            userName={undefined}
+            handleUserModalOpen={handleUserModalOpen}
+            updateUserStep
+          />
         )}
       </div>
       <div

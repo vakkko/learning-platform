@@ -10,15 +10,17 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
   updateUserStep,
   userName,
   completeProfile,
+  handleUserModalOpen,
 }) => {
   return (
     <div className="image-preview-box">
       <div className="avatar-img-box">
-        <img
-          className="avatar-img"
-          src={preview ? preview : "images/user-avatar.png"}
-          alt="avatar"
-        />
+        <button onClick={handleUserModalOpen} className="user-avatar">
+          <img
+            src={preview ? preview : "images/user-avatar.png"}
+            alt="avatar"
+          />
+        </button>
         <svg
           className="status-indicator"
           width="15"
