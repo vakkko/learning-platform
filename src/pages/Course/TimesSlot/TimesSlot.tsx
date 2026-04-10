@@ -8,7 +8,11 @@ import { useParams } from "react-router";
 
 import type { TimeSlotTypes, TimesSlotProps } from "./TimesSlot.types";
 
-const TimesSlot: React.FC<TimesSlotProps> = ({ daysId }) => {
+const TimesSlot: React.FC<TimesSlotProps> = ({
+  daysId,
+  handleTimeClick,
+  timeId,
+}) => {
   const { id } = useParams();
 
   const { data: timeSlots } = useGetData<TimeSlotTypes[]>({
@@ -24,6 +28,9 @@ const TimesSlot: React.FC<TimesSlotProps> = ({ daysId }) => {
             <TimeSlot
               dayPeriod={slot.label.split(" ")[0]}
               timePeriod={`${slot.startTime}-${slot.endTime}`}
+              id={slot.id}
+              handleTimeClick={handleTimeClick}
+              timeId={timeId}
             />
           </React.Fragment>
         ))}

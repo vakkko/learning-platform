@@ -22,9 +22,14 @@ const Course: React.FC = () => {
   });
 
   const [daysId, setDaysId] = useState<number>();
+  const [timeId, setTimeId] = useState<number>();
 
   const handleDaysClick = (id: number) => {
     setDaysId(id);
+  };
+
+  const handleTimeClick = (id: number) => {
+    setTimeId(id);
   };
 
   return (
@@ -32,7 +37,11 @@ const Course: React.FC = () => {
       {courseData && <FeaturedCourse courseData={courseData} coursePage />}
       <div className="schedules-container">
         <WeeklySchedule daysId={daysId} handleDaysClick={handleDaysClick} />
-        <TimesSlot daysId={daysId} />
+        <TimesSlot
+          daysId={daysId}
+          handleTimeClick={handleTimeClick}
+          timeId={timeId}
+        />
         <SessionsType />
         <CoursePrice />
       </div>

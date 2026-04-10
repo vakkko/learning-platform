@@ -9,7 +9,8 @@
   padding: 1.5rem;
   color: $greyscale-500;
 
-  &:hover {
+  &:hover,
+  &.active {
     @include hoverStyles();
     cursor: pointer;
   }
