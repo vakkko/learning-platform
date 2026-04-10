@@ -1,4 +1,4 @@
-export interface FullCourse {
+export interface FeaturedCourseTypes {
   id: number;
   title: string;
   description: string;

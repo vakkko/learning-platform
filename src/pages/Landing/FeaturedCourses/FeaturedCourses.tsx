@@ -4,13 +4,13 @@ import axios from "axios";
 
 import FeaturedCourse from "./FeaturedCourse/FeaturedCourse";
 
-import type { FullCourse } from "./FeaturedCourses.types";
+import type { FeaturedCourseTypes } from "./FeaturedCourses.types";
 
 import "./FeaturedCourses.scss";
 import { BASE_URL } from "../../../consts/consts";
 
 const FeaturedCourses: React.FC = () => {
-  const [courses, setCourses] = useState<FullCourse[]>();
+  const [courses, setCourses] = useState<FeaturedCourseTypes[]>();
 
   useEffect(() => {
     async function getFeaturedCourses() {

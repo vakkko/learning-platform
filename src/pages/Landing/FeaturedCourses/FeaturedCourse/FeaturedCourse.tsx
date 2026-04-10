@@ -9,12 +9,25 @@ import type { FeaturedCourseProps } from "./FeaturedCourse.types";
 import CategoryBox from "./CategoryBox/CategoryBox";
 import LecturerRatingAndHeading from "../../../../components/LecturerRatingAndHeading/LecturerRatingAndHeading";
 
+import type { CourseTypes } from "../../../Course/Course.types";
+
 import "./FeaturedCourse.scss";
 
 const FeaturedCourse: React.FC<FeaturedCourseProps> = ({
   courseData,
   coursePage,
 }) => {
+  const rating = courseData.avgRating
+    ? courseData.avgRating
+    : (
+        (courseData as CourseTypes).reviews.reduce((a, b) => a + b.rating, 0) /
+        (courseData as CourseTypes).reviews.length
+      ).toFixed(1);
+
+  const categoryLowered = courseData.category.name.toLocaleLowerCase();
+
+  const categoryIcon = categoryLowered.replace(" ", "-");
+
   return (
     <div
       className={`featured-course-wrapper ${coursePage ? "personal-page" : ""}`}
@@ -35,10 +48,10 @@ const FeaturedCourse: React.FC<FeaturedCourseProps> = ({
               </div>
             </div>
             <div className="rating-and-category">
-              <CourseRating avgRating={courseData.avgRating} />
+              <CourseRating avgRating={rating} />
               <CategoryBox
                 category={courseData.category.name}
-                image="images/course/closing-tag.png"
+                image={`images/categories/${categoryIcon}.png`}
               />
             </div>
           </div>
@@ -67,9 +80,7 @@ const FeaturedCourse: React.FC<FeaturedCourseProps> = ({
               starting from{" "}
               <span className="price">{courseData.basePrice}</span>
             </p>
-            <Link to={String(courseData.id)} state={{ courseData }}>
-              Details
-            </Link>
+            <Link to={String(courseData.id)}>Details</Link>
           </div>
         )}
       </div>

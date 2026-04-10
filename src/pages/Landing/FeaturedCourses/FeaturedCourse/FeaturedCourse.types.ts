@@ -1,6 +1,7 @@
-import type { FullCourse } from "../FeaturedCourses.types";
+import type { CourseTypes } from "../../../Course/Course.types";
+import type { FeaturedCourseTypes } from "../FeaturedCourses.types";
 
 export interface FeaturedCourseProps {
-  courseData: FullCourse;
+  courseData: FeaturedCourseTypes | CourseTypes;
   coursePage?: boolean;
 }

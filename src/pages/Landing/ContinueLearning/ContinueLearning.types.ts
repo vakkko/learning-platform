@@ -1,4 +1,4 @@
-import type { FullCourse } from "../FeaturedCourses/FeaturedCourses.types";
+import type { FeaturedCourseTypes } from "../FeaturedCourses/FeaturedCourses.types";
 
 export interface EnrolledCourseTypes {
   data: EnrollmentRecord;
@@ -10,7 +10,7 @@ export interface EnrollmentRecord {
   totalPrice: number;
   progress: number;
   completedAt: string;
-  course: FullCourse;
+  course: FeaturedCourseTypes;
   schedule: Schedule;
 }
 

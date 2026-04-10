@@ -1,3 +1,3 @@
 export interface CourseRatingProps {
-  avgRating: number;
+  avgRating: string | number;
 }
