@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 
-import "./CoursePrice.scss";
 import AuthRequiredPlaceholder from "./AuthRequiredPlaceholder/AuthRequiredPlaceholder";
 
+import "./CoursePrice.scss";
+import { AppContext, type ContextType } from "../../../context/appContext";
+
 const CoursePrice: React.FC = () => {
-  const isAuthorized = sessionStorage.getItem("token");
+  const { authorized } = useContext(AppContext) as ContextType;
+
   return (
     <div className="price-and-signIn">
       <div className="course-price-container">
@@ -23,11 +26,11 @@ const CoursePrice: React.FC = () => {
             <span>+ $0</span>
           </div>
         </div>
-        <button className="btn-enroll" disabled={!isAuthorized}>
+        <button className="btn-enroll" disabled={!authorized}>
           Enroll Now
         </button>
       </div>
-      {!isAuthorized && <AuthRequiredPlaceholder />}
+      {!authorized && <AuthRequiredPlaceholder />}
     </div>
   );
 };

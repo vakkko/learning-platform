@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import axios from "axios";
 
@@ -11,6 +11,7 @@ import ErrorMessage from "../../ErrorMessage/ErrorMessage";
 
 import { BASE_URL } from "../../../consts/consts";
 import type { LoginFormProps } from "./LoginForm.types";
+import { AppContext, type ContextType } from "../../../context/appContext";
 
 const LoginForm: React.FC<LoginFormProps> = ({ handleModalClose }) => {
   const {
@@ -26,10 +27,13 @@ const LoginForm: React.FC<LoginFormProps> = ({ handleModalClose }) => {
   });
   const [serverError, setServerError] = useState<string>();
 
+  const { setAuthorized } = useContext(AppContext) as ContextType;
+
   const onSubmit: SubmitHandler<loginData> = async (data) => {
     try {
       const response = await axios.post(`${BASE_URL}/login`, data);
       if (response.status === 200) {
+        setAuthorized(true);
         sessionStorage.setItem("token", response.data.data.token);
         sessionStorage.setItem("avatar", response.data.data.user.avatar);
         sessionStorage.setItem(

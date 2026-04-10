@@ -8,9 +8,12 @@ interface AppType {
 
 export const AppProvider: React.FC<AppType> = ({ children }) => {
   const [showLogin, setShowLogin] = useState<boolean>(false);
+  const [authorized, setAuthorized] = useState<boolean>(false);
 
   return (
-    <AppContext.Provider value={{ showLogin, setShowLogin }}>
+    <AppContext.Provider
+      value={{ showLogin, setShowLogin, authorized, setAuthorized }}
+    >
       {children}
     </AppContext.Provider>
   );
