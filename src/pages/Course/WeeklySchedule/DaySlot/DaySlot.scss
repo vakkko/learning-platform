@@ -9,7 +9,8 @@
   background-color: white;
   text-align: center;
 
-  &:hover {
+  &:hover,
+  &.active {
     background-color: $purple-100;
     color: $purple-500;
   }

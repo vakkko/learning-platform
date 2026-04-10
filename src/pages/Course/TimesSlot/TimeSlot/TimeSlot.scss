@@ -7,10 +7,15 @@
   border: 1px solid $greyscale-200;
   border-radius: 1.2rem;
   padding: 1.5rem;
+  color: $greyscale-500;
+
+  &:hover {
+    @include hoverStyles();
+    cursor: pointer;
+  }
 
   .time-and-text {
     @include flexColumn();
-    color: $greyscale-500;
 
     .day-period {
       @include fontWeight500Size14();

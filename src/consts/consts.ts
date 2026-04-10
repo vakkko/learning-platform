@@ -36,12 +36,6 @@ export const carouselItems: carouselItemsTypes[] = [
   },
 ];
 
-export const TIME_SLOTS = [
-  { period: "Morning", time: "9:00 AM – 12:00 PM" },
-  { period: "Afternoon", time: "12:00 AM – 6:00 PM" },
-  { period: "Evening", time: "6:00 AM – 9:00 PM" },
-];
-
 export const SESSION_TYPES = [
   { sessionType: "Online", place: "Google Meet", price: "Included" },
   { sessionType: "In-Person", place: "Chavchavadze St.34", price: "+ $30" },

@@ -50,3 +50,8 @@
   background-color: $backgroundColor;
   border: 2px solid $borderColor;
 }
+
+@mixin hoverStyles() {
+  background: $purple-100;
+  color: $purple-500;
+}
