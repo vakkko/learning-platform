@@ -63,18 +63,18 @@ const Header: React.FC = () => {
             />
           )}
         </div>
+        <div
+          onClick={
+            showSignUp
+              ? handleSignUpClose
+              : showLogin
+                ? handleLoginClose
+                : undefined
+          }
+          id="overlay"
+          className={showSignUp || showLogin ? "" : "hidden"}
+        ></div>
       </header>
-      <div
-        onClick={
-          showSignUp
-            ? handleSignUpClose
-            : showLogin
-              ? handleLoginClose
-              : undefined
-        }
-        id="overlay"
-        className={showSignUp || showLogin ? "" : "hidden"}
-      ></div>
       {showSignUp && (
         <AuthModal AuthFor="sign up" handleModalClose={handleSignUpClose} />
       )}

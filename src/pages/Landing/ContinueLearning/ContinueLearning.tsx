@@ -19,7 +19,7 @@ const ContinueLearning: React.FC = () => {
 
   return (
     <>
-      {isAuthorized && enrolledData && enrolledData.length > 0 && (
+      {!enrolledData && (
         <div className="continue-learning-container">
           <div className="heading-and-button">
             <h2>Continue Learning</h2>

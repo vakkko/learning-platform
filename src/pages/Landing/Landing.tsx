@@ -2,9 +2,9 @@ import React from "react";
 
 import CarouselContainer from "./CarouselContainer/CarouselContainer";
 import FeaturedCourses from "./FeaturedCourses/FeaturedCourses";
+import ContinueLearning from "./ContinueLearning/ContinueLearning";
 
 import "./Landing.scss";
-import ContinueLearning from "./ContinueLearning/ContinueLearning";
 
 const Landing: React.FC = () => {
   return (
