@@ -36,8 +36,6 @@ export const carouselItems: carouselItemsTypes[] = [
   },
 ];
 
-export const DAYS_SLOTS = ["Mon - Wed", "Tue - Thu", "Wed - Fri", "Weekend"];
-
 export const TIME_SLOTS = [
   { period: "Morning", time: "9:00 AM – 12:00 PM" },
   { period: "Afternoon", time: "12:00 AM – 6:00 PM" },

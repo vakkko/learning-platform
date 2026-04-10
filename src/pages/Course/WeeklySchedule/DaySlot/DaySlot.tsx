@@ -4,8 +4,8 @@ import type { DaySlotProps } from "./DaySlot.types";
 
 import "./DaySlot.scss";
 
-const DaySlot: React.FC<DaySlotProps> = ({ days }) => {
-  return <button className={`day-slot `}>{days}</button>;
+const DaySlot: React.FC<DaySlotProps> = ({ weekObj }) => {
+  return <button className="day-slot">{weekObj.label}</button>;
 };
 
 export default DaySlot;

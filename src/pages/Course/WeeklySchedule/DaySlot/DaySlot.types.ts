@@ -1,3 +1,5 @@
+import type { WeekObjectTypes } from "../WeeklySchedule.interface";
+
 export interface DaySlotProps {
-  days: string;
+  weekObj: WeekObjectTypes;
 }

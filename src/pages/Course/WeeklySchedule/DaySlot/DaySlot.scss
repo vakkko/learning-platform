@@ -8,8 +8,9 @@
   border: 1px solid $greyscale-200;
   background-color: white;
   text-align: center;
-  &.active {
-    background-color: transparent;
-    color: $greyscale-200;
+
+  &:hover {
+    background-color: $purple-100;
+    color: $purple-500;
   }
 }
