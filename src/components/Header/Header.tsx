@@ -52,7 +52,7 @@ const Header: React.FC = () => {
                 strokeWidth="2"
               />
             </svg>
-            <span>Browse Courses</span>
+            <Link to={"/browse"}>Browse Courses</Link>
           </button>
           {isAuthorized ? (
             <ButtonAndAvatar />
