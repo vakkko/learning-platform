@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 
-import "./ButtonAndAvatar.scss";
+import { AppContext, type ContextType } from "../../../context/appContext";
+
 import AuthModal from "../../AuthModal/AuthModal";
 import ImagePreview from "../../TextInput/ImagePreview/ImagePreview";
 
+import "./ButtonAndAvatar.scss";
+
 const ButtonAndAvatar: React.FC = () => {
   const userAvatar = sessionStorage.getItem("avatar");
-  const completedProfile = Boolean(sessionStorage.getItem("completedProfile"));
+  const completedProfile = sessionStorage.getItem("completedProfile");
 
-  const [showUserModal, setShowUserModal] = useState<boolean>(false);
+  const { showUserModal, setShowUserModal } = useContext(
+    AppContext,
+  ) as ContextType;
 
   const handleUserModalOpen = () => {
     setShowUserModal(true);
@@ -41,7 +46,7 @@ const ButtonAndAvatar: React.FC = () => {
         {userAvatar && (
           <ImagePreview
             preview={userAvatar}
-            completeProfile={completedProfile}
+            completeProfile={completedProfile !== "false"}
             userName={undefined}
             handleUserModalOpen={handleUserModalOpen}
             updateUserStep

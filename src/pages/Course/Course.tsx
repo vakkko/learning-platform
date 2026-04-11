@@ -59,6 +59,8 @@ const Course: React.FC = () => {
           basePrice={courseData?.basePrice}
           sessionPrice={sessionPrice}
           activeStyle={!!daysId && !!timeId && !!sessionId}
+          timeId={timeId}
+          courseId={Number(id)}
         />
       </div>
     </main>

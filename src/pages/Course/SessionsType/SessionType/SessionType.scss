@@ -13,8 +13,7 @@
     }
   }
 
-  &.disabled > .session-type-container,
-  &:hover > .session-type-container {
+  &.disabled > .session-type-container {
     border: 1px solid $greyscale-200;
     background-color: $greyscale-100;
     .session-type,

@@ -11,10 +11,21 @@ export const AppProvider: React.FC<AppType> = ({ children }) => {
   const [authorized, setAuthorized] = useState<boolean>(() => {
     return Boolean(sessionStorage.getItem("token"));
   });
+  const [showSignUp, setShowSignUp] = useState<boolean>(false);
+  const [showUserModal, setShowUserModal] = useState<boolean>(false);
 
   return (
     <AppContext.Provider
-      value={{ showLogin, setShowLogin, authorized, setAuthorized }}
+      value={{
+        showLogin,
+        setShowLogin,
+        authorized,
+        setAuthorized,
+        showSignUp,
+        setShowSignUp,
+        showUserModal,
+        setShowUserModal,
+      }}
     >
       {children}
     </AppContext.Provider>

@@ -1,4 +1,4 @@
-import type { Dispatch, SetStateAction } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 
 import type { UseFormReset } from "react-hook-form";
 
@@ -52,10 +52,19 @@ export const submitHandle = async <T extends formDataUnion>(
     if (response.status === 201) {
       sessionStorage.setItem("token", response.data.data.token);
       sessionStorage.setItem("avatar", response.data.data.user.avatar);
+      sessionStorage.setItem(
+        "completedProfile",
+        response.data.data.user.profileComplete,
+      );
 
       closeModalFunc();
       reset();
     } else if (response.status === 200 && setLoading) {
+      sessionStorage.setItem(
+        "completedProfile",
+        response.data.data.profileComplete,
+      );
+      sessionStorage.setItem("avatar", response.data.data.avatar);
       setLoading(false);
       closeModalFunc();
     }
