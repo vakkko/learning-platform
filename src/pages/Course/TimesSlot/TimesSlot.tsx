@@ -27,7 +27,7 @@ const TimesSlot: React.FC<TimesSlotProps> = ({
           <React.Fragment key={slot.id}>
             <TimeSlot
               dayPeriod={slot.label.split(" ")[0]}
-              timePeriod={`${slot.startTime}-${slot.endTime}`}
+              timePeriod={`${slot.startTime.replace(":00", "")}-${slot.endTime.replace(":00", "")}`}
               id={slot.id}
               handleTimeClick={handleTimeClick}
               timeId={timeId}

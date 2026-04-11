@@ -1,6 +1,6 @@
 export interface TimesSlotProps {
   daysId?: number;
-  handleTimeClick: (id: number) => void;
+  handleTimeClick: (id: number, timeValue: string) => void;
   timeId?: number;
 }
 

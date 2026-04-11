@@ -11,7 +11,7 @@ const DaySlot: React.FC<DaySlotProps> = ({
 }) => {
   return (
     <button
-      onClick={() => handleDaysClick(weekObj.id)}
+      onClick={() => handleDaysClick(weekObj.id, weekObj.label)}
       className={`day-slot ${daysId === weekObj.id ? "active" : ""}`}
     >
       {weekObj.label}

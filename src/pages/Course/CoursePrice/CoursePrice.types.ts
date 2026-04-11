@@ -4,4 +4,7 @@ export interface CoursePriceProps {
   activeStyle: boolean;
   timeId?: number;
   courseId?: number;
+  courseTitle?: string;
+  dayValue?: string;
+  timeValue?: string;
 }

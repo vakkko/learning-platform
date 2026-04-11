@@ -5,6 +5,6 @@ export interface WeekObjectTypes {
 }
 
 export interface WeeklyScheduleProps {
-  handleDaysClick: (id: number) => void;
+  handleDaysClick: (id: number, dayValue: string) => void;
   daysId?: number;
 }

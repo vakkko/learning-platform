@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 import AuthRequiredPlaceholder from "./AuthRequiredPlaceholder/AuthRequiredPlaceholder";
 import StatusModal from "../../../components/StatusModal/StatusModal";
@@ -14,9 +14,12 @@ import { BASE_URL } from "../../../consts/consts";
 const CoursePrice: React.FC<CoursePriceProps> = ({
   basePrice,
   sessionPrice,
-  activeStyle,
   timeId,
   courseId,
+  activeStyle,
+  courseTitle,
+  dayValue,
+  timeValue,
 }) => {
   const { authorized, setShowUserModal, setShowLogin } = useContext(
     AppContext,
@@ -24,6 +27,7 @@ const CoursePrice: React.FC<CoursePriceProps> = ({
 
   const [showProfileRedirection, setShowProfileRedirection] =
     useState<boolean>(false);
+  const [enrollmentConflict, setEnrollmentConflict] = useState<boolean>(false);
 
   const totalPrice = sessionPrice
     ? Number(basePrice) + Number(sessionPrice)
@@ -47,7 +51,7 @@ const CoursePrice: React.FC<CoursePriceProps> = ({
             {
               courseId: Number(courseId),
               courseScheduleId: timeId,
-              force: false,
+              force: !!enrollmentConflict,
             },
             {
               headers: {
@@ -56,7 +60,12 @@ const CoursePrice: React.FC<CoursePriceProps> = ({
             },
           );
         } catch (err) {
-          console.error(err);
+          const axiosError = err as AxiosError;
+          if (axiosError.status === 409) {
+            setEnrollmentConflict(true);
+          } else {
+            console.error("Enrollment error:", err);
+          }
         }
       };
       enrollCourse();
@@ -102,6 +111,19 @@ const CoursePrice: React.FC<CoursePriceProps> = ({
             setShowProfileRedirection(false);
           }}
           handleBtn2Click={() => setShowProfileRedirection(false)}
+        />
+      )}
+      {enrollmentConflict && (
+        <StatusModal
+          image="warning"
+          title="Enrollment Conflict"
+          description={`You are already enrolled in 
+          ${courseTitle} with the same schedule: 
+          ${dayValue} at ${timeValue} `}
+          btn1="Continue Anyway"
+          btn2="Cancel"
+          handleBtn1Click={() => handleEnrollClick()}
+          handleBtn2Click={() => setEnrollmentConflict(false)}
         />
       )}
     </div>

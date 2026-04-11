@@ -14,7 +14,7 @@ const TimeSlot: React.FC<TimeSlotProps> = ({
   return (
     <div
       className={`time-slot-container  ${timeId === id ? "active" : ""}`}
-      onClick={() => handleTimeClick(id)}
+      onClick={() => handleTimeClick(id, timePeriod)}
     >
       {dayPeriod === "Morning" && (
         <svg
