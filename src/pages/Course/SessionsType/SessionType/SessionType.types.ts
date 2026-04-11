@@ -3,7 +3,7 @@ export interface SessionTypeProps {
   sessionPlace: string | null;
   price: number;
   availableSeats: number;
-  handleSessionClick: (id: number) => void;
+  handleSessionClick: (id: number, price: number) => void;
   sessionId?: number;
   id: number;
 }

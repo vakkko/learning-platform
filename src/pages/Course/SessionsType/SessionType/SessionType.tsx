@@ -15,7 +15,7 @@ const SessionType: React.FC<SessionTypeProps> = ({
 }) => {
   return (
     <div
-      onClick={() => handleSessionClick(id)}
+      onClick={() => handleSessionClick(id, price)}
       className={`session-container-wrapper ${sessionId === id ? "active" : ""}`}
     >
       <div className="session-type-container">

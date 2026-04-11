@@ -52,6 +52,12 @@
       color: $purple-200;
       background-color: $purple-50;
       border: 2px solid $purple-50;
+
+      &:hover {
+        color: $purple-200;
+        background-color: $purple-50;
+        border: 2px solid $purple-50;
+      }
     }
 
     &:hover {

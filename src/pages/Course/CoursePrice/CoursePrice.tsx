@@ -4,26 +4,32 @@ import AuthRequiredPlaceholder from "./AuthRequiredPlaceholder/AuthRequiredPlace
 
 import "./CoursePrice.scss";
 import { AppContext, type ContextType } from "../../../context/appContext";
+import type { CoursePriceProps } from "./CoursePrice.types";
 
-const CoursePrice: React.FC = () => {
+const CoursePrice: React.FC<CoursePriceProps> = ({
+  basePrice,
+  sessionPrice,
+}) => {
   const { authorized } = useContext(AppContext) as ContextType;
+
+  const totalPrice = Number(basePrice) + Number(sessionPrice);
 
   return (
     <div className="price-and-signIn">
       <div className="course-price-container">
         <div className="total-price">
           <span>Total Price</span>
-          <span>349$</span>
+          <span>{totalPrice} $</span>
         </div>
 
         <div className="additional-prices">
           <div className="additional-price">
             <span>Base Price</span>
-            <span>+ $0</span>
+            <span>+ ${basePrice}</span>
           </div>
           <div className="additional-price">
             <span>Session Price</span>
-            <span>+ $0</span>
+            <span>+ ${sessionPrice ? sessionPrice : 0}</span>
           </div>
         </div>
         <button className="btn-enroll" disabled={!authorized}>
