@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import axios from "axios";
 
 import AuthRequiredPlaceholder from "./AuthRequiredPlaceholder/AuthRequiredPlaceholder";
+import StatusModal from "../../../components/StatusModal/StatusModal";
 
 import { AppContext, type ContextType } from "../../../context/appContext";
 import type { CoursePriceProps } from "./CoursePrice.types";
@@ -21,6 +22,9 @@ const CoursePrice: React.FC<CoursePriceProps> = ({
     AppContext,
   ) as ContextType;
 
+  const [showProfileRedirection, setShowProfileRedirection] =
+    useState<boolean>(false);
+
   const totalPrice = sessionPrice
     ? Number(basePrice) + Number(sessionPrice)
     : Number(basePrice);
@@ -34,7 +38,7 @@ const CoursePrice: React.FC<CoursePriceProps> = ({
     if (!authorized) {
       setShowLogin(true);
     } else if (!completedProfile) {
-      setShowUserModal(true);
+      setShowProfileRedirection(true);
     } else if (completedProfile && timeId && courseId) {
       const enrollCourse = async () => {
         try {
@@ -86,6 +90,20 @@ const CoursePrice: React.FC<CoursePriceProps> = ({
         </button>
       </div>
       {!authorized && <AuthRequiredPlaceholder />}
+      {showProfileRedirection && (
+        <StatusModal
+          image="user-modal"
+          title="Complete your profile to continue"
+          description="You need to complete your profile before enrolling in this course."
+          btn1="Complete Profile"
+          btn2="Cancel"
+          handleBtn1Click={() => {
+            setShowUserModal(true);
+            setShowProfileRedirection(false);
+          }}
+          handleBtn2Click={() => setShowProfileRedirection(false)}
+        />
+      )}
     </div>
   );
 };
