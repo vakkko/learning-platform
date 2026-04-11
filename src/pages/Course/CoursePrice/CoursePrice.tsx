@@ -9,6 +9,7 @@ import type { CoursePriceProps } from "./CoursePrice.types";
 const CoursePrice: React.FC<CoursePriceProps> = ({
   basePrice,
   sessionPrice,
+  activeStyle,
 }) => {
   const { authorized } = useContext(AppContext) as ContextType;
 
@@ -34,7 +35,7 @@ const CoursePrice: React.FC<CoursePriceProps> = ({
             <span>+ ${sessionPrice ? sessionPrice : 0}</span>
           </div>
         </div>
-        <button className="btn-enroll" disabled={!authorized}>
+        <button className="btn-enroll" disabled={!authorized || !activeStyle}>
           Enroll Now
         </button>
       </div>

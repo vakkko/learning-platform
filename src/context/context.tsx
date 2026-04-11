@@ -8,7 +8,9 @@ interface AppType {
 
 export const AppProvider: React.FC<AppType> = ({ children }) => {
   const [showLogin, setShowLogin] = useState<boolean>(false);
-  const [authorized, setAuthorized] = useState<boolean>(false);
+  const [authorized, setAuthorized] = useState<boolean>(() => {
+    return Boolean(sessionStorage.getItem("token"));
+  });
 
   return (
     <AppContext.Provider
