@@ -12,14 +12,16 @@ const CoursePrice: React.FC<CoursePriceProps> = ({
 }) => {
   const { authorized } = useContext(AppContext) as ContextType;
 
-  const totalPrice = Number(basePrice) + Number(sessionPrice);
+  const totalPrice = sessionPrice
+    ? Number(basePrice) + Number(sessionPrice)
+    : Number(basePrice);
 
   return (
     <div className="price-and-signIn">
       <div className="course-price-container">
         <div className="total-price">
           <span>Total Price</span>
-          <span>{totalPrice} $</span>
+          <span>{totalPrice ? totalPrice : "0.00"} $</span>
         </div>
 
         <div className="additional-prices">

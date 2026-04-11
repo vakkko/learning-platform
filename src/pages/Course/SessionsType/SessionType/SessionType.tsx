@@ -15,8 +15,8 @@ const SessionType: React.FC<SessionTypeProps> = ({
 }) => {
   return (
     <div
-      onClick={() => handleSessionClick(id, price)}
-      className={`session-container-wrapper ${sessionId === id ? "active" : ""}`}
+      onClick={() => availableSeats !== 0 && handleSessionClick(id, price)}
+      className={`session-container-wrapper ${sessionId === id ? "active" : availableSeats === 0 ? "disabled" : ""}`}
     >
       <div className="session-type-container">
         {sessionType === "online" && (
@@ -89,14 +89,14 @@ const SessionType: React.FC<SessionTypeProps> = ({
         </div>
         <span className="session-price">+{price}</span>
       </div>
-      {availableSeats > 5 ? (
+      {availableSeats === 0 ? (
+        <p className="available-seats">No Seats Available</p>
+      ) : availableSeats > 5 ? (
         <p className="available-seats">{availableSeats} Seats Available </p>
       ) : (
         <p className="available-seats deficit">
           <img src="images/course/warning.png" alt="warning" />
-          {availableSeats === 0
-            ? `${availableSeats} Seats Remaining`
-            : `Only ${availableSeats} Seats Remaining`}
+          Only {availableSeats} Seats Remaining
         </p>
       )}
     </div>

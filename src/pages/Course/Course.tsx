@@ -39,8 +39,6 @@ const Course: React.FC = () => {
     setSessionPrice(price);
   };
 
-  console.log(sessionPrice);
-
   return (
     <main className="course-main">
       {courseData && <FeaturedCourse courseData={courseData} coursePage />}

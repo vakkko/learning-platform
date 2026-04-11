@@ -13,6 +13,18 @@
     }
   }
 
+  &.disabled > .session-type-container,
+  &:hover > .session-type-container {
+    border: 1px solid $greyscale-200;
+    background-color: $greyscale-100;
+    .session-type,
+    .session-place,
+    .session-price,
+    svg {
+      color: $greyscale-200;
+    }
+  }
+
   .session-type-container {
     @include flexColumn();
     align-items: center;
