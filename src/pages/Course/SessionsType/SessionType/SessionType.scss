@@ -1,27 +1,55 @@
 @use "../../../../styles/mixins" as *;
 @use "../../../../styles/variables" as *;
 
-.session-type-container {
-  @include flexColumn();
-  align-items: center;
-  gap: 0.8rem;
-  border: 1px solid $greyscale-200;
-  border-radius: 1.2rem;
-  padding: 1.5rem 2rem;
-  width: 31%;
-  .session-type {
-    @include fontWeightSizeColor(600, 1.6rem, $greyscale-600);
+.session-container-wrapper {
+  .session-type-container:hover,
+  &.active > .session-type-container {
+    @include hoverStyles();
+    cursor: pointer;
+
+    .session-type,
+    .session-place {
+      color: $purple-500;
+    }
   }
 
-  .session-place {
-    @include flexAlignCenter(0.2rem);
-    font-size: 1.2rem;
-    color: $greyscale-600;
-    white-space: nowrap;
+  .session-type-container {
+    @include flexColumn();
+    align-items: center;
+    gap: 0.8rem;
+    border: 1px solid $greyscale-200;
+    border-radius: 1.2rem;
+    padding: 1.5rem 3rem;
+
+    .session-type {
+      @include fontWeightSizeColor(600, 1.6rem, $greyscale-600);
+
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+
+    .session-place {
+      @include flexAlignCenter(0.2rem);
+      font-size: 1.2rem;
+      color: $greyscale-600;
+      white-space: nowrap;
+    }
+
+    .session-price {
+      @include fontWeightSizeColor(500, 1.4rem, $purple-400);
+      margin-top: 0.4rem;
+    }
   }
 
-  .session-price {
-    @include fontWeightSizeColor(500, 1.4rem, $purple-400);
-    margin-top: 0.4rem;
+  .available-seats {
+    @include fontWeightSizeColor(500, 1.2rem, $greyscale-700);
+    text-align: center;
+    margin-top: 0.8rem;
+
+    &.deficit {
+      @include flexAlignCenter(0.4rem);
+      color: $helper-warning;
+    }
   }
 }

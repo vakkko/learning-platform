@@ -35,9 +35,3 @@ export const carouselItems: carouselItemsTypes[] = [
     buttonText: "Learn More",
   },
 ];
-
-export const SESSION_TYPES = [
-  { sessionType: "Online", place: "Google Meet", price: "Included" },
-  { sessionType: "In-Person", place: "Chavchavadze St.34", price: "+ $30" },
-  { sessionType: "Hybrid", place: "Chavchavadze St.34", price: "+ $50" },
-];

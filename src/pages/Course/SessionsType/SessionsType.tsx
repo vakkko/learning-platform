@@ -1,22 +1,41 @@
 import React from "react";
 
-import SessionType from "./SessionType/SessionType";
+import { useParams } from "react-router";
 
-import { SESSION_TYPES } from "../../../consts/consts";
+import SessionType from "./SessionType/SessionType";
 import ScheduleDropdown from "../ScheduleDropdown/ScheduleDropdown";
 
-const SessionsType: React.FC = () => {
+import type { SessionsTypeProps, SessionTypes } from "./SessionsType.types";
+import useGetData from "../../../hooks/useGetData/useGetData";
+
+const SessionsType: React.FC<SessionsTypeProps> = ({
+  daysId,
+  timeId,
+  handleSessionClick,
+  sessionId,
+}) => {
+  const { id } = useParams();
+
+  const { data: sessionData } = useGetData<SessionTypes[]>({
+    endpoint: `courses/${id}/session-types?weekly_schedule_id=${daysId}&time_slot_id=${timeId}`,
+  });
+
   return (
     <ScheduleDropdown heading="Session Type" num={3}>
-      {SESSION_TYPES.map((slot, i) => (
-        <React.Fragment key={i}>
-          <SessionType
-            price={slot.price}
-            sessionPlace={slot.place}
-            sessionType={slot.sessionType}
-          />
-        </React.Fragment>
-      ))}
+      {sessionData &&
+        sessionData.map((slot) => (
+          <React.Fragment key={slot.id}>
+            <SessionType
+              price={slot.priceModifier}
+              sessionPlace={slot.location}
+              sessionType={slot.name.replace("_", "-")}
+              availableSeats={slot.availableSeats}
+              handleSessionClick={handleSessionClick}
+              sessionId={sessionId}
+              id={slot.id}
+            />
+          </React.Fragment>
+        ))}
     </ScheduleDropdown>
   );
 };

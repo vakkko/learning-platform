@@ -44,11 +44,18 @@
 
   .btn-enroll {
     @include buttonStyles();
+    background: $purple-500;
+    color: $greyscale-50;
+    border: 1px solid $purple-500;
 
     &:disabled {
       color: $purple-200;
       background-color: $purple-50;
       border: 2px solid $purple-50;
+    }
+
+    &:hover {
+      background-color: $purple-600;
     }
   }
 }
