@@ -132,12 +132,14 @@ const CoursePrice: React.FC<CoursePriceProps> = ({
       )}
       {showSuccessModal && (
         <StatusModal
-          image="congrats"
-          title="Congratulations!"
-          description="You've completed “Advanced React & TypeScript Development” Course!"
-          handleConfirmClick={() => setShowSuccessModal(false)}
+          image="confirm"
+          title="Enrollment Confirmed!"
+          description={`You've successfully enrolled to the “${courseTitle}” Course!`}
+          handleCancelClick={() => {
+            setShowSuccessModal(false);
+            setEnrollmentConflict(false);
+          }}
           btnCancel="Done"
-          showSuccess={showSuccessModal}
         />
       )}
     </div>
