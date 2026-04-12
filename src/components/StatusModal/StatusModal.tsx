@@ -4,9 +4,8 @@ import type { StatusModalProps } from "./StatusModal.types";
 
 import "./StatusModal.scss";
 import RatingBox from "./RatingBox/RatingBox";
-import axios from "axios";
-import { BASE_URL } from "../../consts/consts";
 import { useParams } from "react-router";
+import useRateCourse from "../../hooks/useRateCourse/useRateCourse";
 
 const StatusModal: React.FC<StatusModalProps> = ({
   image,
@@ -19,29 +18,9 @@ const StatusModal: React.FC<StatusModalProps> = ({
   showSuccess,
 }) => {
   const { id } = useParams();
-  const token = sessionStorage.getItem("token");
   const [rating, setRating] = useState<number | null>(null);
 
-  const handleRateClick = async () => {
-    if (rating) {
-      try {
-        const response = await axios.post(
-          `${BASE_URL}/courses/${id}/reviews`,
-          {
-            rating: rating,
-          },
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          },
-        );
-        if (response.status === 201 && handleCancelClick) {
-          handleCancelClick();
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    }
-  };
+  const handleRateClick = useRateCourse(id, rating, handleCancelClick);
 
   return (
     <>

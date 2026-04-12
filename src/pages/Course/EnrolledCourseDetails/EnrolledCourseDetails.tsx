@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import SessionType from "./SessionType/SessionType";
 
@@ -8,12 +8,14 @@ import "./EnrolledCourseDetails.scss";
 import ProgressBox from "../../Landing/ContinueLearning/EnrolledCourse/ProgressBox/ProgressBox";
 import axios from "axios";
 import { BASE_URL } from "../../../consts/consts";
+import StatusModal from "../../../components/StatusModal/StatusModal";
 
 const EnrolledCourseDetails: React.FC<EnrolledCourseDetailsProps> = ({
   enrolledData,
   setEnrolledData,
 }) => {
   const token = sessionStorage.getItem("token");
+  const [rateModal, setRateModal] = useState<boolean>(false);
 
   const handleCompleteClick = async () => {
     try {
@@ -24,9 +26,10 @@ const EnrolledCourseDetails: React.FC<EnrolledCourseDetailsProps> = ({
       );
       if (response.status === 200) {
         setEnrolledData(response.data.data);
+        setRateModal(true);
       }
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -76,6 +79,16 @@ const EnrolledCourseDetails: React.FC<EnrolledCourseDetailsProps> = ({
           </svg>
         </button>
       </div>
+      {rateModal && (
+        <StatusModal
+          image="congrats"
+          title="Congratulations!"
+          description={`You've completed “${enrolledData?.course.title}” Course!`}
+          handleCancelClick={() => setRateModal(false)}
+          showSuccess
+          btnCancel="Done"
+        />
+      )}
     </div>
   );
 };
