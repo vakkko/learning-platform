@@ -63,6 +63,7 @@ const Course: React.FC = () => {
           <EnrolledCourseDetails
             enrolledData={enrolledData}
             setEnrolledData={setEnrolledData}
+            setShowEnrolledData={setShowEnrolledData}
           />
         ) : (
           <>

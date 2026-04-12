@@ -5,4 +5,7 @@ export interface EnrolledCourseDetailsProps {
   setEnrolledData: React.Dispatch<
     React.SetStateAction<EnrollmentRecord | undefined>
   >;
+  setShowEnrolledData: React.Dispatch<
+    React.SetStateAction<boolean | undefined>
+  >;
 }
