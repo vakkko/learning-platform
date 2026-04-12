@@ -1,6 +1,7 @@
 import React from "react";
 
 import LecturerRatingAndHeading from "../../../../components/LecturerRatingAndHeading/LecturerRatingAndHeading";
+import ProgressBox from "./ProgressBox/ProgressBox";
 
 import type { EnrolledCourseTypes } from "./EnrolledCourse.types";
 
@@ -26,14 +27,7 @@ const EnrolledCourse: React.FC<EnrolledCourseTypes> = ({
         </div>
       </div>
       <div className="progress-box-and-btn">
-        <div className="progress-box">
-          <span>{progressValue} Complete</span>
-          <progress
-            className="progress-bar"
-            max={100}
-            value={progressValue}
-          ></progress>
-        </div>
+        <ProgressBox progressValue={progressValue} />
         <button className="btn-view">View</button>
       </div>
     </div>
