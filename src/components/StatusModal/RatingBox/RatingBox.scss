@@ -1,0 +1,24 @@
+@use "../../../styles/mixins" as *;
+@use "../../../styles/variables" as *;
+
+.rating-box {
+  @include flexColumn(1.8rem);
+  align-items: center;
+
+  & > p {
+    @include fontWeightSizeColor(500, 1.6rem, $purple-400);
+  }
+
+  & > div {
+    @include flexAlignCenter(1.8rem);
+    button {
+      cursor: pointer;
+      color: $greyscale-100;
+      transition: color 0.2s ease;
+    }
+
+    button.filled {
+      color: $helper-warning;
+    }
+  }
+}

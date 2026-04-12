@@ -28,6 +28,8 @@ const CoursePrice: React.FC<CoursePriceProps> = ({
   const [showProfileRedirection, setShowProfileRedirection] =
     useState<boolean>(false);
   const [enrollmentConflict, setEnrollmentConflict] = useState<boolean>(false);
+  const [showSuccessModal, setShowSuccessModal] = useState<boolean>(false);
+  const [rating, setRating] = React.useState<number | null>(null);
 
   const totalPrice = sessionPrice
     ? Number(basePrice) + Number(sessionPrice)
@@ -59,6 +61,10 @@ const CoursePrice: React.FC<CoursePriceProps> = ({
               },
             },
           );
+          console.log(response);
+          if (response.status === 200) {
+            setShowSuccessModal(true);
+          }
         } catch (err) {
           const axiosError = err as AxiosError;
           if (axiosError.status === 409) {
@@ -104,13 +110,13 @@ const CoursePrice: React.FC<CoursePriceProps> = ({
           image="user-modal"
           title="Complete your profile to continue"
           description="You need to complete your profile before enrolling in this course."
-          btn1="Complete Profile"
-          btn2="Cancel"
-          handleBtn1Click={() => {
+          btnConfirm="Complete Profile"
+          btnCancel="Cancel"
+          handleConfirmClick={() => {
             setShowUserModal(true);
             setShowProfileRedirection(false);
           }}
-          handleBtn2Click={() => setShowProfileRedirection(false)}
+          handleCancelClick={() => setShowProfileRedirection(false)}
         />
       )}
       {enrollmentConflict && (
@@ -120,10 +126,21 @@ const CoursePrice: React.FC<CoursePriceProps> = ({
           description={`You are already enrolled in 
           ${courseTitle} with the same schedule: 
           ${dayValue} at ${timeValue} `}
-          btn1="Continue Anyway"
-          btn2="Cancel"
-          handleBtn1Click={() => handleEnrollClick()}
-          handleBtn2Click={() => setEnrollmentConflict(false)}
+          btnConfirm="Continue Anyway"
+          btnCancel="Cancel"
+          handleConfirmClick={() => handleEnrollClick()}
+          handleCancelClick={() => setEnrollmentConflict(false)}
+        />
+      )}
+      {showSuccessModal && (
+        <StatusModal
+          image="congrats"
+          title="Congratulations!"
+          description="You've completed “Advanced React & TypeScript Development” Course!"
+          handleConfirmClick={() => setShowSuccessModal(false)}
+          btnCancel="Done"
+          rating={rating}
+          setRating={setRating}
         />
       )}
     </div>

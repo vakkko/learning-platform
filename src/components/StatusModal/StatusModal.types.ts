@@ -2,8 +2,10 @@ export interface StatusModalProps {
   image: string;
   title: string;
   description: string;
-  btn1: string;
-  btn2?: string;
-  handleBtn1Click: () => void;
-  handleBtn2Click?: () => void;
+  btnConfirm?: string;
+  btnCancel?: string;
+  handleConfirmClick?: () => void;
+  handleCancelClick?: () => void;
+  rating?: number | null;
+  setRating?: React.Dispatch<React.SetStateAction<number | null>>;
 }
