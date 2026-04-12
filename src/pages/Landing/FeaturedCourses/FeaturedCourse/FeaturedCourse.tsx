@@ -19,10 +19,14 @@ const FeaturedCourse: React.FC<FeaturedCourseProps> = ({
 }) => {
   const rating = courseData.avgRating
     ? courseData.avgRating
-    : (
-        (courseData as CourseTypes).reviews.reduce((a, b) => a + b.rating, 0) /
-        (courseData as CourseTypes).reviews.length
-      ).toFixed(1);
+    : (courseData as CourseTypes).reviews.length > 0
+      ? (
+          (courseData as CourseTypes).reviews.reduce(
+            (a, b) => a + b.rating,
+            0,
+          ) / (courseData as CourseTypes).reviews.length
+        ).toFixed(1)
+      : "";
 
   const categoryLowered = courseData.category.name.toLocaleLowerCase();
 

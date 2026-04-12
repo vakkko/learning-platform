@@ -1,3 +1,3 @@
 export interface ProgressBoxProps {
-  progressValue: number;
+  progressValue?: number;
 }

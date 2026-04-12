@@ -31,4 +31,24 @@
       }
     }
   }
+
+  .progress-bar-and-button {
+    & > .progress-box {
+      margin-bottom: 4rem;
+      span {
+        @include fontWeightSizeColor(600, 2rem, $greyscale-500);
+      }
+
+      progress {
+        height: 2.3rem;
+      }
+    }
+  }
+
+  .btn-complete {
+    @include buttonStyles($greyscale-50, $purple-500, $purple-500);
+    width: 100%;
+    @include flexAlignCenter(1rem);
+    justify-content: center;
+  }
 }

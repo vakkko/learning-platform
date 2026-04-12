@@ -2,4 +2,7 @@ import type { EnrollmentRecord } from "../../Landing/ContinueLearning/ContinueLe
 
 export interface EnrolledCourseDetailsProps {
   enrolledData: EnrollmentRecord | undefined;
+  setEnrolledData: React.Dispatch<
+    React.SetStateAction<EnrollmentRecord | undefined>
+  >;
 }

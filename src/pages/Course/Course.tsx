@@ -59,8 +59,11 @@ const Course: React.FC = () => {
     <main className="course-main">
       {courseData && <FeaturedCourse courseData={courseData} coursePage />}
       <div className="schedules-container">
-        {showEnrolledData ? (
-          <EnrolledCourseDetails enrolledData={enrolledData} />
+        {enrolledData && showEnrolledData ? (
+          <EnrolledCourseDetails
+            enrolledData={enrolledData}
+            setEnrolledData={setEnrolledData}
+          />
         ) : (
           <>
             <WeeklySchedule daysId={daysId} handleDaysClick={handleDaysClick} />
