@@ -14,6 +14,8 @@ import CoursePrice from "./CoursePrice/CoursePrice";
 import type { CourseTypes } from "./Course.types";
 
 import "./Course.scss";
+import type { EnrollmentRecord } from "../Landing/ContinueLearning/ContinueLearning.types";
+import EnrolledCourseDetails from "./EnrolledCourseDetails/EnrolledCourseDetails";
 
 const Course: React.FC = () => {
   const { id } = useParams();
@@ -26,6 +28,9 @@ const Course: React.FC = () => {
   const [sessionId, setSessionId] = useState<number>();
   const [sessionPrice, setSessionPrice] = useState<number>();
   const [courseScheduleId, setCourseScheduleId] = useState<number>();
+
+  const [enrolledData, setEnrolledData] = useState<EnrollmentRecord>();
+  const [showEnrolledData, setShowEnrolledData] = useState<boolean>();
 
   const [dayValue, setDayValue] = useState<string>();
   const [timeValue, setTimeValue] = useState<string>();
@@ -40,6 +45,10 @@ const Course: React.FC = () => {
     setTimeValue(timeValue);
   };
 
+  const handleDoneCLick = () => {
+    setShowEnrolledData(true);
+  };
+
   const handleSessionClick = (id: number, price: number, courseId: number) => {
     setSessionId(id);
     setSessionPrice(price);
@@ -50,28 +59,36 @@ const Course: React.FC = () => {
     <main className="course-main">
       {courseData && <FeaturedCourse courseData={courseData} coursePage />}
       <div className="schedules-container">
-        <WeeklySchedule daysId={daysId} handleDaysClick={handleDaysClick} />
-        <TimesSlot
-          daysId={daysId}
-          handleTimeClick={handleTimeClick}
-          timeId={timeId}
-        />
-        <SessionsType
-          handleSessionClick={handleSessionClick}
-          sessionId={sessionId}
-          daysId={daysId}
-          timeId={timeId}
-        />
-        <CoursePrice
-          basePrice={courseData?.basePrice}
-          sessionPrice={sessionPrice}
-          activeStyle={!!daysId && !!timeId && !!sessionId}
-          courseId={Number(id)}
-          courseTitle={courseData?.title}
-          dayValue={dayValue}
-          timeValue={timeValue}
-          courseScheduleId={courseScheduleId}
-        />
+        {showEnrolledData ? (
+          <EnrolledCourseDetails enrolledData={enrolledData} />
+        ) : (
+          <>
+            <WeeklySchedule daysId={daysId} handleDaysClick={handleDaysClick} />
+            <TimesSlot
+              daysId={daysId}
+              handleTimeClick={handleTimeClick}
+              timeId={timeId}
+            />
+            <SessionsType
+              handleSessionClick={handleSessionClick}
+              sessionId={sessionId}
+              daysId={daysId}
+              timeId={timeId}
+            />
+            <CoursePrice
+              basePrice={courseData?.basePrice}
+              sessionPrice={sessionPrice}
+              activeStyle={!!daysId && !!timeId && !!sessionId}
+              courseId={Number(id)}
+              courseTitle={courseData?.title}
+              dayValue={dayValue}
+              timeValue={timeValue}
+              courseScheduleId={courseScheduleId}
+              setEnrolledData={setEnrolledData}
+              handleDoneCLick={handleDoneCLick}
+            />
+          </>
+        )}
       </div>
     </main>
   );

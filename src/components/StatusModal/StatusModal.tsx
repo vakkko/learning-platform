@@ -34,7 +34,6 @@ const StatusModal: React.FC<StatusModalProps> = ({
             headers: { Authorization: `Bearer ${token}` },
           },
         );
-        console.log(response);
         if (response.status === 201 && handleCancelClick) {
           handleCancelClick();
         }

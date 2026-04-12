@@ -1,0 +1,34 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.enrolled-course-details-contaienr {
+  .indicator {
+    @include fontWeightSizeColor(600, 2rem);
+    border-radius: 100px;
+    padding: 1.6rem;
+
+    &.enrolled {
+      color: $purple-400;
+      background-color: $purple-400-light;
+    }
+
+    &.completed {
+      color: $helper-success;
+      background-color: $helper-success-light;
+    }
+  }
+
+  .enrolled-course-details {
+    margin-top: 3.8rem;
+    margin-bottom: 4.8rem;
+    @include flexColumn(2.2rem);
+
+    & > section {
+      @include flexAlignCenter(1.2rem);
+      span {
+        @include fontWeightSizeColor(500, 2rem, $greyscale-600);
+        text-align: center;
+      }
+    }
+  }
+}

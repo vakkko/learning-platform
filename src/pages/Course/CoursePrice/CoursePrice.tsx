@@ -20,6 +20,8 @@ const CoursePrice: React.FC<CoursePriceProps> = ({
   dayValue,
   timeValue,
   courseScheduleId,
+  setEnrolledData,
+  handleDoneCLick,
 }) => {
   const { authorized, setShowUserModal, setShowLogin } = useContext(
     AppContext,
@@ -62,6 +64,7 @@ const CoursePrice: React.FC<CoursePriceProps> = ({
           );
           if (response.status === 201) {
             setShowSuccessModal(true);
+            setEnrolledData(response.data.data);
           }
         } catch (err) {
           const axiosError = err as AxiosError;
@@ -138,6 +141,7 @@ const CoursePrice: React.FC<CoursePriceProps> = ({
           handleCancelClick={() => {
             setShowSuccessModal(false);
             setEnrollmentConflict(false);
+            handleDoneCLick();
           }}
           btnCancel="Done"
         />
