@@ -36,3 +36,8 @@ export interface Schedule {
   };
   location: string;
 }
+
+export interface ContinueLearningInterface {
+  isAuthorized: boolean;
+  enrolledData?: EnrollmentRecord[];
+}
