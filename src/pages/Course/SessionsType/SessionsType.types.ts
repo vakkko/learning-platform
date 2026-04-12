@@ -1,7 +1,7 @@
 export interface SessionsTypeProps {
   daysId?: number;
   timeId?: number;
-  handleSessionClick: (id: number, price: number) => void;
+  handleSessionClick: (id: number, price: number, courseId: number) => void;
   sessionId?: number;
 }
 

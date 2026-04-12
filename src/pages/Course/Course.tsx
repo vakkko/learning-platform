@@ -25,6 +25,7 @@ const Course: React.FC = () => {
   const [timeId, setTimeId] = useState<number>();
   const [sessionId, setSessionId] = useState<number>();
   const [sessionPrice, setSessionPrice] = useState<number>();
+  const [courseScheduleId, setCourseScheduleId] = useState<number>();
 
   const [dayValue, setDayValue] = useState<string>();
   const [timeValue, setTimeValue] = useState<string>();
@@ -39,9 +40,10 @@ const Course: React.FC = () => {
     setTimeValue(timeValue);
   };
 
-  const handleSessionClick = (id: number, price: number) => {
+  const handleSessionClick = (id: number, price: number, courseId: number) => {
     setSessionId(id);
     setSessionPrice(price);
+    setCourseScheduleId(courseId);
   };
 
   return (
@@ -64,11 +66,11 @@ const Course: React.FC = () => {
           basePrice={courseData?.basePrice}
           sessionPrice={sessionPrice}
           activeStyle={!!daysId && !!timeId && !!sessionId}
-          timeId={timeId}
           courseId={Number(id)}
           courseTitle={courseData?.title}
           dayValue={dayValue}
           timeValue={timeValue}
+          courseScheduleId={courseScheduleId}
         />
       </div>
     </main>

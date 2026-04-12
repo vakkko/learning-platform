@@ -12,10 +12,13 @@ const SessionType: React.FC<SessionTypeProps> = ({
   handleSessionClick,
   sessionId,
   id,
+  courseScheduleId,
 }) => {
   return (
     <div
-      onClick={() => availableSeats !== 0 && handleSessionClick(id, price)}
+      onClick={() =>
+        availableSeats !== 0 && handleSessionClick(id, price, courseScheduleId)
+      }
       className={`session-container-wrapper ${sessionId === id ? "active" : availableSeats === 0 ? "disabled" : ""}`}
     >
       <div className="session-type-container">

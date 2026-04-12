@@ -33,6 +33,7 @@ const SessionsType: React.FC<SessionsTypeProps> = ({
               handleSessionClick={handleSessionClick}
               sessionId={sessionId}
               id={slot.id}
+              courseScheduleId={slot.courseScheduleId}
             />
           </React.Fragment>
         ))}

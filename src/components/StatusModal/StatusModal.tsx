@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
 import type { StatusModalProps } from "./StatusModal.types";
 
 import "./StatusModal.scss";
 import RatingBox from "./RatingBox/RatingBox";
+import axios from "axios";
+import { BASE_URL } from "../../consts/consts";
+import { useParams } from "react-router";
 
 const StatusModal: React.FC<StatusModalProps> = ({
   image,
@@ -13,9 +16,34 @@ const StatusModal: React.FC<StatusModalProps> = ({
   btnCancel,
   handleConfirmClick,
   handleCancelClick,
-  rating,
-  setRating,
+  showSuccess,
 }) => {
+  const { id } = useParams();
+  const token = sessionStorage.getItem("token");
+  const [rating, setRating] = useState<number | null>(null);
+
+  const handleRateClick = async () => {
+    if (rating) {
+      try {
+        const response = await axios.post(
+          `${BASE_URL}/courses/${id}/reviews`,
+          {
+            rating: rating,
+          },
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          },
+        );
+        console.log(response);
+        if (response.status === 201 && handleCancelClick) {
+          handleCancelClick();
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  };
+
   return (
     <>
       <div onClick={handleCancelClick} id="overlay"></div>
@@ -25,7 +53,7 @@ const StatusModal: React.FC<StatusModalProps> = ({
           <h3>{title}</h3>
           <p>{description}</p>
         </div>
-        <RatingBox rating={rating} setRating={setRating} />
+        {showSuccess && <RatingBox rating={rating} setRating={setRating} />}
         <div className="buttons-box">
           {btnConfirm && (
             <button onClick={handleConfirmClick} className="btn1">
@@ -33,8 +61,11 @@ const StatusModal: React.FC<StatusModalProps> = ({
             </button>
           )}
           {btnCancel && (
-            <button onClick={handleCancelClick} className="btn2">
-              Cancel
+            <button
+              onClick={handleCancelClick ? handleCancelClick : handleRateClick}
+              className="btn2"
+            >
+              {btnCancel}
             </button>
           )}
         </div>

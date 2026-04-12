@@ -6,6 +6,5 @@ export interface StatusModalProps {
   btnCancel?: string;
   handleConfirmClick?: () => void;
   handleCancelClick?: () => void;
-  rating?: number | null;
-  setRating?: React.Dispatch<React.SetStateAction<number | null>>;
+  showSuccess?: boolean;
 }

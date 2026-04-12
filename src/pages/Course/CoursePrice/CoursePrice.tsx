@@ -14,12 +14,12 @@ import { BASE_URL } from "../../../consts/consts";
 const CoursePrice: React.FC<CoursePriceProps> = ({
   basePrice,
   sessionPrice,
-  timeId,
   courseId,
   activeStyle,
   courseTitle,
   dayValue,
   timeValue,
+  courseScheduleId,
 }) => {
   const { authorized, setShowUserModal, setShowLogin } = useContext(
     AppContext,
@@ -29,7 +29,6 @@ const CoursePrice: React.FC<CoursePriceProps> = ({
     useState<boolean>(false);
   const [enrollmentConflict, setEnrollmentConflict] = useState<boolean>(false);
   const [showSuccessModal, setShowSuccessModal] = useState<boolean>(false);
-  const [rating, setRating] = React.useState<number | null>(null);
 
   const totalPrice = sessionPrice
     ? Number(basePrice) + Number(sessionPrice)
@@ -45,14 +44,14 @@ const CoursePrice: React.FC<CoursePriceProps> = ({
       setShowLogin(true);
     } else if (!completedProfile) {
       setShowProfileRedirection(true);
-    } else if (completedProfile && timeId && courseId) {
+    } else if (completedProfile && courseScheduleId && courseId) {
       const enrollCourse = async () => {
         try {
           const response = await axios.post(
             `${BASE_URL}/enrollments`,
             {
               courseId: Number(courseId),
-              courseScheduleId: timeId,
+              courseScheduleId: courseScheduleId,
               force: !!enrollmentConflict,
             },
             {
@@ -61,8 +60,7 @@ const CoursePrice: React.FC<CoursePriceProps> = ({
               },
             },
           );
-          console.log(response);
-          if (response.status === 200) {
+          if (response.status === 201) {
             setShowSuccessModal(true);
           }
         } catch (err) {
@@ -139,8 +137,7 @@ const CoursePrice: React.FC<CoursePriceProps> = ({
           description="You've completed “Advanced React & TypeScript Development” Course!"
           handleConfirmClick={() => setShowSuccessModal(false)}
           btnCancel="Done"
-          rating={rating}
-          setRating={setRating}
+          showSuccess={showSuccessModal}
         />
       )}
     </div>

@@ -1,7 +1,7 @@
 @use "../../../styles/mixins" as *;
 @use "../../../styles/variables" as *;
 
-.rating-box {
+.rate-box {
   @include flexColumn(1.8rem);
   align-items: center;
 

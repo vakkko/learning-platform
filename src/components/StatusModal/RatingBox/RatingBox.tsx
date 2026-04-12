@@ -1,6 +1,8 @@
 import React from "react";
-import "./RatingBox.scss";
+
 import type { RatingBoxProps } from "./RatingBox.types";
+
+import "./RatingBox.scss";
 
 const RatingBox: React.FC<RatingBoxProps> = ({ rating, setRating }) => {
   const [hovered, setHovered] = React.useState<number | null>(null);
@@ -10,7 +12,7 @@ const RatingBox: React.FC<RatingBoxProps> = ({ rating, setRating }) => {
   };
 
   return (
-    <div className="rating-box">
+    <div className="rate-box">
       <p>Rate your experience</p>
 
       <div className="stars">
