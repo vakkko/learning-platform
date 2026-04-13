@@ -21,8 +21,22 @@
     margin-top: 3.4rem;
     @include flexAlignCenter();
     justify-content: space-between;
-    h2 {
-      @include fontWeightSizeColor(600, 4rem, $greyscale-950);
+
+    & > div:first-child {
+      h2 {
+        @include fontWeightSizeColor(600, 4rem, $greyscale-950);
+      }
+
+      button {
+        @include fontWeightSizeColor(500, 1.6rem, $greyscale-400);
+        @include flexAlignCenter(0.4rem);
+        line-height: 150%;
+        &:hover {
+          color: $purple-500;
+        }
+      }
+
+      @include flexAlignCenter(5.5rem);
     }
 
     .sort-container {

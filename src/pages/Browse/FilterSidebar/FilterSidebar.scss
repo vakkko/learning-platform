@@ -10,4 +10,12 @@
     @include fontWeightSizeColor(500, 1.8rem, $greyscale-500);
     margin-bottom: 2.4rem;
   }
+
+  .active-filters {
+    @include fontWeight500Size14;
+    border-top: 1px solid $greyscale-300;
+    width: 100%;
+    padding-top: 1.65rem;
+    color: $greyscale-300;
+  }
 }

@@ -1,0 +1,27 @@
+@use "../../../../styles/mixins" as *;
+@use "../../../../styles/variables" as *;
+
+.instructors-container {
+  @include flexColumn(0.8rem);
+
+  & > div {
+    @include flexAlignCenter(1.2rem);
+    @include fontWeightSizeColor(500, 1.6rem, $greyscale-500);
+    background-color: $greyscale-50;
+    width: fit-content;
+    padding: 0.8rem 1.2rem;
+    border-radius: 1.2rem;
+
+    &:hover {
+      @include hoverStyles();
+      cursor: pointer;
+    }
+
+    img {
+      border-radius: 0.4rem;
+      width: 3rem;
+      height: 3rem;
+      object-fit: cover;
+    }
+  }
+}
