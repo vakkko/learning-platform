@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import { AppContext, type ContextType } from "../../../context/appContext";
 
@@ -6,6 +6,7 @@ import AuthModal from "../../AuthModal/AuthModal";
 import ImagePreview from "../../TextInput/ImagePreview/ImagePreview";
 
 import "./ButtonAndAvatar.scss";
+import SidePanel from "../SidePanel/SidePanel";
 
 const ButtonAndAvatar: React.FC = () => {
   const userAvatar = sessionStorage.getItem("avatar");
@@ -23,10 +24,16 @@ const ButtonAndAvatar: React.FC = () => {
     setShowUserModal(false);
   };
 
+  const [showSidePanel, setShowSidePanel] = useState<boolean>(false);
+
+  const handleEnrollClick = () => {
+    setShowSidePanel(true);
+  };
+
   return (
     <>
       <div className="button-and-avatar-box">
-        <button className="btn-courses-box">
+        <button className="btn-courses-box" onClick={handleEnrollClick}>
           <svg
             width="26"
             height="26"
@@ -64,6 +71,7 @@ const ButtonAndAvatar: React.FC = () => {
           handleModalClose={handleUserModalClose}
         />
       )}
+      {showSidePanel && <SidePanel />}
     </>
   );
 };

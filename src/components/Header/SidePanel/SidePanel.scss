@@ -1,0 +1,33 @@
+@use "../../../styles/mixins" as *;
+@use "../../../styles/variables" as *;
+
+.side-panel-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: white;
+  height: 100%;
+  z-index: 1000;
+  padding: 4.2rem 5.7rem;
+
+  .side-panel-heading {
+    @include flexAlignCenter(16.8rem);
+    justify-content: space-between;
+    color: $greyscale-950;
+
+    h2 {
+      @include fontWeightSizeColor(600, 4rem);
+    }
+
+    span {
+      @include fontWeightSizeColor(500, 1.6rem);
+      line-height: 150%;
+    }
+  }
+
+  .side-panel-content {
+    @include flexAlignCenter();
+    height: 100%;
+    justify-content: center;
+  }
+}

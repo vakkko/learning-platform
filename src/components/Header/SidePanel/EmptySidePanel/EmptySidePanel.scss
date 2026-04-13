@@ -1,0 +1,31 @@
+@use "../../../../styles/mixins" as *;
+@use "../../../../styles/variables" as *;
+
+.empty-content {
+  @include flexColumn(0.8rem);
+  align-items: center;
+
+  img {
+    width: fit-content;
+  }
+
+  h3 {
+    @include fontWeightSizeColor(600, 2.4rem, $purple-800);
+  }
+
+  p {
+    @include fontWeightSizeColor(500, 1.4rem, $purple-800);
+    text-align: center;
+    width: 60%;
+  }
+
+  a {
+    @include buttonStyles(
+      $greyscale-50,
+      $purple-500,
+      $purple-500,
+      1.7rem 2.5rem
+    );
+    margin-top: 1rem;
+  }
+}
