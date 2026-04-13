@@ -6,5 +6,9 @@ export interface CategoryTypes {
 
 export interface CategoriesProps {
   categoryId?: number;
-  handleChange: (e: React.MouseEvent<HTMLDivElement>) => void;
+  handleChange: (
+    e: React.MouseEvent<HTMLDivElement>,
+    setState: React.Dispatch<React.SetStateAction<number | undefined>>,
+  ) => void;
+  setCategoryId: React.Dispatch<React.SetStateAction<number | undefined>>;
 }

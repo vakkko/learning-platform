@@ -11,6 +11,7 @@ import "./Categories.scss";
 const Categories: React.FC<CategoriesProps> = ({
   categoryId,
   handleChange,
+  setCategoryId,
 }) => {
   const { data: categories } = useGetData<CategoryTypes[]>({
     endpoint: "categories",
@@ -19,7 +20,10 @@ const Categories: React.FC<CategoriesProps> = ({
   return (
     <div>
       <h4>Categories</h4>
-      <div onClick={handleChange} className="categories-filters">
+      <div
+        onClick={(e) => handleChange(e, setCategoryId)}
+        className="categories-filters"
+      >
         {categories?.map((categor) => (
           <React.Fragment key={categor.id}>
             <Category

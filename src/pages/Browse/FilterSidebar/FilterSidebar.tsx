@@ -11,16 +11,29 @@ import "./FilterSidebar.scss";
 const FilterSidebar: React.FC<FilterSidebarProps> = ({
   categoryId,
   setCategoryId,
+  topicId,
+  setTopicId,
 }) => {
-  const handleChange = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleChange = (
+    e: React.MouseEvent<HTMLDivElement>,
+    setId: React.Dispatch<React.SetStateAction<number | undefined>>,
+  ) => {
     const target = e.target as HTMLButtonElement;
-    if (target.value && setCategoryId) setCategoryId(Number(target.value));
+    if (target.value && setId) setId(Number(target.value));
   };
 
   return (
     <div className="filter-sidebar">
-      <Categories categoryId={categoryId} handleChange={handleChange} />
-      <Topics />
+      <Categories
+        categoryId={categoryId}
+        handleChange={handleChange}
+        setCategoryId={setCategoryId}
+      />
+      <Topics
+        topicId={topicId}
+        handleChange={handleChange}
+        setTopicId={setTopicId}
+      />
       <Instructors />
       <div className="active-filters">
         <span>0 Filter Active</span>
