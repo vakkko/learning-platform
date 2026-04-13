@@ -4,7 +4,6 @@
 .empty-content {
   @include flexColumn(0.8rem);
   align-items: center;
-
   img {
     width: fit-content;
   }

@@ -4,6 +4,8 @@ import SessionType from "../SessionType/SessionType";
 
 import type { CourseDetailsProps } from "./CourseDetails.types";
 
+import "./CourseDetails.scss";
+
 const CourseDetails: React.FC<CourseDetailsProps> = ({ enrolledData }) => {
   return (
     <div className="enrolled-course-details">

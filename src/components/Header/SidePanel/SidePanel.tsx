@@ -8,6 +8,7 @@ import EnrolledCourse from "../../../pages/Landing/ContinueLearning/EnrolledCour
 import type { EnrollmentRecord } from "../../../pages/Landing/ContinueLearning/ContinueLearning.types";
 
 import "./SidePanel.scss";
+import CourseDetails from "../../../pages/Course/EnrolledCourseDetails/CourseDetails/CourseDetails";
 
 const SidePanel: React.FC = () => {
   const token = sessionStorage.getItem("token");
@@ -23,9 +24,11 @@ const SidePanel: React.FC = () => {
       <div className="side-panel-container">
         <div className="side-panel-heading">
           <h2>Enrolled Courses</h2>
-          <span>Total Enrollments 0</span>
+          <span>
+            Total Enrollments {enrolledData ? enrolledData.length : 0}
+          </span>
         </div>
-        <div className="side-panel-content">
+        <div className={`side-panel-content ${!enrolledData ? "empty" : ""}`}>
           {enrolledData ? (
             enrolledData.map((course) => (
               <React.Fragment key={course.id}>
@@ -36,6 +39,7 @@ const SidePanel: React.FC = () => {
                   lecturer={course.course.instructor.name}
                   progressValue={course.progress}
                   courseId={course.course.id}
+                  children={<CourseDetails enrolledData={course} />}
                 />
               </React.Fragment>
             ))

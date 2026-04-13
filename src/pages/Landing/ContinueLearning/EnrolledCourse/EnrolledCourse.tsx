@@ -27,8 +27,8 @@ const EnrolledCourse: React.FC<EnrolledCourseTypes> = ({
             avgRating={avgRating}
             lecturer={lecturer}
           />
+          {children && children}
         </div>
-        {children && children}
       </div>
       <div className="progress-box-and-btn">
         <ProgressBox progressValue={progressValue} />

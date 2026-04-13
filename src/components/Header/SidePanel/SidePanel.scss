@@ -9,6 +9,7 @@
   height: 100%;
   z-index: 1000;
   padding: 4.2rem 5.7rem;
+  overflow: hidden;
 
   .side-panel-heading {
     @include flexAlignCenter(16.8rem);
@@ -28,12 +29,30 @@
   .side-panel-content {
     @include flexColumn();
     height: 100%;
-    overflow-y: scroll;
-    justify-content: center;
+    overflow-y: auto;
     align-items: center;
+    padding-bottom: 5.7rem;
+
+    &.empty {
+      justify-content: center;
+    }
 
     & > .enrolled-course {
       width: 100%;
+
+      .img-and-text > img {
+        width: 26.9rem;
+        height: 19.1rem;
+      }
+
+      .enrolled-course-details {
+        margin-top: 0.8rem;
+        margin-bottom: 0;
+        gap: 0.8rem;
+        section > span {
+          font-size: 1.4rem;
+        }
+      }
     }
   }
 }
