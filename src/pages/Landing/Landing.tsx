@@ -15,7 +15,7 @@ const Landing: React.FC = () => {
   const isAuthorized = authorized ? sessionStorage.getItem("token") : null;
 
   const { data: enrolledData } = useGetData<EnrollmentRecord[]>({
-    endpoint: "enrollments",
+    endpoint: "courses/in-progress",
     token: isAuthorized,
   });
 

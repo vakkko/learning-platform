@@ -10,7 +10,10 @@ const useGetData = <T,>({ endpoint, token }: useGetDataTypes) => {
   const [data, setData] = useState<T | null>();
 
   useEffect(() => {
-    if (endpoint === "enrollments" && !token) {
+    if (
+      endpoint === "enrollments" ||
+      (endpoint === "courses/in-progress" && !token)
+    ) {
       return;
     }
 
