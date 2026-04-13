@@ -12,4 +12,8 @@
     background-color: $purple-100;
     color: $purple-600;
   }
+
+  &.active {
+    @include activeStyles();
+  }
 }

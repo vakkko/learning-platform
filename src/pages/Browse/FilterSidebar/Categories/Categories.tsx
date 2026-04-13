@@ -4,10 +4,14 @@ import Category from "../Category/Category.tsx";
 
 import useGetData from "../../../../hooks/useGetData/useGetData.tsx";
 
-import "./Categories.scss";
-import type { CategoryTypes } from "./Categories.types.ts";
+import type { CategoriesProps, CategoryTypes } from "./Categories.types.ts";
 
-const Categories: React.FC = () => {
+import "./Categories.scss";
+
+const Categories: React.FC<CategoriesProps> = ({
+  categoryId,
+  handleChange,
+}) => {
   const { data: categories } = useGetData<CategoryTypes[]>({
     endpoint: "categories",
   });
@@ -15,10 +19,15 @@ const Categories: React.FC = () => {
   return (
     <div>
       <h4>Categories</h4>
-      <div className="categories-filters">
+      <div onClick={handleChange} className="categories-filters">
         {categories?.map((categor) => (
           <React.Fragment key={categor.id}>
-            <Category category={categor.name} icon={categor.icon} />
+            <Category
+              id={categor.id}
+              category={categor.name}
+              icon={categor.icon}
+              categoryId={categoryId}
+            />
           </React.Fragment>
         ))}
       </div>

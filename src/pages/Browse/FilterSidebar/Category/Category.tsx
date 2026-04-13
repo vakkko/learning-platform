@@ -4,7 +4,12 @@ import type { CategoryInterface } from "./Category.types";
 
 import "./Category.scss";
 
-const Category: React.FC<CategoryInterface> = ({ category, icon }) => {
+const Category: React.FC<CategoryInterface> = ({
+  category,
+  icon,
+  id,
+  categoryId,
+}) => {
   const categories = {
     development: (
       <svg
@@ -79,7 +84,10 @@ const Category: React.FC<CategoryInterface> = ({ category, icon }) => {
   };
 
   return (
-    <button className="btn-category">
+    <button
+      value={id}
+      className={`btn-category ${categoryId === id ? "active" : ""}`}
+    >
       {icon && categories[icon as keyof typeof categories]}
       {category}
     </button>

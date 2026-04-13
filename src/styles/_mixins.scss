@@ -55,3 +55,8 @@
   background: $purple-100;
   color: $purple-500;
 }
+
+@mixin activeStyles() {
+  background-color: $purple-50;
+  color: $purple-600;
+}
