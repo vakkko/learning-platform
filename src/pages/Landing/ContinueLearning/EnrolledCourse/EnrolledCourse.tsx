@@ -16,6 +16,7 @@ const EnrolledCourse: React.FC<EnrolledCourseTypes> = ({
   heading,
   courseId,
   children,
+  handleCloseEnroll,
 }) => {
   return (
     <div className="enrolled-course">
@@ -32,7 +33,11 @@ const EnrolledCourse: React.FC<EnrolledCourseTypes> = ({
       </div>
       <div className="progress-box-and-btn">
         <ProgressBox progressValue={progressValue} />
-        <Link to={`${courseId}`} className="btn-view">
+        <Link
+          onClick={handleCloseEnroll}
+          to={`${courseId}`}
+          className="btn-view"
+        >
           View
         </Link>
       </div>

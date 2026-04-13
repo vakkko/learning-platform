@@ -4,13 +4,14 @@ import useGetData from "../../../hooks/useGetData/useGetData";
 
 import EmptySidePanel from "./EmptySidePanel/EmptySidePanel";
 import EnrolledCourse from "../../../pages/Landing/ContinueLearning/EnrolledCourse/EnrolledCourse";
-
-import type { EnrollmentRecord } from "../../../pages/Landing/ContinueLearning/ContinueLearning.types";
-
-import "./SidePanel.scss";
 import CourseDetails from "../../../pages/Course/EnrolledCourseDetails/CourseDetails/CourseDetails";
 
-const SidePanel: React.FC = () => {
+import type { EnrollmentRecord } from "../../../pages/Landing/ContinueLearning/ContinueLearning.types";
+import type { SidePanelProps } from "./SidePanel.types";
+
+import "./SidePanel.scss";
+
+const SidePanel: React.FC<SidePanelProps> = ({ handleCloseEnroll }) => {
   const token = sessionStorage.getItem("token");
 
   const { data: enrolledData } = useGetData<EnrollmentRecord[]>({
@@ -20,7 +21,7 @@ const SidePanel: React.FC = () => {
 
   return (
     <>
-      <div id="overlay"></div>
+      <div onClick={handleCloseEnroll} id="overlay"></div>
       <div className="side-panel-container">
         <div className="side-panel-heading">
           <h2>Enrolled Courses</h2>
@@ -40,6 +41,7 @@ const SidePanel: React.FC = () => {
                   progressValue={course.progress}
                   courseId={course.course.id}
                   children={<CourseDetails enrolledData={course} />}
+                  handleCloseEnroll={handleCloseEnroll}
                 />
               </React.Fragment>
             ))

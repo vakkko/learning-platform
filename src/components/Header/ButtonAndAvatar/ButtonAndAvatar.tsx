@@ -30,6 +30,10 @@ const ButtonAndAvatar: React.FC = () => {
     setShowSidePanel(true);
   };
 
+  const handleCloseEnroll = () => {
+    setShowSidePanel(false);
+  };
+
   return (
     <>
       <div className="button-and-avatar-box">
@@ -71,7 +75,7 @@ const ButtonAndAvatar: React.FC = () => {
           handleModalClose={handleUserModalClose}
         />
       )}
-      {showSidePanel && <SidePanel />}
+      {showSidePanel && <SidePanel handleCloseEnroll={handleCloseEnroll} />}
     </>
   );
 };

@@ -8,4 +8,5 @@ export interface EnrolledCourseTypes {
   progressValue: number;
   courseId: number;
   children?: ReactNode;
+  handleCloseEnroll?: () => void;
 }
