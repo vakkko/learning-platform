@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 
 import { AppContext, type ContextType } from "../../../context/appContext";
 
@@ -12,9 +12,8 @@ const ButtonAndAvatar: React.FC = () => {
   const userAvatar = sessionStorage.getItem("avatar");
   const completedProfile = sessionStorage.getItem("completedProfile");
 
-  const { showUserModal, setShowUserModal } = useContext(
-    AppContext,
-  ) as ContextType;
+  const { showUserModal, setShowUserModal, showSidePanel, setShowSidePanel } =
+    useContext(AppContext) as ContextType;
 
   const handleUserModalOpen = () => {
     setShowUserModal(true);
@@ -23,8 +22,6 @@ const ButtonAndAvatar: React.FC = () => {
   const handleUserModalClose = () => {
     setShowUserModal(false);
   };
-
-  const [showSidePanel, setShowSidePanel] = useState<boolean>(false);
 
   const handleEnrollClick = () => {
     setShowSidePanel(true);

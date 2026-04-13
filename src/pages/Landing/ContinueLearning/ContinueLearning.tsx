@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import { AppContext, type ContextType } from "../../../context/appContext";
 
 import EnrolledCourse from "./EnrolledCourse/EnrolledCourse";
 
@@ -12,6 +14,12 @@ const ContinueLearning: React.FC<ContinueLearningInterface> = ({
   isAuthorized,
   enrolledData,
 }) => {
+  const { setShowSidePanel } = useContext(AppContext) as ContextType;
+
+  const handleSidePanelOpen = () => {
+    setShowSidePanel(true);
+  };
+
   return (
     <>
       <div className="continue-learning-container">
@@ -19,7 +27,7 @@ const ContinueLearning: React.FC<ContinueLearningInterface> = ({
           <h2>Continue Learning</h2>
           <div>
             <p>Pick up where you left</p>
-            <button>See All</button>
+            <button onClick={handleSidePanelOpen}>See All</button>
           </div>
         </div>
         <div

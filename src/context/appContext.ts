@@ -9,6 +9,8 @@ export interface ContextType {
   setShowSignUp: React.Dispatch<React.SetStateAction<boolean>>;
   showUserModal: boolean;
   setShowUserModal: React.Dispatch<React.SetStateAction<boolean>>;
+  showSidePanel: boolean;
+  setShowSidePanel: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const AppContext = createContext<ContextType | null>(null);

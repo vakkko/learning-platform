@@ -13,6 +13,7 @@ export const AppProvider: React.FC<AppType> = ({ children }) => {
   });
   const [showSignUp, setShowSignUp] = useState<boolean>(false);
   const [showUserModal, setShowUserModal] = useState<boolean>(false);
+  const [showSidePanel, setShowSidePanel] = useState<boolean>(false);
 
   return (
     <AppContext.Provider
@@ -25,6 +26,8 @@ export const AppProvider: React.FC<AppType> = ({ children }) => {
         setShowSignUp,
         showUserModal,
         setShowUserModal,
+        showSidePanel,
+        setShowSidePanel,
       }}
     >
       {children}
