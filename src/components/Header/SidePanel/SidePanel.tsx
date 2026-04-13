@@ -35,6 +35,7 @@ const SidePanel: React.FC = () => {
                   image={course.course.image}
                   lecturer={course.course.instructor.name}
                   progressValue={course.progress}
+                  courseId={course.course.id}
                 />
               </React.Fragment>
             ))

@@ -6,6 +6,7 @@ import ProgressBox from "./ProgressBox/ProgressBox";
 import type { EnrolledCourseTypes } from "./EnrolledCourse.types";
 
 import "./EnrolledCourse.scss";
+import { Link } from "react-router";
 
 const EnrolledCourse: React.FC<EnrolledCourseTypes> = ({
   image,
@@ -13,6 +14,8 @@ const EnrolledCourse: React.FC<EnrolledCourseTypes> = ({
   avgRating,
   progressValue,
   heading,
+  courseId,
+  children,
 }) => {
   return (
     <div className="enrolled-course">
@@ -25,10 +28,13 @@ const EnrolledCourse: React.FC<EnrolledCourseTypes> = ({
             lecturer={lecturer}
           />
         </div>
+        {children && children}
       </div>
       <div className="progress-box-and-btn">
         <ProgressBox progressValue={progressValue} />
-        <button className="btn-view">View</button>
+        <Link to={`${courseId}`} className="btn-view">
+          View
+        </Link>
       </div>
     </div>
   );

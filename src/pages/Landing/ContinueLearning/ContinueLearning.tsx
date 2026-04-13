@@ -40,6 +40,7 @@ const ContinueLearning: React.FC<ContinueLearningInterface> = ({
                           image={course.course.image}
                           lecturer={course.course.instructor.name}
                           progressValue={course.progress}
+                          courseId={course.course.id}
                         />
                       </React.Fragment>
                     );
@@ -53,6 +54,7 @@ const ContinueLearning: React.FC<ContinueLearningInterface> = ({
                     image="images/computer.png"
                     lecturer="Lecturer Marilyn Mango"
                     heading="Advanced React & TypeScript Development "
+                    courseId={0}
                   />
                   <EnrolledCourse
                     avgRating={4.9}
@@ -60,6 +62,7 @@ const ContinueLearning: React.FC<ContinueLearningInterface> = ({
                     image="images/computer.png"
                     lecturer="Lecturer Marilyn Mango"
                     heading="Advanced React & TypeScript Development "
+                    courseId={0}
                   />
                   <EnrolledCourse
                     avgRating={4.9}
@@ -67,6 +70,7 @@ const ContinueLearning: React.FC<ContinueLearningInterface> = ({
                     image="images/computer.png"
                     lecturer="Lecturer Marilyn Mango"
                     heading="Advanced React & TypeScript Development "
+                    courseId={0}
                   />
                 </>
               )}
