@@ -1,10 +1,22 @@
 import React from "react";
 
-import "./SidePanel.scss";
+import useGetData from "../../../hooks/useGetData/useGetData";
+
 import EmptySidePanel from "./EmptySidePanel/EmptySidePanel";
+import EnrolledCourse from "../../../pages/Landing/ContinueLearning/EnrolledCourse/EnrolledCourse";
+
+import type { EnrollmentRecord } from "../../../pages/Landing/ContinueLearning/ContinueLearning.types";
+
+import "./SidePanel.scss";
 
 const SidePanel: React.FC = () => {
-  const enrolledData = undefined;
+  const token = sessionStorage.getItem("token");
+
+  const { data: enrolledData } = useGetData<EnrollmentRecord[]>({
+    endpoint: "enrollments",
+    token,
+  });
+
   return (
     <>
       <div id="overlay"></div>
@@ -14,7 +26,21 @@ const SidePanel: React.FC = () => {
           <span>Total Enrollments 0</span>
         </div>
         <div className="side-panel-content">
-          {!enrolledData && <EmptySidePanel />}
+          {enrolledData ? (
+            enrolledData.map((course) => (
+              <React.Fragment key={course.id}>
+                <EnrolledCourse
+                  heading={course.course.title}
+                  avgRating={course.course.avgRating}
+                  image={course.course.image}
+                  lecturer={course.course.instructor.name}
+                  progressValue={course.progress}
+                />
+              </React.Fragment>
+            ))
+          ) : (
+            <EmptySidePanel />
+          )}
         </div>
       </div>
     </>

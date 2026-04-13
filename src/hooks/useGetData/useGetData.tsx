@@ -11,8 +11,8 @@ const useGetData = <T,>({ endpoint, token }: useGetDataTypes) => {
 
   useEffect(() => {
     if (
-      endpoint === "enrollments" ||
-      (endpoint === "courses/in-progress" && !token)
+      (endpoint === "enrollments" || endpoint === "courses/in-progress") &&
+      !token
     ) {
       return;
     }

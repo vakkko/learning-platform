@@ -26,8 +26,14 @@
   }
 
   .side-panel-content {
-    @include flexAlignCenter();
+    @include flexColumn();
     height: 100%;
+    overflow-y: scroll;
     justify-content: center;
+    align-items: center;
+
+    & > .enrolled-course {
+      width: 100%;
+    }
   }
 }
