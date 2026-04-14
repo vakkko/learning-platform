@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { useParams } from "react-router";
 
@@ -34,9 +34,12 @@ const Browse: React.FC = () => {
 
   const { page } = useParams();
 
-  const categories = selectIds(categoryValue);
-  const topics = selectIds(topicValue);
-  const instructors = selectIds(instructorValue);
+  const categories = useMemo(() => selectIds(categoryValue), [categoryValue]);
+  const topics = useMemo(() => selectIds(topicValue), [topicValue]);
+  const instructors = useMemo(
+    () => selectIds(instructorValue),
+    [instructorValue],
+  );
 
   useEffect(() => {
     async function handleCoursesFetch() {
