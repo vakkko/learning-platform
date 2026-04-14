@@ -19,19 +19,31 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
 }) => {
   const handleChange = (
     e: React.MouseEvent<HTMLDivElement>,
-    setId: React.Dispatch<React.SetStateAction<SelectedFilterType | undefined>>,
+    setId: React.Dispatch<
+      React.SetStateAction<SelectedFilterType[] | undefined>
+    >,
   ) => {
     const target = (e.target as HTMLElement).closest("button");
+
     if (target && setId) {
-      const id = target.dataset.id;
+      const id = Number(target.dataset.id);
       const categoryName = target.dataset.category;
 
       if (id && categoryName) {
-        setId({ id: Number(id), value: categoryName });
+        setId((prev) => {
+          const currentSelection = prev || [];
+
+          const isExisting = currentSelection.some((item) => item.id === id);
+
+          if (isExisting) {
+            return currentSelection.filter((item) => item.id !== id);
+          } else {
+            return [...currentSelection, { id, value: categoryName }];
+          }
+        });
       }
     }
   };
-
   return (
     <div className="filter-sidebar">
       <Categories
@@ -40,13 +52,13 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
         setCategoryValue={setCategoryValue}
       />
       <Topics
-        topicId={topicValue?.id}
+        topicValue={topicValue}
         handleChange={handleChange}
         setTopicValue={setTopicValue}
       />
       <Instructors
         handleChange={handleChange}
-        instuctorId={instructorValue?.id}
+        instructorValue={instructorValue}
         setInstructorValue={setInstructorValue}
       />
       <div className="active-filters">

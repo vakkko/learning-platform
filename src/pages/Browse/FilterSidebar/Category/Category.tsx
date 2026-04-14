@@ -87,7 +87,7 @@ const Category: React.FC<CategoryInterface> = ({
     <button
       data-id={id}
       data-category={category}
-      className={`btn-category ${categoryId === id ? "active" : ""}`}
+      className={`btn-category ${categoryId?.id === id ? "active" : ""}`}
     >
       {icon && categories[icon as keyof typeof categories]}
       {category}

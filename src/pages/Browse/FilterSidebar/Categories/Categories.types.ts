@@ -7,14 +7,14 @@ export interface CategoryTypes {
 }
 
 export interface CategoriesProps {
-  categoryValue?: SelectedFilterType;
+  categoryValue?: SelectedFilterType[];
   handleChange: (
     e: React.MouseEvent<HTMLDivElement>,
     setState: React.Dispatch<
-      React.SetStateAction<SelectedFilterType | undefined>
+      React.SetStateAction<SelectedFilterType[] | undefined>
     >,
   ) => void;
   setCategoryValue: React.Dispatch<
-    React.SetStateAction<SelectedFilterType | undefined>
+    React.SetStateAction<SelectedFilterType[] | undefined>
   >;
 }

@@ -9,7 +9,7 @@ import "./Instructors.scss";
 const Instructors: React.FC<InstructorProps> = ({
   handleChange,
   setInstructorValue,
-  instuctorId,
+  instructorValue,
 }) => {
   const { data: instructors } = useGetData<InstructorsTypes[]>({
     endpoint: "instructors",
@@ -26,7 +26,11 @@ const Instructors: React.FC<InstructorProps> = ({
             data-id={instructor.id}
             data-category={instructor.name}
             key={instructor.id}
-            className={instuctorId === instructor.id ? "active" : ""}
+            className={
+              instructorValue?.some((inst) => inst.id === instructor.id)
+                ? "active"
+                : ""
+            }
           >
             <img src={instructor.avatar} alt={instructor.name} />
             <span>{instructor.name}</span>

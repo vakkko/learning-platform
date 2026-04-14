@@ -30,7 +30,7 @@ const Categories: React.FC<CategoriesProps> = ({
               id={categor.id}
               category={categor.name}
               icon={categor.icon}
-              categoryId={categoryValue?.id}
+              categoryId={categoryValue?.find((prev) => prev.id === categor.id)}
             />
           </React.Fragment>
         ))}

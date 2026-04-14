@@ -9,10 +9,12 @@ export interface InstructorsTypes {
 export interface InstructorProps {
   handleChange: (
     e: React.MouseEvent<HTMLDivElement>,
-    setId: React.Dispatch<React.SetStateAction<SelectedFilterType | undefined>>,
+    setId: React.Dispatch<
+      React.SetStateAction<SelectedFilterType[] | undefined>
+    >,
   ) => void;
-  instuctorId?: number;
+  instructorValue?: SelectedFilterType[];
   setInstructorValue: React.Dispatch<
-    React.SetStateAction<SelectedFilterType | undefined>
+    React.SetStateAction<SelectedFilterType[] | undefined>
   >;
 }

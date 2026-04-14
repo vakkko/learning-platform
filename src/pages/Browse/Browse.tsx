@@ -7,9 +7,10 @@ import "./Browse.scss";
 import type { SelectedFilterType } from "./Browse.types";
 
 const Browse: React.FC = () => {
-  const [categoryValue, setCategoryValue] = useState<SelectedFilterType>();
-  const [topicValue, setTopicValue] = useState<SelectedFilterType>();
-  const [instructorValue, setInstructorValue] = useState<SelectedFilterType>();
+  const [categoryValue, setCategoryValue] = useState<SelectedFilterType[]>();
+  const [topicValue, setTopicValue] = useState<SelectedFilterType[]>();
+  const [instructorValue, setInstructorValue] =
+    useState<SelectedFilterType[]>();
 
   return (
     <main className="browse-main">

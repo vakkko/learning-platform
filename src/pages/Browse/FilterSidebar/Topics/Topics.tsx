@@ -11,7 +11,7 @@ import type { TopicProps, TopicTypes } from "./Topics.types";
 const Topics: React.FC<TopicProps> = ({
   handleChange,
   setTopicValue,
-  topicId,
+  topicValue,
 }) => {
   const { data: topics } = useGetData<TopicTypes[]>({ endpoint: "topics" });
 
@@ -26,7 +26,7 @@ const Topics: React.FC<TopicProps> = ({
           <React.Fragment key={topic.id}>
             <Category
               id={topic.id}
-              categoryId={topicId}
+              categoryId={topicValue?.find((prev) => prev.id === topic.id)}
               category={topic.name}
             />
           </React.Fragment>

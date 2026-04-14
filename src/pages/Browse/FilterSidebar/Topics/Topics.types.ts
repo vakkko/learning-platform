@@ -7,14 +7,14 @@ export interface TopicTypes {
 }
 
 export interface TopicProps {
-  topicId: number | undefined;
+  topicValue: SelectedFilterType[] | undefined;
   handleChange: (
     e: React.MouseEvent<HTMLDivElement>,
     setState: React.Dispatch<
-      React.SetStateAction<SelectedFilterType | undefined>
+      React.SetStateAction<SelectedFilterType[] | undefined>
     >,
   ) => void;
   setTopicValue: React.Dispatch<
-    React.SetStateAction<SelectedFilterType | undefined>
+    React.SetStateAction<SelectedFilterType[] | undefined>
   >;
 }
