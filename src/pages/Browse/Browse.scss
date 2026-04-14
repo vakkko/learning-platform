@@ -2,4 +2,19 @@
 
 .browse-main {
   margin: 0 17.7rem 16.1rem;
+
+  .sidebar-and-content {
+    display: flex;
+    gap: 9rem;
+
+    .courses-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.4rem;
+
+      & > .featured-course-wrapper {
+        width: 100%;
+      }
+    }
+  }
 }

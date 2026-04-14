@@ -47,6 +47,39 @@
   }
 
   .featured-course {
+    &.browse {
+      @include flexColumn(1.8rem);
+      justify-content: space-between;
+      height: 51rem;
+
+      .lecture-and-rating {
+        margin-top: 0;
+      }
+
+      .lecturer-and-heading > h3 {
+        margin-top: 0;
+      }
+
+      .heading-and-description {
+        margin: 0;
+      }
+
+      .price-and-button {
+        & > p {
+          @include flexColumn();
+          align-items: flex-start;
+          gap: 0;
+          span {
+            font-size: 2.4rem;
+          }
+        }
+
+        a {
+          padding: 1.2rem 2.5rem;
+        }
+      }
+    }
+
     .course-img {
       width: 100%;
       height: 26.2rem;

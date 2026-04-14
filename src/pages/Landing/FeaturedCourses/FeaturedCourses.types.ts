@@ -11,6 +11,7 @@ export interface FeaturedCourseTypes {
   category: {
     id: number;
     name: string;
+    icon: string;
   };
   topic: {
     id: number;

@@ -12,10 +12,12 @@ import LecturerRatingAndHeading from "../../../../components/LecturerRatingAndHe
 import type { CourseTypes } from "../../../Course/Course.types";
 
 import "./FeaturedCourse.scss";
+import Category from "../../../Browse/FilterSidebar/Category/Category";
 
 const FeaturedCourse: React.FC<FeaturedCourseProps> = ({
   courseData,
   coursePage,
+  removeDescription,
 }) => {
   const rating = courseData.avgRating
     ? courseData.avgRating
@@ -36,7 +38,7 @@ const FeaturedCourse: React.FC<FeaturedCourseProps> = ({
     <div
       className={`featured-course-wrapper ${coursePage ? "personal-page" : ""}`}
     >
-      <div className="featured-course">
+      <div className={`featured-course ${removeDescription ? "browse" : ""}`}>
         {coursePage && <h1>{courseData.title}</h1>}
         <img src={courseData.image} alt="course" className="course-img" />
         {coursePage ? (
@@ -76,7 +78,15 @@ const FeaturedCourse: React.FC<FeaturedCourseProps> = ({
               <h4>Course Description</h4>
             </div>
           )}
-          <p>{courseData.description}</p>
+          {removeDescription ? (
+            <Category
+              category={courseData.category.name}
+              id={courseData.category.id}
+              icon={courseData.category.icon}
+            />
+          ) : (
+            <p>{courseData.description}</p>
+          )}
         </div>
         {!coursePage && (
           <div className="price-and-button">
