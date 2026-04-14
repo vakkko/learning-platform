@@ -15,6 +15,7 @@ import { BASE_URL } from "../../consts/consts";
 
 import "./Browse.scss";
 import type { SortKeys } from "./BrowseHeading/BrowseHeading.types";
+import Pagination from "./Pagination/Pagination";
 
 const Browse: React.FC = () => {
   const [categoryValue, setCategoryValue] = useState<SelectedFilterType[]>();
@@ -89,12 +90,15 @@ const Browse: React.FC = () => {
           setInstructorValue={setInstructorValue}
         />
         {courses && (
-          <div className="courses-container">
-            {courses.map((course) => (
-              <React.Fragment key={course.id}>
-                <FeaturedCourse removeDescription courseData={course} />
-              </React.Fragment>
-            ))}
+          <div>
+            <div className="courses-container">
+              {courses.map((course) => (
+                <React.Fragment key={course.id}>
+                  <FeaturedCourse removeDescription courseData={course} />
+                </React.Fragment>
+              ))}
+            </div>
+            <Pagination paginationData={paginationData} />
           </div>
         )}
       </div>

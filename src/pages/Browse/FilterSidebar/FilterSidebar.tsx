@@ -1,13 +1,15 @@
 import React from "react";
 
+import { useNavigate } from "react-router";
+
 import Categories from "./Categories/Categories";
 import Instructors from "./Instructors/Instructors";
 import Topics from "./Topics/Topics";
 
 import type { FilterSidebarProps } from "./FilterSidebar.types";
+import type { SelectedFilterType } from "../Browse.types";
 
 import "./FilterSidebar.scss";
-import type { SelectedFilterType } from "../Browse.types";
 
 const FilterSidebar: React.FC<FilterSidebarProps> = ({
   categoryValue,
@@ -17,6 +19,8 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
   instructorValue,
   setInstructorValue,
 }) => {
+  const navigate = useNavigate();
+
   const handleChange = (
     e: React.MouseEvent<HTMLDivElement>,
     setId: React.Dispatch<
@@ -42,6 +46,7 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
           }
         });
       }
+      navigate("/browse/1");
     }
   };
   return (

@@ -1,0 +1,30 @@
+@use "../../../styles/mixins" as *;
+@use "../../../styles/variables" as *;
+
+.pagination-container {
+  margin-top: 3.2rem;
+  @include flexAlignCenter(0.8rem);
+  & > a {
+    @include fontWeightSizeColor(500, 1.6rem, $purple-500);
+    @include flexAlignCenter();
+    justify-content: center;
+    line-height: 150%;
+    width: 4rem;
+    height: 4rem;
+    background-color: $greyscale-50;
+    border: 1px solid $greyscale-200;
+    border-radius: 0.4rem;
+
+    &.disabled {
+      color: $purple-100;
+    }
+
+    &:hover {
+      @include hoverStyles();
+    }
+
+    &.active {
+      @include activeStyles();
+    }
+  }
+}
