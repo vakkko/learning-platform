@@ -1,24 +1,23 @@
 import React, { useState } from "react";
 
-import { useLocation } from "react-router";
-
 import "./BrowseHeading.scss";
+import type { BrowseHeadingProps, SortKeys } from "./BrowseHeading.types";
+import { SHOW_SORT_BY } from "../../../consts/consts";
 
-const BrowseHeading: React.FC = () => {
-  const location = useLocation();
-  const pathname = location.pathname.replace("/", "");
-
+const BrowseHeading: React.FC<BrowseHeadingProps> = ({ sortBy, setSortBy }) => {
   const [showFilters, setShowFilters] = useState<boolean>(false);
-  const [filterBy, setFilterBy] = useState<string>("");
 
   const handleSortByClick = () => {
     setShowFilters((prev) => !prev);
   };
 
-  const handleFilterListClick = (filterItem: string) => {
-    setFilterBy(filterItem);
+  const handleFilterListClick = (filterItem: SortKeys) => {
+    setSortBy(filterItem);
     handleSortByClick();
   };
+
+  const myKey: SortKeys = sortBy;
+  const label = SHOW_SORT_BY[myKey];
 
   return (
     <div className="browse-heading-container">
@@ -36,7 +35,7 @@ const BrowseHeading: React.FC = () => {
             fill="#666666"
           />
         </svg>
-        <span className="pathname">{pathname}</span>
+        <span className="pathname">Browse</span>
       </div>
       <div className="filter-box">
         <div>
@@ -63,27 +62,25 @@ const BrowseHeading: React.FC = () => {
 
         <div className="sort-container">
           <button className="btn-sortBy" onClick={handleSortByClick}>
-            Sort By:{" "}
-            <span className="sort-value">
-              {filterBy ? filterBy : "Newest First"}
-            </span>
+            Sort By:
+            <span className="sort-value">{label}</span>
             <img src="images/input/down-arrow.png" alt="down arrow" />
           </button>
           {showFilters && (
             <ul className="filter-options-list">
-              <li onClick={() => handleFilterListClick(" Newest First")}>
+              <li onClick={() => handleFilterListClick("newest")}>
                 Newest First
               </li>
-              <li onClick={() => handleFilterListClick("Price: Low to High")}>
+              <li onClick={() => handleFilterListClick("price_asc")}>
                 Price: Low to High
               </li>
-              <li onClick={() => handleFilterListClick("Price: High to Low")}>
+              <li onClick={() => handleFilterListClick("price_desc")}>
                 Price: High to Low
               </li>
-              <li onClick={() => handleFilterListClick("Most Popular")}>
+              <li onClick={() => handleFilterListClick("popular")}>
                 Most Popular
               </li>
-              <li onClick={() => handleFilterListClick("Title: A-Z")}>
+              <li onClick={() => handleFilterListClick("title_asc")}>
                 Title: A-Z
               </li>
             </ul>

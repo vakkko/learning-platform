@@ -94,7 +94,7 @@ const FeaturedCourse: React.FC<FeaturedCourseProps> = ({
               starting from{" "}
               <span className="price">{courseData.basePrice}</span>
             </p>
-            <Link to={String(courseData.id)}>Details</Link>
+            <Link to={`/${String(courseData.id)}`}>Details</Link>
           </div>
         )}
       </div>

@@ -35,3 +35,17 @@ export const carouselItems: carouselItemsTypes[] = [
     buttonText: "Learn More",
   },
 ];
+
+export const SHOW_SORT_BY: {
+  newest: string;
+  price_asc: string;
+  price_desc: string;
+  popular: string;
+  title_asc: string;
+} = {
+  newest: "Newest",
+  price_asc: "Price: Low to High",
+  price_desc: "Price:High to Low",
+  popular: "Most Popular",
+  title_asc: "Title:A-Z",
+};

@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 
+import { useParams } from "react-router";
+
 import axios from "axios";
 
 import BrowseHeading from "./BrowseHeading/BrowseHeading";
 import FilterSidebar from "./FilterSidebar/FilterSidebar";
+import FeaturedCourse from "../Landing/FeaturedCourses/FeaturedCourse/FeaturedCourse";
 
 import type { PaginationMeta, SelectedFilterType } from "./Browse.types";
 import type { FeaturedCourseTypes } from "../Landing/FeaturedCourses/FeaturedCourses.types";
@@ -11,22 +14,31 @@ import type { FeaturedCourseTypes } from "../Landing/FeaturedCourses/FeaturedCou
 import { BASE_URL } from "../../consts/consts";
 
 import "./Browse.scss";
-import FeaturedCourse from "../Landing/FeaturedCourses/FeaturedCourse/FeaturedCourse";
+import type { SortKeys } from "./BrowseHeading/BrowseHeading.types";
 
 const Browse: React.FC = () => {
   const [categoryValue, setCategoryValue] = useState<SelectedFilterType[]>();
   const [topicValue, setTopicValue] = useState<SelectedFilterType[]>();
   const [instructorValue, setInstructorValue] =
     useState<SelectedFilterType[]>();
-
   const [courses, setCourses] = useState<FeaturedCourseTypes[]>();
+
   const [paginationData, setPaginationData] = useState<PaginationMeta>();
+  const [sortBy, setSortBy] = useState<SortKeys>("newest");
+
+  const selectIds = (
+    selectedCategories: SelectedFilterType[] | undefined,
+  ): number[] => {
+    return selectedCategories?.map((category) => category.id) ?? [];
+  };
+
+  const { page } = useParams();
 
   useEffect(() => {
     async function handleCoursesFetch() {
       try {
         const response = await axios.get(
-          `${BASE_URL}/courses?sort=newest&page=1`,
+          `${BASE_URL}/courses?sort=${sortBy}&page=${page}`,
         );
 
         if (response.status === 200) {
@@ -38,11 +50,11 @@ const Browse: React.FC = () => {
       }
     }
     handleCoursesFetch();
-  }, []);
+  }, [sortBy, page]);
 
   return (
     <main className="browse-main">
-      <BrowseHeading />
+      <BrowseHeading sortBy={sortBy} setSortBy={setSortBy} />
       <div className="sidebar-and-content">
         <FilterSidebar
           categoryValue={categoryValue}

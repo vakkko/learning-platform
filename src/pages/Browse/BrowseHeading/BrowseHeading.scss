@@ -2,6 +2,7 @@
 @use "../../../styles/variables" as *;
 
 .browse-heading-container {
+  margin-bottom: 3.2rem;
   .path-box {
     @include flexAlignCenter(0.8rem);
 

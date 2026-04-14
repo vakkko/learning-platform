@@ -13,7 +13,7 @@ const router = createBrowserRouter(
       children: [
         { index: true, element: <Landing /> },
         { path: ":id", element: <Course /> },
-        { path: "browse", element: <Browse /> },
+        { path: "browse/:page", element: <Browse /> },
       ],
     },
   ],
