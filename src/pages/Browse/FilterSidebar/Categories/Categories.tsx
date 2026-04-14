@@ -9,9 +9,9 @@ import type { CategoriesProps, CategoryTypes } from "./Categories.types.ts";
 import "./Categories.scss";
 
 const Categories: React.FC<CategoriesProps> = ({
-  categoryId,
+  categoryValue,
   handleChange,
-  setCategoryId,
+  setCategoryValue,
 }) => {
   const { data: categories } = useGetData<CategoryTypes[]>({
     endpoint: "categories",
@@ -21,7 +21,7 @@ const Categories: React.FC<CategoriesProps> = ({
     <div>
       <h4>Categories</h4>
       <div
-        onClick={(e) => handleChange(e, setCategoryId)}
+        onClick={(e) => handleChange(e, setCategoryValue)}
         className="categories-filters"
       >
         {categories?.map((categor) => (
@@ -30,7 +30,7 @@ const Categories: React.FC<CategoriesProps> = ({
               id={categor.id}
               category={categor.name}
               icon={categor.icon}
-              categoryId={categoryId}
+              categoryId={categoryValue?.id}
             />
           </React.Fragment>
         ))}

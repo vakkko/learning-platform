@@ -7,32 +7,39 @@ import Topics from "./Topics/Topics";
 import type { FilterSidebarProps } from "./FilterSidebar.types";
 
 import "./FilterSidebar.scss";
+import type { SelectedFilterType } from "../Browse.types";
 
 const FilterSidebar: React.FC<FilterSidebarProps> = ({
-  categoryId,
-  setCategoryId,
-  topicId,
-  setTopicId,
+  categoryValue,
+  setCategoryValue,
+  topicValue,
+  setTopicValue,
 }) => {
   const handleChange = (
     e: React.MouseEvent<HTMLDivElement>,
-    setId: React.Dispatch<React.SetStateAction<number | undefined>>,
+    setId: React.Dispatch<React.SetStateAction<SelectedFilterType | undefined>>,
   ) => {
-    const target = e.target as HTMLButtonElement;
-    if (target.value && setId) setId(Number(target.value));
+    const target = (e.target as HTMLElement).closest("button");
+    if (target && setId) {
+      const id = target.dataset.id;
+      const categoryName = target.dataset.category;
+      if (id && categoryName) {
+        setId({ id: Number(id), value: categoryName });
+      }
+    }
   };
 
   return (
     <div className="filter-sidebar">
       <Categories
-        categoryId={categoryId}
+        categoryValue={categoryValue}
         handleChange={handleChange}
-        setCategoryId={setCategoryId}
+        setCategoryValue={setCategoryValue}
       />
       <Topics
-        topicId={topicId}
+        topicId={topicValue?.id}
         handleChange={handleChange}
-        setTopicId={setTopicId}
+        setTopicValue={setTopicValue}
       />
       <Instructors />
       <div className="active-filters">

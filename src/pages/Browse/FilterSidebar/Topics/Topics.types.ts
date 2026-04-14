@@ -1,4 +1,4 @@
-import type { Dispatch, SetStateAction } from "react";
+import type { SelectedFilterType } from "../../Browse.types";
 
 export interface TopicTypes {
   id: number;
@@ -10,7 +10,11 @@ export interface TopicProps {
   topicId: number | undefined;
   handleChange: (
     e: React.MouseEvent<HTMLDivElement>,
-    setState: React.Dispatch<React.SetStateAction<number | undefined>>,
+    setState: React.Dispatch<
+      React.SetStateAction<SelectedFilterType | undefined>
+    >,
   ) => void;
-  setTopicId: React.Dispatch<React.SetStateAction<number | undefined>>;
+  setTopicValue: React.Dispatch<
+    React.SetStateAction<SelectedFilterType | undefined>
+  >;
 }

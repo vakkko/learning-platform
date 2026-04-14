@@ -10,7 +10,7 @@ import type { TopicProps, TopicTypes } from "./Topics.types";
 
 const Topics: React.FC<TopicProps> = ({
   handleChange,
-  setTopicId,
+  setTopicValue,
   topicId,
 }) => {
   const { data: topics } = useGetData<TopicTypes[]>({ endpoint: "topics" });
@@ -19,7 +19,7 @@ const Topics: React.FC<TopicProps> = ({
     <div>
       <h4>Topics</h4>
       <div
-        onClick={(e) => handleChange(e, setTopicId)}
+        onClick={(e) => handleChange(e, setTopicValue)}
         className="topics-container"
       >
         {topics?.map((topic) => (

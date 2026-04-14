@@ -4,20 +4,21 @@ import BrowseHeading from "./BrowseHeading/BrowseHeading";
 import FilterSidebar from "./FilterSidebar/FilterSidebar";
 
 import "./Browse.scss";
+import type { SelectedFilterType } from "./Browse.types";
 
 const Browse: React.FC = () => {
-  const [categoryId, setCategoryId] = useState<number>();
-  const [topicId, setTopicId] = useState<number>();
+  const [categoryValue, setCategoryValue] = useState<SelectedFilterType>();
+  const [topicValue, setTopicValue] = useState<SelectedFilterType>();
 
   return (
     <main className="browse-main">
       <BrowseHeading />
       <div>
         <FilterSidebar
-          categoryId={categoryId}
-          setCategoryId={setCategoryId}
-          topicId={topicId}
-          setTopicId={setTopicId}
+          categoryValue={categoryValue}
+          setCategoryValue={setCategoryValue}
+          topicValue={topicValue}
+          setTopicValue={setTopicValue}
         />
       </div>
     </main>

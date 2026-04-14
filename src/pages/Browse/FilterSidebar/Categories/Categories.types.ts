@@ -1,3 +1,5 @@
+import type { SelectedFilterType } from "../../Browse.types";
+
 export interface CategoryTypes {
   id: number;
   name: string;
@@ -5,10 +7,14 @@ export interface CategoryTypes {
 }
 
 export interface CategoriesProps {
-  categoryId?: number;
+  categoryValue?: SelectedFilterType;
   handleChange: (
     e: React.MouseEvent<HTMLDivElement>,
-    setState: React.Dispatch<React.SetStateAction<number | undefined>>,
+    setState: React.Dispatch<
+      React.SetStateAction<SelectedFilterType | undefined>
+    >,
   ) => void;
-  setCategoryId: React.Dispatch<React.SetStateAction<number | undefined>>;
+  setCategoryValue: React.Dispatch<
+    React.SetStateAction<SelectedFilterType | undefined>
+  >;
 }

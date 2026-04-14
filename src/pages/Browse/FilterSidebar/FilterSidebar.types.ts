@@ -1,6 +1,12 @@
+import type { SelectedFilterType } from "../Browse.types";
+
 export interface FilterSidebarProps {
-  categoryId?: number;
-  setCategoryId: React.Dispatch<React.SetStateAction<number | undefined>>;
-  topicId?: number;
-  setTopicId: React.Dispatch<React.SetStateAction<number | undefined>>;
+  categoryValue?: SelectedFilterType;
+  setCategoryValue: React.Dispatch<
+    React.SetStateAction<SelectedFilterType | undefined>
+  >;
+  topicValue?: SelectedFilterType;
+  setTopicValue: React.Dispatch<
+    React.SetStateAction<SelectedFilterType | undefined>
+  >;
 }
