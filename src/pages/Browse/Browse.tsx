@@ -66,9 +66,19 @@ const Browse: React.FC = () => {
     handleCoursesFetch();
   }, [sortBy, page, categories, instructors, topics]);
 
+  const handleClearFilters = () => {
+    setCategoryValue([]);
+    setTopicValue([]);
+    setInstructorValue([]);
+  };
+
   return (
     <main className="browse-main">
-      <BrowseHeading sortBy={sortBy} setSortBy={setSortBy} />
+      <BrowseHeading
+        handleClearFilters={handleClearFilters}
+        sortBy={sortBy}
+        setSortBy={setSortBy}
+      />
       <div className="sidebar-and-content">
         <FilterSidebar
           categoryValue={categoryValue}

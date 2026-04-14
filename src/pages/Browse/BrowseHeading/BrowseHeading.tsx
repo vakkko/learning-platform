@@ -4,7 +4,11 @@ import "./BrowseHeading.scss";
 import type { BrowseHeadingProps, SortKeys } from "./BrowseHeading.types";
 import { SHOW_SORT_BY } from "../../../consts/consts";
 
-const BrowseHeading: React.FC<BrowseHeadingProps> = ({ sortBy, setSortBy }) => {
+const BrowseHeading: React.FC<BrowseHeadingProps> = ({
+  sortBy,
+  setSortBy,
+  handleClearFilters,
+}) => {
   const [showFilters, setShowFilters] = useState<boolean>(false);
 
   const handleSortByClick = () => {
@@ -40,7 +44,7 @@ const BrowseHeading: React.FC<BrowseHeadingProps> = ({ sortBy, setSortBy }) => {
       <div className="filter-box">
         <div>
           <h2>Filters</h2>
-          <button>
+          <button onClick={handleClearFilters}>
             Clear All Filters
             <svg
               width="12"
