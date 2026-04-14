@@ -9,4 +9,8 @@ export interface FilterSidebarProps {
   setTopicValue: React.Dispatch<
     React.SetStateAction<SelectedFilterType | undefined>
   >;
+  instructorValue?: SelectedFilterType;
+  setInstructorValue: React.Dispatch<
+    React.SetStateAction<SelectedFilterType | undefined>
+  >;
 }

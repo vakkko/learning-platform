@@ -9,6 +9,7 @@ import type { SelectedFilterType } from "./Browse.types";
 const Browse: React.FC = () => {
   const [categoryValue, setCategoryValue] = useState<SelectedFilterType>();
   const [topicValue, setTopicValue] = useState<SelectedFilterType>();
+  const [instructorValue, setInstructorValue] = useState<SelectedFilterType>();
 
   return (
     <main className="browse-main">
@@ -19,6 +20,8 @@ const Browse: React.FC = () => {
           setCategoryValue={setCategoryValue}
           topicValue={topicValue}
           setTopicValue={setTopicValue}
+          instructorValue={instructorValue}
+          setInstructorValue={setInstructorValue}
         />
       </div>
     </main>

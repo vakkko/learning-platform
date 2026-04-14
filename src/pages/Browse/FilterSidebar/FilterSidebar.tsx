@@ -14,6 +14,8 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
   setCategoryValue,
   topicValue,
   setTopicValue,
+  instructorValue,
+  setInstructorValue,
 }) => {
   const handleChange = (
     e: React.MouseEvent<HTMLDivElement>,
@@ -23,6 +25,7 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
     if (target && setId) {
       const id = target.dataset.id;
       const categoryName = target.dataset.category;
+
       if (id && categoryName) {
         setId({ id: Number(id), value: categoryName });
       }
@@ -41,7 +44,11 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
         handleChange={handleChange}
         setTopicValue={setTopicValue}
       />
-      <Instructors />
+      <Instructors
+        handleChange={handleChange}
+        instuctorId={instructorValue?.id}
+        setInstructorValue={setInstructorValue}
+      />
       <div className="active-filters">
         <span>0 Filter Active</span>
       </div>

@@ -4,13 +4,17 @@
 .instructors-container {
   @include flexColumn(0.8rem);
 
-  & > div {
+  & > button {
     @include flexAlignCenter(1.2rem);
     @include fontWeightSizeColor(500, 1.6rem, $greyscale-500);
     background-color: $greyscale-50;
     width: fit-content;
     padding: 0.8rem 1.2rem;
     border-radius: 1.2rem;
+
+    &.active {
+      @include activeStyles();
+    }
 
     &:hover {
       @include hoverStyles();
