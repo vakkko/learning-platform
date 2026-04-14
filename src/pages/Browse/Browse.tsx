@@ -34,11 +34,22 @@ const Browse: React.FC = () => {
 
   const { page } = useParams();
 
+  const categories = selectIds(categoryValue);
+  const topics = selectIds(topicValue);
+  const instructors = selectIds(instructorValue);
+
   useEffect(() => {
     async function handleCoursesFetch() {
       try {
         const response = await axios.get(
           `${BASE_URL}/courses?sort=${sortBy}&page=${page}`,
+          {
+            params: {
+              categories,
+              topics,
+              instructors,
+            },
+          },
         );
 
         if (response.status === 200) {
@@ -50,7 +61,7 @@ const Browse: React.FC = () => {
       }
     }
     handleCoursesFetch();
-  }, [sortBy, page]);
+  }, [sortBy, page, categories, instructors, topics]);
 
   return (
     <main className="browse-main">
