@@ -18,7 +18,7 @@ const router = createBrowserRouter(
     },
   ],
   {
-    basename: "/learning-platform/",
+    basename: "/",
   },
 );
 export default router;
