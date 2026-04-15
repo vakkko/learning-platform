@@ -21,6 +21,15 @@
       margin: 1.2rem 0 4rem;
       @include fontWeightSizeColor(300, 2.4rem, $greyscale-50);
     }
+
+    a {
+      @include buttonStyles(
+        $greyscale-50,
+        $purple-500,
+        $purple-500,
+        2rem 2.5rem
+      );
+    }
   }
 
   .image-indicator-and-buttons {
@@ -49,6 +58,14 @@
     .buttons-box {
       justify-self: flex-end;
       @include flexAlignCenter(2.9rem);
+
+      & > button {
+        color: #c8c2c2;
+
+        &:disabled {
+          color: #786767;
+        }
+      }
     }
   }
 }

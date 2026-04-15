@@ -43,6 +43,7 @@ const EnrolledCourseDetails: React.FC<EnrolledCourseDetailsProps> = ({
         { headers: { Authorization: `Bearer ${token}` } },
       );
       if (response.status === 204) {
+        setEnrolledData(undefined);
         setShowEnrolledData(false);
       }
     } catch (err) {

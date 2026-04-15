@@ -8,4 +8,5 @@ export interface carouselItemsTypes {
   heading: string;
   text: string;
   buttonText: string;
+  link?: string;
 }

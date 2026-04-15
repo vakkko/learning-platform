@@ -17,7 +17,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
       <div className="avatar-img-box">
         <button onClick={handleUserModalOpen} className="user-avatar">
           <img
-            src={preview ? preview : "images/user-avatar.png"}
+            src={preview !== "null" ? preview : "images/user-avatar.png"}
             alt="avatar"
           />
         </button>

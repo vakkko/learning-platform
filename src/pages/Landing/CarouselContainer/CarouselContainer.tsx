@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import CarouselItem from "./CarouselItem/CarouselItem";
 
 import { carouselItems } from "../../../consts/consts";
+import { AppContext, type ContextType } from "../../../context/appContext";
 
 const CarouselContainer: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -19,15 +20,11 @@ const CarouselContainer: React.FC = () => {
     );
   };
 
-  //Switch cards automatically
+  const { setShowSidePanel } = useContext(AppContext) as ContextType;
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCurrentIndex((prev) => (prev === 2 ? 0 : prev + 1));
-  //   }, 2000);
-
-  //   return () => clearInterval(interval);
-  // });
+  const handleLearnMoreClick = () => {
+    setShowSidePanel(true);
+  };
 
   return (
     <div>
@@ -36,6 +33,7 @@ const CarouselContainer: React.FC = () => {
         nextSlide={nextSlide}
         prevSlide={prevSlide}
         currentIndex={currentIndex}
+        handleLearnMoreClick={handleLearnMoreClick}
       />
     </div>
   );

@@ -21,6 +21,7 @@ export const carouselItems: carouselItemsTypes[] = [
     heading: "Start learning something new today",
     text: "Explore a wide range of expert-led courses in design, development, business, and more. Find the skills you need to grow your career and learn at your own pace.",
     buttonText: "Browse Courses",
+    link: "/browse/1",
   },
   {
     imgSrc: "images/carousel/2.png",
@@ -33,6 +34,7 @@ export const carouselItems: carouselItemsTypes[] = [
     heading: "Learn together, grow faster",
     text: "",
     buttonText: "Learn More",
+    link: "/browse/1",
   },
 ];
 

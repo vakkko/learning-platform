@@ -4,4 +4,5 @@ export interface CarouselItemProps extends carouselItemsTypes {
   nextSlide: () => void;
   prevSlide: () => void;
   currentIndex: number;
+  handleLearnMoreClick: () => void;
 }
