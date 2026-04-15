@@ -18,8 +18,15 @@ const NavigationColumn: React.FC<NavigationColumnProps> = ({
         {links.map((link, index) => (
           <li key={index}>
             {link.src && <img src={link.src} alt="contact-icon" />}
-            {handleOpen && <button onClick={handleOpen}>{link.linkTo}</button>}
+            {handleOpen && !link.to && (
+              <button onClick={handleOpen}>{link.linkTo}</button>
+            )}
             {link.to && <Link to={link.to ? link.to : "/"}>{link.linkTo}</Link>}
+            {link.href && (
+              <a target="_blank" rel="noopener noreferrer" href={link.href}>
+                {link.linkTo}
+              </a>
+            )}
           </li>
         ))}
       </ul>

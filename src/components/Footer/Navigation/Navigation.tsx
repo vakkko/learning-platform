@@ -8,10 +8,16 @@ import "./Navigation.scss";
 import { AppContext, type ContextType } from "../../../context/appContext";
 
 const Navigation: React.FC = () => {
-  const { setShowSidePanel } = useContext(AppContext) as ContextType;
+  const { setShowSidePanel, setShowUserModal } = useContext(
+    AppContext,
+  ) as ContextType;
+
+  const handleEnrolledCourseClick = () => {
+    setShowSidePanel(true);
+  };
 
   const handleMyProfileClick = () => {
-    setShowSidePanel(true);
+    setShowUserModal(true);
   };
 
   return (
@@ -19,10 +25,14 @@ const Navigation: React.FC = () => {
       <div>
         <NavigationColumn
           links={EXPLORE}
-          handleOpen={handleMyProfileClick}
+          handleOpen={handleEnrolledCourseClick}
           heading="Explore"
         />
-        <NavigationColumn links={ACCOUNT} heading="Account" />
+        <NavigationColumn
+          handleOpen={handleMyProfileClick}
+          links={ACCOUNT}
+          heading="Account"
+        />
         <NavigationColumn links={CONTACT} heading="Contact" />
       </div>
       <small>All Rights Reserved | Terms and Conditions | Privacy Policy</small>

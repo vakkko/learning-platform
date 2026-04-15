@@ -8,9 +8,21 @@ export const EXPLORE: NavItem[] = [
 export const ACCOUNT: NavItem[] = [{ linkTo: "My Profile" }];
 
 export const CONTACT: NavItem[] = [
-  { linkTo: "contact@company.com", src: "images/contacts/message.png" },
-  { linkTo: "(+995) 555 111 222", src: "images/contacts/phone.png" },
-  { linkTo: "Aghmashenebeli St.115", src: "images/contacts/location.png" },
+  {
+    linkTo: "contact@company.com",
+    src: "images/contacts/message.png",
+    href: "mailto:contact@company.com",
+  },
+  {
+    linkTo: "(+995) 555 111 222",
+    src: "images/contacts/phone.png",
+    href: "tel:+995 555 111 222",
+  },
+  {
+    linkTo: "Aghmashenebeli St.115",
+    src: "images/contacts/location.png",
+    href: "https://www.google.com/maps/search/?api=1&query=41.7126916,44.7952346",
+  },
 ];
 
 export const BASE_URL = "https://api.redclass.redberryinternship.ge/api";

@@ -2,7 +2,7 @@
 @use "../../../styles/variables" as *;
 
 .side-panel-container {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   background-color: white;
