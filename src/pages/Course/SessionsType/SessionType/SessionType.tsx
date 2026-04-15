@@ -98,7 +98,7 @@ const SessionType: React.FC<SessionTypeProps> = ({
         <p className="available-seats">{availableSeats} Seats Available </p>
       ) : (
         <p className="available-seats deficit">
-          <img src="images/course/warning.png" alt="warning" />
+          <img src="/images/course/warning.png" alt="warning" />
           Only {availableSeats} Seats Remaining
         </p>
       )}

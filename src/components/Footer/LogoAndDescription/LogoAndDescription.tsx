@@ -9,7 +9,7 @@ const LogoAndDescription: React.FC = () => {
     <div className="logo-and-description-container">
       <div>
         <div className="logo-and-company">
-          <img src="images/logo.png" alt="logo" />
+          <img src="/images/logo.png" alt="logo" />
           <h3>Bootcamp</h3>
         </div>
         <p>

@@ -45,11 +45,11 @@ const FeaturedCourse: React.FC<FeaturedCourseProps> = ({
           <div className="duration-hours-and-rating">
             <div className="hours-and-weeks">
               <div>
-                <img src="images/course/calendar.png" alt="calendar" />
+                <img src="/images/course/calendar.png" alt="calendar" />
                 <span>{courseData.durationWeeks} Weeks</span>
               </div>
               <div>
-                <img src="images/course/watch.png" alt="watch" />
+                <img src="/images/course/watch.png" alt="watch" />
                 <span>128 Hours</span>
               </div>
             </div>
@@ -57,7 +57,7 @@ const FeaturedCourse: React.FC<FeaturedCourseProps> = ({
               <CourseRating avgRating={rating} />
               <CategoryBox
                 category={courseData.category.name}
-                image={`images/categories/${categoryIcon}.png`}
+                image={`/images/categories/${categoryIcon}.png`}
               />
             </div>
           </div>

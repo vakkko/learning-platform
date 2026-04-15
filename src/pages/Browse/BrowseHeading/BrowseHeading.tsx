@@ -79,7 +79,7 @@ const BrowseHeading: React.FC<BrowseHeadingProps> = ({
           <button className="btn-sortBy" onClick={handleSortByClick}>
             Sort By:
             <span className="sort-value">{label}</span>
-            <img src="images/input/down-arrow.png" alt="down arrow" />
+            <img src="/images/input/down-arrow.png" alt="down arrow" />
           </button>
           {showFilters && (
             <ul className="filter-options-list">

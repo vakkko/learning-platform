@@ -13,7 +13,7 @@ const LoginRedirection: React.FC = () => {
 
   return (
     <div className="login-redirection">
-      <img src="images/locked.png" alt="locked in " />
+      <img src="/images/locked.png" alt="locked in " />
       <p>Sign in to track your learning progress</p>
       <button onClick={handleLoginOpen} className="btn-logIn">
         Log In

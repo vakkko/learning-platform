@@ -1,16 +1,16 @@
 import type { carouselItemsTypes, NavItem } from "./consts.types";
 
 export const EXPLORE: NavItem[] = [
-  { LinkTo: "Enrolled Courses" },
-  { LinkTo: "Browse Courses" },
+  { linkTo: "Enrolled Courses" },
+  { linkTo: "Browse Courses", to: "/browse/1" },
 ];
 
-export const ACCOUNT: NavItem[] = [{ LinkTo: "My Profile" }];
+export const ACCOUNT: NavItem[] = [{ linkTo: "My Profile" }];
 
 export const CONTACT: NavItem[] = [
-  { LinkTo: "contact@company.com", src: "images/contacts/message.png" },
-  { LinkTo: "(+995) 555 111 222", src: "images/contacts/phone.png" },
-  { LinkTo: "Aghmashenebeli St.115", src: "images/contacts/location.png" },
+  { linkTo: "contact@company.com", src: "images/contacts/message.png" },
+  { linkTo: "(+995) 555 111 222", src: "images/contacts/phone.png" },
+  { linkTo: "Aghmashenebeli St.115", src: "images/contacts/location.png" },
 ];
 
 export const BASE_URL = "https://api.redclass.redberryinternship.ge/api";

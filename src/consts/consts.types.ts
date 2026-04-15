@@ -1,6 +1,7 @@
 export interface NavItem {
-  LinkTo: string;
+  linkTo: string;
   src?: string;
+  to?: string;
 }
 
 export interface carouselItemsTypes {

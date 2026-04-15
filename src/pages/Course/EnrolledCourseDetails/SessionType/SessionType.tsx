@@ -8,7 +8,7 @@ const SessionType: React.FC<SessionTypeProps> = ({ id, name, location }) => {
         id === 1 ? (
           ""
         ) : (
-          <img src="images/contacts/location.png" />
+          <img src="/images/contacts/location.png" />
         )
       ) : (
         <img src={`images/session/${id}.png`} alt="session Type" />

@@ -37,7 +37,7 @@ const Header: React.FC = () => {
     <>
       <header>
         <Link to={"/"}>
-          <img src="images/logo.png" alt="logo" />
+          <img src="/images/logo.png" alt="logo" />
         </Link>
         <div>
           <button className="btn-courses-box">

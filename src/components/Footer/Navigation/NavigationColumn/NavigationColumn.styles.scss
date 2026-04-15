@@ -12,9 +12,9 @@
 
   ul {
     @include flexColumn(8px);
-    li {
+    li,
+    li > button {
       @include flexAlignCenter(8px);
-      font-weight: 400;
       font-size: 1.8rem;
       text-align: center;
       color: $greyscale-500;

@@ -20,7 +20,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ handleModalClose, AuthFor }) => {
   return (
     <div className="modal">
       <button onClick={handleModalClose} className="btn-close">
-        <img src="images/x.png" alt="cancel" />
+        <img src="/images/x.png" alt="cancel" />
       </button>
       <div className="modal-content">
         {loginStep && (

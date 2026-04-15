@@ -12,12 +12,12 @@ const SocialNetworks: React.FC = () => {
             target="_blank"
             rel="noopener"
           >
-            <img src="images/social-networks/facebook.png" alt="facebook" />
+            <img src="/images/social-networks/facebook.png" alt="facebook" />
           </a>
         </li>
         <li>
           <a href="https://x.com/" target="_blank" rel="noopener">
-            <img src="images/social-networks/twitter.png" alt="twitter" />
+            <img src="/images/social-networks/twitter.png" alt="twitter" />
           </a>
         </li>
         <li>
@@ -26,7 +26,7 @@ const SocialNetworks: React.FC = () => {
             target="_blank"
             rel="noopener"
           >
-            <img src="images/social-networks/instagram.png" alt="instagtam" />
+            <img src="/images/social-networks/instagram.png" alt="instagtam" />
           </a>
         </li>
         <li>
@@ -35,7 +35,7 @@ const SocialNetworks: React.FC = () => {
             target="_blank"
             rel="noopener"
           >
-            <img src="images/social-networks/linkedIn.png" alt="Linkedin" />
+            <img src="/images/social-networks/linkedIn.png" alt="Linkedin" />
           </a>
         </li>
         <li>
@@ -44,7 +44,7 @@ const SocialNetworks: React.FC = () => {
             target="_blank"
             rel="noopener"
           >
-            <img src="images/social-networks/youTube.png" alt="youtube" />
+            <img src="/images/social-networks/youTube.png" alt="youtube" />
           </a>
         </li>
       </ul>
