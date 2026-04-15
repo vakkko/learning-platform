@@ -22,9 +22,10 @@ const Browse: React.FC = () => {
   const [topicValue, setTopicValue] = useState<SelectedFilterType[]>();
   const [instructorValue, setInstructorValue] =
     useState<SelectedFilterType[]>();
-  const [courses, setCourses] = useState<FeaturedCourseTypes[]>();
 
+  const [courses, setCourses] = useState<FeaturedCourseTypes[]>();
   const [paginationData, setPaginationData] = useState<PaginationMeta>();
+
   const [sortBy, setSortBy] = useState<SortKeys>("newest");
 
   const selectIds = (
@@ -79,6 +80,7 @@ const Browse: React.FC = () => {
         handleClearFilters={handleClearFilters}
         sortBy={sortBy}
         setSortBy={setSortBy}
+        paginationData={paginationData}
       />
       <div className="sidebar-and-content">
         <FilterSidebar
@@ -89,7 +91,7 @@ const Browse: React.FC = () => {
           instructorValue={instructorValue}
           setInstructorValue={setInstructorValue}
         />
-        {courses && (
+        {courses && courses.length > 0 && (
           <div>
             <div className="courses-container">
               {courses.map((course) => (

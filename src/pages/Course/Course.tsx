@@ -7,15 +7,14 @@ import useGetData from "../../hooks/useGetData/useGetData";
 import FeaturedCourse from "../Landing/FeaturedCourses/FeaturedCourse/FeaturedCourse";
 import WeeklySchedule from "./WeeklySchedule/WeeklySchedule";
 import TimesSlot from "./TimesSlot/TimesSlot";
-
+import EnrolledCourseDetails from "./EnrolledCourseDetails/EnrolledCourseDetails";
 import SessionsType from "./SessionsType/SessionsType";
 import CoursePrice from "./CoursePrice/CoursePrice";
 
 import type { CourseTypes } from "./Course.types";
+import type { EnrollmentRecord } from "../Landing/ContinueLearning/ContinueLearning.types";
 
 import "./Course.scss";
-import type { EnrollmentRecord } from "../Landing/ContinueLearning/ContinueLearning.types";
-import EnrolledCourseDetails from "./EnrolledCourseDetails/EnrolledCourseDetails";
 
 const Course: React.FC = () => {
   const { id } = useParams();

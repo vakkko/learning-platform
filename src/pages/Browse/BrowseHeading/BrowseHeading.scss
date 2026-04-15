@@ -24,6 +24,7 @@
     justify-content: space-between;
 
     & > div:first-child {
+      @include flexAlignCenter(5.5rem);
       h2 {
         @include fontWeightSizeColor(600, 4rem, $greyscale-950);
       }
@@ -36,8 +37,9 @@
           color: $purple-500;
         }
       }
-
-      @include flexAlignCenter(5.5rem);
+      p {
+        @include fontWeightSizeColor(500, 1.6rem, $greyscale-500);
+      }
     }
 
     .sort-container {

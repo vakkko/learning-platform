@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 
+import axios from "axios";
+
 import SessionType from "./SessionType/SessionType";
+import ProgressBox from "../../Landing/ContinueLearning/EnrolledCourse/ProgressBox/ProgressBox";
+import StatusModal from "../../../components/StatusModal/StatusModal";
 
 import type { EnrolledCourseDetailsProps } from "./EnrolledCourseDetails.types";
 
-import "./EnrolledCourseDetails.scss";
-import ProgressBox from "../../Landing/ContinueLearning/EnrolledCourse/ProgressBox/ProgressBox";
-import axios from "axios";
 import { BASE_URL } from "../../../consts/consts";
-import StatusModal from "../../../components/StatusModal/StatusModal";
+
+import "./EnrolledCourseDetails.scss";
 
 const EnrolledCourseDetails: React.FC<EnrolledCourseDetailsProps> = ({
   enrolledData,

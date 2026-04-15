@@ -8,8 +8,11 @@ const BrowseHeading: React.FC<BrowseHeadingProps> = ({
   sortBy,
   setSortBy,
   handleClearFilters,
+  paginationData,
 }) => {
   const [showFilters, setShowFilters] = useState<boolean>(false);
+
+  if (!paginationData) return;
 
   const handleSortByClick = () => {
     setShowFilters((prev) => !prev);
@@ -22,6 +25,11 @@ const BrowseHeading: React.FC<BrowseHeadingProps> = ({
 
   const myKey: SortKeys = sortBy;
   const label = SHOW_SORT_BY[myKey];
+
+  const { currentPage, lastPage, perPage, total } = paginationData;
+
+  const numberOfCoursePerPage =
+    currentPage === lastPage ? total : currentPage * perPage;
 
   return (
     <div className="browse-heading-container">
@@ -62,6 +70,9 @@ const BrowseHeading: React.FC<BrowseHeadingProps> = ({
               />
             </svg>
           </button>
+          <p>
+            Showing {numberOfCoursePerPage} out of {total}
+          </p>
         </div>
 
         <div className="sort-container">

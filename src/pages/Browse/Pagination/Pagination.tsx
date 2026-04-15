@@ -6,7 +6,7 @@ import "./Pagination.scss";
 const Pagination: React.FC<PaginationProps> = ({ paginationData }) => {
   if (!paginationData) return null;
 
-  const { currentPage, lastPage } = { currentPage: 4, lastPage: 10 };
+  const { currentPage, lastPage } = paginationData;
 
   const showLeftDots = currentPage > 3;
   const showRightDots = currentPage < lastPage - 2;

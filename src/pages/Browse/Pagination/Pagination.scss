@@ -4,6 +4,7 @@
 .pagination-container {
   margin-top: 3.2rem;
   @include flexAlignCenter(0.8rem);
+  justify-content: center;
   & > a {
     @include fontWeightSizeColor(500, 1.6rem, $purple-500);
     @include flexAlignCenter();
@@ -24,7 +25,8 @@
     }
 
     &.active {
-      @include activeStyles();
+      background-color: $purple-600;
+      color: $greyscale-50;
     }
   }
 }
