@@ -1,3 +1,4 @@
+import type { EnrollmentRecord } from "../Landing/ContinueLearning/ContinueLearning.types";
 import type { FeaturedCourseTypes } from "../Landing/FeaturedCourses/FeaturedCourses.types";
 
 interface Review {
@@ -15,7 +16,7 @@ interface Category extends Pick<
 export interface CourseTypes extends FeaturedCourseTypes {
   hours: number;
   isRated: boolean;
-  enrollment: null | string;
+  enrollment: null | EnrollmentRecord;
   reviews: Review[];
   category: Category;
 }

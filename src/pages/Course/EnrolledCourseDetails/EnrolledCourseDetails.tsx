@@ -96,7 +96,7 @@ const EnrolledCourseDetails: React.FC<EnrolledCourseDetailsProps> = ({
           </button>
         ) : (
           <button onClick={handleCompleteClick} className="btn-complete">
-            "Complete Course"
+            Complete Course
             <svg
               width="24"
               height="24"

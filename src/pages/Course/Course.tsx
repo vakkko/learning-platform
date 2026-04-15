@@ -18,8 +18,11 @@ import "./Course.scss";
 
 const Course: React.FC = () => {
   const { id } = useParams();
+  const token = sessionStorage.getItem("token");
+
   const { data: courseData } = useGetData<CourseTypes>({
     endpoint: `courses/${id}`,
+    token,
   });
 
   const [daysId, setDaysId] = useState<number>();
@@ -54,13 +57,15 @@ const Course: React.FC = () => {
     setCourseScheduleId(courseId);
   };
 
+  const enrolledDetails = courseData?.enrollment;
+
   return (
     <main className="course-main">
       {courseData && <FeaturedCourse courseData={courseData} coursePage />}
       <div className="schedules-container">
-        {enrolledData && showEnrolledData ? (
+        {(enrolledData && showEnrolledData) || enrolledDetails ? (
           <EnrolledCourseDetails
-            enrolledData={enrolledData}
+            enrolledData={enrolledData ? enrolledData : enrolledDetails}
             setEnrolledData={setEnrolledData}
             setShowEnrolledData={setShowEnrolledData}
           />
