@@ -1,6 +1,9 @@
 import * as yup from "yup";
 
 import { requiredText } from "./AuthSchema";
+
+import { MAX_FILE_SIZE } from "../consts/consts";
+
 const usernameRegex = /^[a-z\s]+$/i;
 
 export const updateProfileSchema = yup.object({
@@ -46,7 +49,20 @@ export const updateProfileSchema = yup.object({
     .required()
     .min(16, "You must be at least 16 years old to enroll")
     .max(120, "Please enter a valid age"),
-  avatar: yup.mixed<FileList>().nullable().notRequired().default(null),
+  avatar: yup
+    .mixed<FileList>()
+    .nullable()
+    .notRequired()
+    .test(
+      "file size",
+      "The file is too large. Maximum size is 1 MB",
+      (value) => {
+        if (!value || value.length === 0) return true;
+
+        return value[0].size <= MAX_FILE_SIZE;
+      },
+    )
+    .default(null),
 });
 
 export type updateProfileSchemaData = yup.InferType<typeof updateProfileSchema>;

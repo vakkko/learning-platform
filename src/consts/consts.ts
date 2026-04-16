@@ -1,5 +1,7 @@
 import type { carouselItemsTypes, NavItem } from "./consts.types";
 
+export const MAX_FILE_SIZE = 1024 * 1024;
+
 export const EXPLORE: NavItem[] = [
   { linkTo: "Enrolled Courses" },
   { linkTo: "Browse Courses", to: "/browse/1" },
