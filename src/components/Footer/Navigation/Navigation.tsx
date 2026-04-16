@@ -8,16 +8,23 @@ import "./Navigation.scss";
 import { AppContext, type ContextType } from "../../../context/appContext";
 
 const Navigation: React.FC = () => {
-  const { setShowSidePanel, setShowUserModal } = useContext(
-    AppContext,
-  ) as ContextType;
+  const { setShowSidePanel, setShowUserModal, authorized, setShowLogin } =
+    useContext(AppContext) as ContextType;
 
   const handleEnrolledCourseClick = () => {
-    setShowSidePanel(true);
+    if (!authorized) {
+      setShowLogin(true);
+    } else {
+      setShowSidePanel(true);
+    }
   };
 
   const handleMyProfileClick = () => {
-    setShowUserModal(true);
+    if (!authorized) {
+      setShowLogin(true);
+    } else {
+      setShowUserModal(true);
+    }
   };
 
   return (
