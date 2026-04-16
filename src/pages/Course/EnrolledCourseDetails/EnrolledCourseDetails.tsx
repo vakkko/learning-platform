@@ -42,6 +42,7 @@ const EnrolledCourseDetails: React.FC<EnrolledCourseDetailsProps> = ({
         `${BASE_URL}/enrollments/${enrolledData?.id}`,
         { headers: { Authorization: `Bearer ${token}` } },
       );
+      console.log(response);
       if (response.status === 204) {
         setEnrolledData(undefined);
         setShowEnrolledData(false);
