@@ -8,4 +8,5 @@ export interface EnrolledCourseDetailsProps {
   setShowEnrolledData: React.Dispatch<
     React.SetStateAction<boolean | undefined>
   >;
+  handleScheduleReset: () => void;
 }

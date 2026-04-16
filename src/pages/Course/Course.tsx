@@ -57,6 +57,12 @@ const Course: React.FC = () => {
     setCourseScheduleId(courseId);
   };
 
+  const handleScheduleReset = () => {
+    setDaysId(undefined);
+    setTimeId(undefined);
+    setSessionId(undefined);
+  };
+
   const enrolledDetails = courseData?.enrollment;
 
   return (
@@ -68,6 +74,7 @@ const Course: React.FC = () => {
             enrolledData={enrolledData || enrolledDetails}
             setEnrolledData={setEnrolledData}
             setShowEnrolledData={setShowEnrolledData}
+            handleScheduleReset={handleScheduleReset}
           />
         ) : (
           <>

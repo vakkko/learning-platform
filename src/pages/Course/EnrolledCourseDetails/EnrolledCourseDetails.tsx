@@ -16,6 +16,7 @@ const EnrolledCourseDetails: React.FC<EnrolledCourseDetailsProps> = ({
   enrolledData,
   setEnrolledData,
   setShowEnrolledData,
+  handleScheduleReset,
 }) => {
   const token = sessionStorage.getItem("token");
   const [rateModal, setRateModal] = useState<boolean>(false);
@@ -42,10 +43,10 @@ const EnrolledCourseDetails: React.FC<EnrolledCourseDetailsProps> = ({
         `${BASE_URL}/enrollments/${enrolledData?.id}`,
         { headers: { Authorization: `Bearer ${token}` } },
       );
-      console.log(response);
       if (response.status === 204) {
         setEnrolledData(undefined);
         setShowEnrolledData(false);
+        handleScheduleReset();
       }
     } catch (err) {
       console.error(err);
