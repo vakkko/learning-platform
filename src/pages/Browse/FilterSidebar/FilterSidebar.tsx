@@ -49,6 +49,12 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
       navigate("/browse/1");
     }
   };
+
+  const filtersCount =
+    (categoryValue?.length ?? 0) +
+    (topicValue?.length ?? 0) +
+    (instructorValue?.length ?? 0);
+
   return (
     <div className="filter-sidebar">
       <Categories
@@ -67,7 +73,7 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
         setInstructorValue={setInstructorValue}
       />
       <div className="active-filters">
-        <span>0 Filter Active</span>
+        <span>{filtersCount} Filter Active</span>
       </div>
     </div>
   );
